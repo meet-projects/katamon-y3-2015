@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href={% static 'app/css/main.css' %}>
+	<title>
+		{% block title %}
+		{% endblock %}
+	</title>
+</head>
+<body>
+	<div id="navbar">
+		<h1>This is the base.html</h1>
+	</div>
+	{% block body %}
+	{% endblock %}
+</body>
+</html>

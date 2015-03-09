@@ -1,0 +1,16 @@
+h1{
+	color: rgba(123,231,312,1);
+}
+#navbar{
+	background-color: rgba(112,123,131,1);
+	height: 10%;
+	margin: -8px;
+}
+.greenBOX{
+	background-color: rgba(123,231,312,1);
+	height: 80%;
+	margin: -8px;
+}
+.greenBOX h1{
+	color: rgba(112,123,131,1);
+}
