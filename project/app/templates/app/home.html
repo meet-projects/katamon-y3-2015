@@ -1,9 +1,23 @@
-{% extends "app/base.html" %}
-
-{%block title %} Index page {% endblock %}
+{% extends "app/base.html" %} {%block title %} Index page {% endblock %}
 
 {% block body %}
-<div class="greenBOX">
-	<h1>This is the home.html</h1>
+<div class="greenBOX container" style="width:100%;">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 id="deepTitle" class="text-center"
+				style="font-family: Roboto; color: #ffffff;">Help The Community
+			</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<p id="briefExplanation" class="text-center"
+				style="font-family: Roboto; font-size: 2.5em;">
+				It's the simple and free platform that enables <br>Palestinians
+				and Israelis to contribute to the community and connect
+			</p>
+		</div>
+	</div>
 </div>
 {% endblock %}
