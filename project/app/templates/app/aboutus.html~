@@ -4,7 +4,14 @@
 
 {% block body %}
 <div class="greenBOX">
-	<h1> Who we are? </h1>
+	<h1> Who are we? </h1>
+	<h3>We are a group of people of 6 members who noticed a problem in the society, people want to volunteer and don't know where to go, people and organizations need volunteers and can't get them easily.<br> We find the solution very simple, Give For Hope, A website that gives volunteers a place to help, getting two nationalities together to volunteer and help the community, and offering volunteers for places who need volunteers .<h3>
+	<button type=”button” class="btn btn-primary">Aseel</button>
+	<button type=”button” class="btn btn-primary">Itay</button>
+	<button type=”button” class="btn btn-primary">Leen</button>
+	<button type=”button” class="btn btn-primary">Mouhamamd</button>
+	<button type=”button” class="btn btn-primary">Sheer</button>
+	<button type=”button” class="btn btn-primary">Yael</button>
 
 </div>
 {% endblock %}
