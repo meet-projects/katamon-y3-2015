@@ -17,7 +17,7 @@
 			</p>
 			<button class="btn btn-default center-block" id="joinUs">Join Us</button>
 			<br>
-			<p id="orLogin" class="text-center">or <a href="">Login</a></p>
+			<p id="orLogin">or <a href="">Login</a></p>
 		</div>
 	</div>
 	<div class="row">
