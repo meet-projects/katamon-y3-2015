@@ -9,4 +9,7 @@ urlpatterns = patterns('',
     url(r'^aboutus/$', views.aboutus, name='aboutus'),
     url(r'^login/$', views.login, name='login'),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup2/$', views.signupRequest, name='signup'),
+
 )
+
