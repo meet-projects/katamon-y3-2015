@@ -12,3 +12,6 @@ def signup(request):
 
 def aboutus(request):
 	return render(request, 'app/aboutus.html', {})
+
+def volunteam(request):
+	return render(request, 'app/volunteam.html', {})

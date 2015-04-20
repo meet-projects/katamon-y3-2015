@@ -1,0 +1,65 @@
+{% extends "app/base.html" %} 
+
+{%block title %} VolunTeam {% endblock %}
+
+{% block externalLinkRels %}
+	<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/home.css'>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container cover" style="width:100%;">
+	<h3> Which of the following would you like to volunteer with? </h3>
+			<div class="col-md-1 col-md-offset-1">
+			 <button class="btn btn-default center-block" id="animals"> Animals </button> <br>
+			<button class="btn btn-default center-block" id="Children"> Children </button> <br>
+			 <button class="btn btn-default center-block" id="elderly"> Elderly </button> <br>
+			 <button class="btn btn-default center-block" id="ill"> Ill People </button><br>
+			<button class="btn btn-default center-block" id="handicapped"> Handicapped people  </button> <br>
+			 <button class="btn btn-default center-block" id="technical"> Technical Works </button><br>
+			 <button class="btn btn-default center-block" id="youth">  Youth at Risk </button> <br>
+
+			</div>
+		 
+
+
+</div>
+<br>
+			# animals     
+<div class="more-less">
+	<h4> Upcoming Events </h4>
+	<h5><b> Event 1 </b></h5>
+	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+	
+    	<p>Read more </p>
+    </div>
+</div>
+
+</div>
+<br>
+
+<div class="more-less">
+	<h5><b> Event 2 </b></h5>
+	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+	<div class="more-block">
+		<p>description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description scription paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description scription paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description </p>
+	</div>
+	<a class="adjust" href="#"></a>
+</div>
+
+<br>
+<div class="more-less">
+	<h5><b> Event 3 </b></h5>
+	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+	<div class="col-md-1 col-md-offset-1">
+	<input type="button" value="Read more">
+	</div>
+</div>
+
+
+<br>
+
+
+{% endblock %}      
