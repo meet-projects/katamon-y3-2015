@@ -16,7 +16,38 @@
 <script src='{{STATIC_URL}}/app/js/bootstrap.min.js'></script>
 {% block externalLinkRels %} {% endblock %}
 <title>{% block title %} {% endblock %}</title>
+
+<script type="text/javascript"> 
+$(function(){
+
+// The height of the content block when it's not expanded
+var adjustheight = 80;
+// The "more" link text
+var moreText = "+  More";
+// The "less" link text
+var lessText = "- Less";
+
+// Sets the .more-block div to the specified height and hides any content that overflows
+$(".more-less .more-block").css('height', adjustheight).css('overflow', 'hidden');
+
+// The section added to the bottom of the "more-less" div
+$(".more-less").append('[…]');
+// Set the "More" text
+$("a.adjust").text(moreText);
+
+$(".adjust").toggle(function() {
+		$(this).parents("div:first").find(".more-block").css('height', 'auto').css('overflow', 'visible');
+		// Hide the [...] when expanded
+		$(this).parents("div:first").find("p.continued").css('display', 'none');
+		$(this).text(lessText);
+	}, function() {
+		$(this).parents("div:first").find(".more-block").css('height', adjustheight).css('overflow', 'hidden');
+		$(this).parents("div:first").find("p.continued").css('display', 'block');
+		$(this).text(moreText);
+});
+}); </script>
 </head>
+
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -28,7 +59,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" style="font-family:Roboto;" href="#">Katamon</a>
+				<a class="navbar-brand" style="font-family:Roboto;" href="/">VolunTeam</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,8 +67,10 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li id="homeTab" class="active"><a href="/">Home</a></li>
+					<li id="VolunTeamTab"><a href="/volunteam">VolunTeam</a></li>
 					<li id="aboutUsTab"><a href="/aboutus">About Us</a></li>
 					<li id="registerTab"><a href="/signup">Sign Up</a></li>
+
 				</ul>
 				<!-- 
 				<form class="navbar-form navbar-left" role="search">
