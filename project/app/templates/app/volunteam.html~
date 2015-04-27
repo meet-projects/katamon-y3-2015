@@ -13,13 +13,13 @@
 <div class="container cover col-md-4 col-md-offset-1" style="width:100%;" >
 	<h3 class="col-md-6 col-md-offset-1"> Which of the following would you like to volunteer with? </h3>
 			<div class="col-md-6 col-md-offset-2">
-			 <button class="btn btn-default center-block" id="animals" width="100%"> Animals </button> <br>
-			<button class="btn btn-default center-block" id="Children" width="100%"> Children </button> <br>
-			 <button class="btn btn-default center-block" id="elderly" width="100%"> Elderly </button> <br>
-			 <button class="btn btn-default center-block" id="ill" width="100%"> Ill People </button><br>
-			<button class="btn btn-default center-block" id="handicapped" width="100%"> Handicapped people  </button> <br>
-			 <button class="btn btn-default center-block" id="technical" width="100%"> Technical Works </button><br>
-			 <button class="btn btn-default center-block" id="youth" width="100%">  Youth at Risk </button> <br>
+			 <button class="btn btn-default center-block" id="animals"> Animals </button> <br>
+			<button class="btn btn-default center-block" id="Children"> Children </button> <br>
+			 <button class="btn btn-default center-block" id="elderly"> Elderly </button> <br>
+			 <button class="btn btn-default center-block" id="ill"> Ill People </button><br>
+			<button class="btn btn-default center-block" id="handicapped"> Handicapped people  </button> <br>
+			 <button class="btn btn-default center-block" id="technical"> Technical Works </button><br>
+			 <button class="btn btn-default center-block" id="youth">  Youth at Risk </button> <br>
 
 			</div>
 		 
