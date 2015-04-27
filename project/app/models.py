@@ -4,7 +4,7 @@ import datetime
 # Create your models here.
 class Account(models.Model):
 	name = models.CharField(max_length=30)
-	emailAddress = models.EmailField()
+	emailAddress = models.EmailField(unique=True)
 	password = models.CharField(max_length=30)
 	# Palestinian = true, Israeli = false
 	isPalestinian = models.BooleanField()

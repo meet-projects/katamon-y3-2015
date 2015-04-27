@@ -60,6 +60,7 @@ def loginRequest(request):
 	if (len(loggedUser) == 0):
 		return HttpResponse("wrong username or password")
 	else:
+		
 		return redirect("/volunteam/")
 	
 
