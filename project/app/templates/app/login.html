@@ -3,17 +3,18 @@
 {% block body %}
 <div class="GreenBOX row">
    <h1> LOGIN</h1>
-   <form>
+   <form method="post" action="/login2/">
+   	{% csrf_token %}
    	 <div class="col-md-10 col-md-offset-1">
          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <label for="emailAddress">Email address</label>
+            <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email">
          </div>
       </div>
       <div class="col-md-10 col-md-offset-1">
          <div class="form-group">
-            <label for="inputPassword3">Password</label>
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
          </div>
       </div>
       <div class="form-group">
@@ -22,6 +23,13 @@
 							<label> <input type="checkbox"> Remember me
 							</label>
 						</div>
+					</div>
+	  </div>
+	  <div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="form-group">
+				            <button type="submit" class="btn btn-default">Log in</button>
+				         </div>
 					</div>
 	  </div>
 <!-- <link rel="stylesheet" type="text/css"

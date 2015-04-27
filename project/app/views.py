@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 from models import Account
 import datetime
@@ -42,10 +42,28 @@ def signupRequest(request):
 	else:
 		nationality = True
 
-	birthday = datetime.time(int(birthdayDay), int(birthdayMonth), int(birthdayYear))
+	birthday = datetime.datetime(int(birthdayYear), int(birthdayMonth), int(birthdayDay))
+	# birthday = datetime.datetime.now()
 
-	account_obj = Account(name = name, emailAdress = email, password = password, isPalestinian = nationality, birthday = birthday)
+	account_obj = Account(name = name, emailAddress = email, password = password, isPalestinian = nationality, birthday = birthday)
 	account_obj.save()
 
 	return HttpResponse("Banana")
+def loginRequest(request):
+	try:
+		emailAddress = request.POST['emailAddress']
+		password = request.POST['password']
+	except MultiValueDictKeyError:
+		return HttpResponse("Not all of the fields were filled")
+	filters = {"emailAddress": emailAddress, "password": password}
+	loggedUser = Account.objects.filter(**filters)
+	if (len(loggedUser) == 0):
+		return HttpResponse("wrong username or password")
+	else:
+		return redirect("/volunteam/")
+	
+
+
+def showUsers(request):
+	return render(request, 'app/showUsers.html', {"Accounts": Account.objects.all()})
 

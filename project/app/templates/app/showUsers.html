@@ -1,0 +1,39 @@
+{% extends "app/base.html" %}
+{%block title %} Index page {% endblock %}
+{% block body %}
+<div class="container cover" style="width:100%;">
+
+   <div class="row greenbox">
+      <div class="col-md-12 center-block">
+         <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+
+            <!-- Table -->
+            <table class="table">
+             {% for account in Accounts %}
+               <tr>
+                  <td>
+                     {{ account.name }}
+                  </td>
+                  <td>
+                     {{ account.emailAddress }}
+                  </td>
+                  <td>
+                     {{ account.birthday }}
+                  </td>
+               </tr>
+               {% endfor %}
+            </table>
+         </div>
+            
+         </ul>
+
+      </div>
+   </div>
+   <div class="row">
+
+   </div>
+</div>
+
+{% endblock %}
