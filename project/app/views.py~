@@ -58,7 +58,7 @@ def loginRequest(request):
 	filters = {"emailAddress": emailAddress, "password": password}
 	loggedUser = Account.objects.filter(**filters)
 	if (len(loggedUser) == 0):
-		returnDict = { "Error": "wrong username or password" }
+		returnDict = { "Error": "<p style='color: red;'>wrong username or password</p>" }
 		return render(request, 'app/login.html', returnDict)
 	else:
 		

@@ -6,6 +6,7 @@
    <form method="post" action="/login2/">
    	{% csrf_token %}
    	 <div class="col-md-10 col-md-offset-1">
+	<p style='color: red;'>{{ Error }}</p>
          <div class="form-group">
             <label for="emailAddress">Email address</label>
             <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email">
