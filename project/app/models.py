@@ -12,3 +12,12 @@ class Account(models.Model):
 
 	def __unicode__(self):
 		return self.name + " " + self.emailAddress + " " + str(self.birthday)
+
+
+#Event model
+class Events(models.Model):
+	name = models.CharField(max_length=30)
+	date = models.DateTimeField()
+	address = models.CharField(max_length=60)
+	description = models.CharField(max_length=300)
+	#attendees
