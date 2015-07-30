@@ -15,8 +15,7 @@ def login(request):
 	return render(request, 'app/login.html', dictionary)
 
 def signup(request):
-	dictionary = {"active" : "registerTab" }
-	return render(request, 'app/signup.html', dictionary)
+	return render(request, 'app/signup.html', {})
 
 def aboutus(request):
 	dictionary = {"active" : "aboutUsTab" }

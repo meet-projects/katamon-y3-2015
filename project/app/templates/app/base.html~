@@ -46,6 +46,7 @@ $(".adjust").toggle(function() {
 		$(this).text(moreText);
 });
 });
+alert("hello");
 $( document ).ready(function() {
 	$("#{{ active }}").addClass("active");
 });
