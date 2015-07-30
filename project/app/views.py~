@@ -22,6 +22,11 @@ def aboutus(request):
 	dictionary = {"active" : "aboutUsTab" }
 	return render(request, 'app/aboutus.html', dictionary)
 
+def events(request):
+	dictionary = {"active" : "eventsTab" }
+	return render(request, 'app/events.html', dictionary)
+
+
 def volunteam(request):
 	dictionary = {"active" : "VolunTeamTab" }
 	return render(request, 'app/volunteam.html', dictionary)
@@ -50,7 +55,7 @@ def signupRequest(request):
 
 	birthday = datetime.datetime(int(birthdayYear), int(birthdayMonth), int(birthdayDay))
 	# birthday = datetime.datetime.now()
-	user_obj = User(first_name = firstName, last_name = lastName, email = email, password = password)
+	user_obj = User(first_name = firstName, last_name = lastName, email = email, password = password, username = email)
 	user_obj.save()
 
 	account_obj = Account(user = user_obj, isPalestinian = nationality)

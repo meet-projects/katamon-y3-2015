@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^volunteam/$', views.volunteam, name='volunteam'),
     url(r'^signup2/$', views.signupRequest, name='signup'),
     url(r'^showUsers/$', views.showUsers, name='Show users'),
-    url(r'^events/$', views.events, name='Events'),
+    url(r'^events/$', views.Events, name='Events'),
 )
 

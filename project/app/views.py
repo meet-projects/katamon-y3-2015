@@ -22,6 +22,11 @@ def aboutus(request):
 	dictionary = {"active" : "aboutUsTab" }
 	return render(request, 'app/aboutus.html', dictionary)
 
+def events(request):
+	dictionary = {"active" : "eventsTab" }
+	return render(request, 'app/Events.html', dictionary)
+
+
 def volunteam(request):
 	dictionary = {"active" : "VolunTeamTab" }
 	return render(request, 'app/volunteam.html', dictionary)
