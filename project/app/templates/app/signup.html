@@ -1,6 +1,8 @@
 {% extends "app/base.html" %}
 {%block title %} Index page {% endblock %}
 {% block body %}
+<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/main.css'>
 <div class="GreenBOX row">
    <h1>Sign Up</h1>
    <form action="/signup2/" method="post">

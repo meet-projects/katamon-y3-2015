@@ -1,8 +1,4 @@
-body
-{	
-	overflow-y: none;
-	overflow-x: none;
-}
+
 .testDiv{
 	background-color:red;
 	height:500px;
