@@ -9,7 +9,7 @@
          <div class="col-md-6 col-md-offset-1">
             <div class="form-group">
                <label for="InputFirstName">First Name</label>
-               <input type="text" class="form-control" id="InputFirstName" name="firstName" placeholder="First Name">
+               <input type="text" class="form-control" id="InputFirstName" name="FirstName" placeholder="First Name">
             </div>
          </div>
       </div>
@@ -17,7 +17,7 @@
          <div class="col-md-6 col-md-offset-1">
             <div class="form-group">
                <label for="InputLastName">Last Name</label>
-               <input type="text" class="form-control" id="InputLastName" name="lastName" placeholder="Last Name">
+               <input type="text" class="form-control" id="InputLastName" name="LastName" placeholder="Last Name">
             </div>
          </div>
       </div>
