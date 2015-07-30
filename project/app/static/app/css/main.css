@@ -3,7 +3,7 @@ h1{
 }
 
 .greenBOX{
-	background-color: rgba(123,231,312,1);
+	background-color: none;
 
 }
 .greenBOX h1{
@@ -15,6 +15,6 @@ h1{
     font-family: Roboto;
     src: url(../fonts/Roboto-Light.ttf);
 }
-html{
-	overflow-y: none;
+body{
+	overflow-x: hidden;
 }
