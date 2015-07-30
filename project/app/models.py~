@@ -8,7 +8,7 @@ class Account(models.Model):
 	#birthday = models.DateTimeField()
 	user = models.OneToOneField(User)
 	def __unicode__(self):
-		return self.user.username + " " + self.user.email + " " + str(self.birthday)
+		return self.name + " " + self.emailAddress + " " + str(self.birthday)
 
 
 #Event model

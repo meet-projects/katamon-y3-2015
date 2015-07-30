@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-from models import Account
+from models import Account, User
 import datetime
 
 
@@ -15,7 +15,8 @@ def login(request):
 	return render(request, 'app/login.html', dictionary)
 
 def signup(request):
-	return render(request, 'app/signup.html', {})
+	dictionary = {"active" : "registerTab" }
+	return render(request, 'app/signup.html', dictionary)
 
 def aboutus(request):
 	dictionary = {"active" : "aboutUsTab" }
@@ -27,7 +28,8 @@ def volunteam(request):
 def signupRequest(request):
 	
 	try:
-		name = request.POST['name']
+		firstName = request.POST['firstName']
+		lastName = request.POST['firstName']
 		password = request.POST['password']
 		email = request.POST['emailAddress']
 		birthdayDay = request.POST['birthdayDay']
@@ -38,7 +40,7 @@ def signupRequest(request):
 		return HttpResponse("Not all of the fields were filled")
 	
 
-	if (name == "" or password == "" or email == "" or birthdayDay == "" or birthdayMonth == "" or birthdayYear == "" or nationality == ""):
+	if (firstName == "" or lastName == "" or password == "" or email == "" or birthdayDay == "" or birthdayMonth == "" or birthdayYear == "" or nationality == ""):
 		return HttpResponse("Some of the fields are empty.")
 
 	if (nationality == "isra"):
@@ -48,8 +50,10 @@ def signupRequest(request):
 
 	birthday = datetime.datetime(int(birthdayYear), int(birthdayMonth), int(birthdayDay))
 	# birthday = datetime.datetime.now()
+	user_obj = User(first_name = firstName, last_name = lastName, email = email, password = password)
+	user_obj.save()
 
-	account_obj = Account(name = name, emailAddress = email, password = password, isPalestinian = nationality, birthday = birthday)
+	account_obj = Account(user = user_obj, isPalestinian = nationality)
 	account_obj.save()
 
 	return HttpResponse("Banana")
