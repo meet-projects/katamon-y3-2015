@@ -15,11 +15,11 @@ h1{
     font-family: Roboto;
     src: url(../fonts/Roboto-Light.ttf);
 }
-<<<<<<< HEAD
+
 body{
 	overflow-x: hidden;
-=======
+
 html{
 	overflow-y: none;
->>>>>>> a0b85c93cf2abf9f0a8405ff0acfb913c128ae81
+
 }

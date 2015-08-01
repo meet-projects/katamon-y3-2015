@@ -1,0 +1,11 @@
+h3{
+	color: #469245
+}
+.kiki{
+	height: 600px;
+	margin: 0;
+	padding: 0;
+	background-image: url("../img/tree1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}

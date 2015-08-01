@@ -1,42 +1,38 @@
 {% extends "app/base.html" %} 
 
-{%block title %} VolunTeam {% endblock %}
+{%block title %} Events {% endblock %}
 
 {% block externalLinkRels %}
+	<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/volunteam.css'>
 	
 {% endblock %}
 
 {% block body %}
 	
 
-
-<div class="container cover col-md-4 col-md-offset-1" style="width:100%;" >
-	<h3 class="col-md-6 col-md-offset-1"> Which of the following would you like to volunteer with? </h3>
-			<div class="col-md-6 col-md-offset-2">
-			 <button class="btn btn-default center-block" id="animals" width="100%"> Animals </button>
-			<button class="btn btn-default center-block" id="Children" width="100%"> Children </button>
-			 <button class="btn btn-default center-block" id="elderly" width="100%"> Elderly </button>
-			 <button class="btn btn-default center-block" id="ill" width="100%"> Ill People </button>
-			<button class="btn btn-default center-block" id="handicapped" width="100%"> Handicapped people  </button>
-			 <button class="btn btn-default center-block" id="technical" width="100%"> Technical Works </button>
-			 <button class="btn btn-default center-block" id="youth" width="100%">  Youth at Risk </button> <br>
+<div  class="container cover col-md-4 col-md-offset-1" style="width:170%;" >
+	<h3 class="col-md-6 col-md-offset-1";"> Which of the following would you like to volunteer with? </h3><br>
+			<div class="col-md-6 col-md-offset-1" padding-right="200px;" width="200%;">
+				<a href="#ANIMALS"> <button class="btn btn-default" href="#Animals" id="animals" width="100%"> Animals </button></a>
+		     	<a href="#CHILDREN"><button class="btn btn-default"id="Children" width="100%"> Children </button></a>
+				<a href="#ELDERLY"> <button class="btn btn-default" id="elderly" width="100%"> Elderly </button></a>
+				<a href="#ILL"> <button class="btn btn-default" id="ill" width="100%"> Ill People </button></a>
+				<a href="#HANDICAPPED"><button class="btn btn-default" id="handicapped" width="100%"> Handicapped people  </button></a>
+				<a href="#TECHNICAL"> <button class="btn btn-default" id="technical" width="100%"> Technical Works </button></a>
+				<a href="#YOUTH"> <button class="btn btn-default" id="youth" width="100%">  Youth at Risk </button> <br></a>
 
 			</div>
-		 
-
 
 </div>
-<br>
-			
-			<h3 class="col-md-12 col-md-offset-2" > Animals </h3> 
-			  
-	
-	
+
+<br><br><br><br><br><br><br>
+			<h3 class="col-md-12 col-md-offset-2" id="ANIMALS"> Animals </h3> 
 	<br>
 	<div class="col-md-8 col-md-offset-2">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
-	<h5><b><i> Event 1 </i></b></h5>
+	<h5><b><i> Tz </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</p>
@@ -65,19 +61,19 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Children </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="CHILDREN"> Children </h3>    
 
 	
 	<br>
 	<div   class="col-md-8 col-md-offset-2">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
-	<h5><b><i> Ma'ayan School </i></b></h5>
-	<p> Ma’ayan School is a school for children with special needs between the ages of __ to __, who suffer from severe down syndrome. The school is situated in Ein Karem, Jerusalem and welcomes both Palestinian and Israeli children. Although the school does an amazing job helping both the children and their families, it is quite unknown and doesn’t receive enough volunteers. Ma’ayan is in constant need of volunteers to come visit the children, entertain them and make them happy. 
+	<h4><b><i> Ma'ayan School </i></b></h4>
+	<p> Ma’ayan School is a school for children with special needs between the ages of 3 to 21, who suffer from severe down syndrome, mental disabilities, developmental delays and more. The school is situated in Ain Karem, Jerusalem and welcomes both Palestinian and Israeli children. Although the school does an amazing job helping both the children and their families, it is quite unknown and doesn’t receive enough volunteers. Ma’ayan is in constant need of volunteers to come visit the children, entertain them and make them happy. 
 	<p> Group Size: 10 volunteers </p>                                       
 	<p> Time: 10:00am - 12:00am</p>   
 	<p> Date: August 3rd, 2015</p>   
-	<P> Location: Address, Jerusalem</p>   
+	<P> Location: Simtat HaMa'ayan 91190, Jerusalem </p>   
 
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</p>
@@ -106,7 +102,7 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Elderly </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="ELDERLY"> Elderly </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -141,7 +137,7 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Ill People </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="ILL"> Ill People </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -177,7 +173,7 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Handicapped People </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -212,7 +208,7 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Technical Works </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -247,7 +243,7 @@
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2"> Youth At Risk </h3>    
+			<h3 class="col-md-12 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
