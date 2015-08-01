@@ -5,16 +5,16 @@
 }
 
 .cover{
-	height: 400px;
+	height: 600px;
 	margin: 0;
 	padding: 0;
-	background-image: url("../img/coverImage.jpeg");
+	background-image: url("../img/final.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
 
 #joinUs{
-	height:70px;
+	height:50px;
 	width: 7%;
 }
 
@@ -22,13 +22,14 @@
 	font-family: Roboto; 
 	font-size: 2.5em;
 	margin-top:100px;
-	color:#FFFFFF;
+	color: rgb(255,255,255);
+	
 }
 
 #orLogin{
 	font-family: Roboto; 
 	font-size: 1.5em;
-	color:#FFFFFF;
+	color: #FFFFFF;
 }
 
 
