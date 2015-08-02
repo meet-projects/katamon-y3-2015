@@ -1,5 +1,20 @@
- 
+
 #Origin{
  	  font-family: 'Roboto', sans-serif;
       font-size: 70px;
+}
+.Pics{
+	width:300px;
+	height:300px;
+	transition: width 1s, height 1s;
+}
+.Pics:hover{
+	width:600px;
+	height:600px;
+	
+}
+table
+{ width:300px;
+height:300px;
+font-size:40px;
 }

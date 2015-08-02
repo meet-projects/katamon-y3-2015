@@ -6,6 +6,7 @@ import datetime
 
 
 # Create your views here.
+
 def home(request):
 	dictionary = {"active" : "homeTab" }
 	return render(request, 'app/home.html', dictionary)
@@ -19,22 +20,30 @@ def signup(request):
 	return render(request, 'app/signup.html', dictionary)
 
 def aboutus(request):
-	dictionary = {"active" : "aboutUsTab" }
-	return render(request, 'app/aboutus.html', dictionary)
+	if request.user.is_authenticated():
+		dictionary = {"active" : "aboutUsTab" }
+		return render(request, 'app/aboutus.html', dictionary)
+	else: 
+		return redirect("/home/")
 
 def events(request):
-	dictionary = {"active" : "eventsTab" }
-	return render(request, 'app/Events.html', dictionary)
-
+	if request.user.is_authenticated():
+		dictionary = {"active" : "eventsTab" }
+		return render(request, 'app/Events.html', dictionary)
+	else: 
+		return redirect("/home/")
 
 def volunteam(request):
-	dictionary = {"active" : "VolunTeamTab" }
-	return render(request, 'app/volunteam.html', dictionary)
+	if request.user.is_authenticated():
+		dictionary = {"active" : "VolunTeamTab" }
+		return render(request, 'app/volunteam.html', dictionary)
+	else: 
+		return redirect("/home/")
 def signupRequest(request):
 	
 	try:
 		firstName = request.POST['firstName']
-		lastName = request.POST['firstName']
+		lastName = request.POST['lastName']
 		password = request.POST['password']
 		email = request.POST['emailAddress']
 		birthdayDay = request.POST['birthdayDay']

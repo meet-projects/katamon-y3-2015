@@ -2,8 +2,10 @@
 
 {%block title %} About us {% endblock %}
 
+{%block externalLinkRels %}
 <link rel="stylesheet" type="text/css"
 	href='{{STATIC_URL}}app/css/aboutus.css'>
+{% endblock %}
 	
 {% block body %}
 
@@ -23,11 +25,13 @@
 	<a href="#YaelProfile"><button type=”button” class="btn btn-default" id="Yael">Yael</button></a>
 	<a href="#WassimProfile"><button type=”button” class="btn btn-default" id="Wassim">Wassim</button></a>
 	<a href="#ShadiProfile"><button type=”button” class="btn btn-default" id="Shadi">Shadi</button></a>
-<br><br><br><br><br>
 </div>
-<br /><br /><br /><br /><br /
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<div id="AseelProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Aseel.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Aseel.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -42,10 +46,10 @@
 		</tr>
 </table>			
 </div>
-<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="ItayProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Itay.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Itay.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -61,10 +65,10 @@
 </table>
 	
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="LeenProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Leen.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Leen.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -79,10 +83,10 @@
 		</tr>
 </table>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="MouhammadProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Mouhammad.jpg" height="100px" width="100px"></td>
+<table><tr><td><img src="{{STATIC_URL}}app/img/Mouhammad.jpg" class="Pics"></td>
 		
 			<td>
 				<table>
@@ -97,10 +101,10 @@
 		</tr>
 </table>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="ShirProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Shir.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Shir.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -115,10 +119,10 @@
 		</tr>
 </table>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="YaelProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Yael.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Yael.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -133,10 +137,10 @@
 		</tr>
 </table>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="WassimProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Wassim.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Wassim.jpg" class="Pics"></td>	
 		
 			<td>
 				<table>
@@ -151,10 +155,10 @@
 		</tr>
 </table>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <div id="ShadiProfile">
 <a href="#Origin"><button type=”button” class="btn btn-primary" >Back</button></a>
-<table><tr><td><img src="{{STATIC_URL}}app/img/Shadi.jpg" height="100px" width="100px"></td>	
+<table><tr><td><img src="{{STATIC_URL}}app/img/Shadi.jpg" class="Pics"></td>	
 	
 			<td>
 				<table>
@@ -168,6 +172,7 @@
 			</td>
 		</tr>
 </table>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
 
 {% endblock %}
