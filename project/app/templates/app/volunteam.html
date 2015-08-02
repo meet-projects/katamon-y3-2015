@@ -1,6 +1,9 @@
 {% extends "app/base.html" %} 
 
-{%block title %} Events {% endblock %}
+{%block title %}
+
+ Events {% endblock %}
+
 
 {% block externalLinkRels %}
 	<link rel="stylesheet" type="text/css"
@@ -10,8 +13,15 @@
 	
 {% endblock %}
 
+{% block head %}
+{% if not user.is_authenticated %}
+ {{ return redirect("/home/") }}
+{% endif %}
+
+{% endblock %}
+
 {% block body %}
-	
+
 
 <div  id="volunteer" class="container cover col-md-4 col-md-offset-1" style="width:170%;" >
 	<h3 class="col-md-6 col-md-offset-1";"> Which of the following would you like to volunteer with? </h3><br>
@@ -28,8 +38,11 @@
 
 </div>
 
-<br><br><br>
-			<h3 class="col-md-12 col-md-offset-2" id="ANIMALS"> Animals </h3> 
+
+<br><br><br><br><br><br><br>
+<div>
+			<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3> 
+
 	<br>
 	<div class="col-md-8 col-md-offset-2">
 	<h4><strong> Upcoming Events </strong></h4>
@@ -53,17 +66,19 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>
 </div>
+<br>
 
 
 <br>
 
-<hr color="black">
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="CHILDREN"> Children </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="CHILDREN"> Children </h3>    
 
 	
 	<br>
@@ -94,17 +109,20 @@
 	<div   class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+	
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>	
 </div>
 
 
 <br>
 
-<hr color="black">
+
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="ELDERLY"> Elderly </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="ELDERLY"> Elderly </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -129,17 +147,19 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>		
 	</div>
 
 
 <br>
 
-<hr color="black">
+
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="ILL"> Ill People </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="ILL"> Ill People </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -164,18 +184,20 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+			
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>
 	</div>
 
 
 <br>
 
 
-<hr color="black">
+
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -200,17 +222,19 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>		
 </div>
 
 
 <br>
 
-<hr color="black">
+
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -235,17 +259,19 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+	
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>	
 </div>
 
 
 <br>
 
-<hr color="black">
 
 
 <br>
-			<h3 class="col-md-12 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>    
+			<h3 class="col-md-8 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>    
 
 	
 	<div  class="col-md-8 col-md-offset-2">
@@ -270,10 +296,13 @@
 	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-		
+
+	
+<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
+<br><br>		
 </div>
-
-
+<br />
+<br />
 <br>
 
 {% endblock %}      
