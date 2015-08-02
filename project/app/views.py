@@ -11,7 +11,7 @@ def home(request):
 	dictionary = {"active" : "homeTab" }
 	return render(request, 'app/home.html', dictionary)
 
-def login(request):
+def loginPage(request):
 	dictionary = {"active" : "LoginTab" }
 	return render(request, 'app/login.html', dictionary)
 
