@@ -31,11 +31,8 @@ def aboutus(request):
 def events(request):
 	dictionary = {"active" : "eventsTab" }
 	return render(request, 'app/Events.html', dictionary)
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 0915febcabfe3d333fd86188e003d643ace723a5
+
 def volunteam(request):
 	dictionary = {"active" : "VolunTeamTab" }
 	return render(request, 'app/volunteam.html', dictionary)
