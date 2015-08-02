@@ -22,29 +22,17 @@ def signup(request):
 	return render(request, 'app/signup.html', dictionary)
 
 def aboutus(request):
-<<<<<<< HEAD
-		dictionary = {"active" : "aboutUsTab" }
-		return render(request, 'app/aboutus.html', dictionary)
-
-=======
 	dictionary = {"active" : "aboutUsTab" }
 	return render(request, 'app/aboutus.html', dictionary)
->>>>>>> e07ba074e523bef96c0cb1565dca722efd1510b5
 
 @login_required
 def events(request):
-<<<<<<< HEAD
-		dictionary = {"active" : "eventsTab" }
-		return render(request, 'app/Events.html', dictionary)
-	
-=======
 	dictionary = {"active" : "eventsTab" }
 	return render(request, 'app/Events.html', dictionary)
 
->>>>>>> e07ba074e523bef96c0cb1565dca722efd1510b5
 def volunteam(request):
-		dictionary = {"active" : "VolunTeamTab" }
-		return render(request, 'app/volunteam.html', dictionary)
+	dictionary = {"active" : "VolunTeamTab" }
+	return render(request, 'app/volunteam.html', dictionary)
 
 def signupRequest(request):
 	
