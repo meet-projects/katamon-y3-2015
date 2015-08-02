@@ -24,8 +24,21 @@
 
 		
     });
-    
-
+/*
+$(function () {
+	$("fieldSelect").change(function() {
+	var val = $(this).val();
+	if (val === "Animals") {
+		$("ANIMALS").show();
+		}
+	if (val === "Children") {
+		$("CHILDREN").show();
+		}
+	if (val === "Elderly") {
+		$("ELDERLY").show();
+		}
+	});
+});  */ 
 </script>
 {% endblock %}
 	
@@ -149,7 +162,7 @@
 </div>
 
 
-<div id="treepic" style="background-image: url('../img/Shir.jpg');" width=200px height=300px>
+<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 </div>
 
 <div style="display:none;">
