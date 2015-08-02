@@ -10,6 +10,7 @@
 	href='{{STATIC_URL}}app/css/events.css'>
 	
 	<script src="{{STATIC_URL}}app/js/jquery.multiple.select.js"></script>
+	<script src="{{STATIC_URL}}app/js/eventsFilter.js"></script>
 <script type="text/javascript">
     $(function() {
 
@@ -24,8 +25,21 @@
 
 		
     });
-    
-
+/*
+$(function () {
+	$("fieldSelect").change(function() {
+	var val = $(this).val();
+	if (val === "Animals") {
+		$("ANIMALS").show();
+		}
+	if (val === "Children") {
+		$("CHILDREN").show();
+		}
+	if (val === "Elderly") {
+		$("ELDERLY").show();
+		}
+	});
+});  */ 
 </script>
 {% endblock %}
 	
@@ -68,25 +82,27 @@
 			    <label for="inputFields" class="col-sm-2 control-label">Fields:</label>
 			    <div class="col-sm-10">
 				<select id="fieldSelect" multiple="multiple">
-					<option value="Elderly">
+
+					<option value="elderly-people-field">
 						Elderly People
 					</option>
-					<option value="Animals">
+					<option value="animals-field">
 						Animals
 					</option>
-					<option value="Ill">
+					<option value="ill-people-field">
+
 						Ill People
 					</option>
-					<option value="Children">
+					<option value="children-field">
 						Children
 					</option>
-					<option value="Handicapped">
+					<option value="handicapped-field">
 						Handicapped 
 					</option>
-					<option value="Technical">
+					<option value="technical-works-field">
 						Technical Works
 					</option>
-					<option value="Youth">
+					<option value="youth-field">
 						Youth at Risk
 					</option>
 				</select>
@@ -97,13 +113,13 @@
 			    <label for="inputTime" class="col-sm-2 control-label">Time:</label>
 			    <div class="col-sm-10">
 				<select id="timeSelect" multiple="multiple">
-					<option>
+					<option value="morning-time">
 						Morning
 					</option>
-					<option>
+					<option value="afternoon-time">
 						Afternoon
 					</option>
-					<option>
+					<option value="evening-time">
 						Evening
 					</option>
 				</select>
@@ -115,25 +131,25 @@
 			    <label for="inputDay" class="col-sm-2 control-label">Day:</label>
 			    <div class="col-sm-10">
 				<select id="weekDaySelect" multiple="multiple">
-					<option>
+					<option value="monday-day">
 						Monday
 					</option>
-					<option>
+					<option value="tuesday-day">
 						Tuesday
 					</option>
-					<option>
+					<option value="wednesday-day">
 						Wednesday
 					</option>
-					<option>
+					<option value="thursday-day">
 						Thursday
 					</option>
-					<option>
+					<option value="friday-day">
 						Friday
 					</option>
-					<option>
+					<option value="saturday-day">
 						Saturday
 					</option>
-					<option>
+					<option value="sunday-day">
 						Sunday
 					</option>
 				</select>
@@ -149,7 +165,7 @@
 </div>
 
 
-<div id="treepic" style="background-image: url('../img/Shir.jpg');" width=200px height=300px>
+<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 </div>
 
 <div style="display:none;">
