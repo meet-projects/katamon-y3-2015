@@ -23,8 +23,8 @@ def aboutus(request):
 	return render(request, 'app/aboutus.html', dictionary)
 
 def events(request):
-	dictionary = {"active" : "eventsTab" }
-	return render(request, 'app/events.html', dictionary)
+	dictionary = {"active" : "EventsTab" }
+	return render(request, 'app/Events.html', dictionary)
 
 
 def volunteam(request):

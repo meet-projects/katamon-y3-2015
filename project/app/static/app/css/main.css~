@@ -1,9 +1,11 @@
+
 h1{
 	color: rgba(123,231,312,1);
 }
 
 .greenBOX{
 	background-color: none;
+	font-family: 'Roboto', sans-serif;
 
 }
 .greenBOX h1{
@@ -15,11 +17,37 @@ h1{
     font-family: Roboto;
     src: url(../fonts/Roboto-Light.ttf);
 }
-
 body{
 	overflow-x: hidden;
-
-html{
-	overflow-y: none;
-
 }
+.button2{
+   border-top: 1px solid #194f23;
+   background: #216e1f;
+   background: -webkit-gradient(linear, left top, left bottom, from(#144d06), to(#216e1f));
+   background: -webkit-linear-gradient(top, #144d06, #216e1f);
+   background: -moz-linear-gradient(top, #144d06, #216e1f);
+   background: -ms-linear-gradient(top, #144d06, #216e1f);
+   background: -o-linear-gradient(top, #144d06, #216e1f);
+   padding: 14px 28px;
+   -webkit-border-radius: 29px;
+   -moz-border-radius: 29px;
+   border-radius: 29px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 10px;
+   font-family: Georgia, Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #248c20;
+   background: #008000  ;
+   color: #008000;
+   }
+.button:active {
+   border-top-color: #53e336;
+   background: #32CD32;
+   }
