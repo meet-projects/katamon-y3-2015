@@ -1,6 +1,7 @@
 
-h1{
-	color: rgba(123,231,312,1);
+
+h1, h2, h3, h4, h5{
+	color: #469245
 }
 
 .greenBOX{
@@ -19,4 +20,12 @@ h1{
 }
 body{
 	overflow-x: hidden;
+}
+
+label{
+	font-family: 'Roboto', sans-serif;
+}
+
+.logo{
+	color: #469245 !important;
 }

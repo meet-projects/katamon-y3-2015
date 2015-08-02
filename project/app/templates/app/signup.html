@@ -3,7 +3,7 @@
 {% block body %}
 <link rel="stylesheet" type="text/css"
 	href='{{STATIC_URL}}app/css/main.css'>
-<div class="GreenBOX row">
+<div class="GreenBOX row col-md-offset-1">
    <h1 id="SignUp">Sign Up</h1>
    <form action="/signup2/" method="post">
       {% csrf_token %}

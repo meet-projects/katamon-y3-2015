@@ -1,4 +1,6 @@
-
+h3{
+	color: #469245
+}
 
 #volunteer{
 	background-image: url("../img/tree.jpg");
