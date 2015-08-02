@@ -1,6 +1,7 @@
 
-h1{
-	color: rgba(123,231,312,1);
+
+h1, h2, h3, h4, h5{
+	color: #469245
 }
 
 .greenBOX{
@@ -20,34 +21,14 @@ h1{
 body{
 	overflow-x: hidden;
 }
-.button2{
-   border-top: 1px solid #194f23;
-   background: #216e1f;
-   background: -webkit-gradient(linear, left top, left bottom, from(#144d06), to(#216e1f));
-   background: -webkit-linear-gradient(top, #144d06, #216e1f);
-   background: -moz-linear-gradient(top, #144d06, #216e1f);
-   background: -ms-linear-gradient(top, #144d06, #216e1f);
-   background: -o-linear-gradient(top, #144d06, #216e1f);
-   padding: 14px 28px;
-   -webkit-border-radius: 29px;
-   -moz-border-radius: 29px;
-   border-radius: 29px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 10px;
-   font-family: Georgia, Serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
-.button:hover {
-   border-top-color: #248c20;
-   background: #008000  ;
-   color: #008000;
-   }
-.button:active {
-   border-top-color: #53e336;
-   background: #32CD32;
-   }
+
+<<<<<<< HEAD
+label{
+	font-family: 'Roboto', sans-serif;
+}
+
+.logo{
+	color: #469245 !important;
+}
+=======
+>>>>>>> 6a39e96a69306052b00f6be5e9a29a8f0004d642
