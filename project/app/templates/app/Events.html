@@ -45,6 +45,7 @@ $(function () {
 	
 {% block body %}
 <script>
+
 	$(document).mouseup(function (e)
 	{
 	    var container = $("#sortDiv");
@@ -60,7 +61,12 @@ $(function () {
 		$("#sortTextBox").click(function(){
 			$("#sortDiv").slideDown();
 		});
+		$("select").change(function(){
+			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#daySelect"))
+		});	
 	});
+
+	
 
 </script>
 
@@ -128,7 +134,7 @@ $(function () {
 			</div>
 			
 			<div class="form-group">
-			    <label for="inputDay" class="col-sm-2 control-label">Day:</label>
+			    <label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
 			    <div class="col-sm-10">
 				<select id="weekDaySelect" multiple="multiple">
 					<option value="monday-day">
@@ -168,8 +174,8 @@ $(function () {
 <div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 </div>
 
-<div style="display:none;">
-			<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3> 
+<div>
+			<h3 class="col-md-8 col-md-offset-2 animals-field monday-day friday-day events" id="ANIMALS"> Animals </h3> 
 
 	<div class="col-md-8 col-md-offset-2">
 	<h4><strong> Upcoming Events </strong></h4>

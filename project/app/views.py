@@ -17,7 +17,7 @@ def login_page(request):
 
 def login2(request):
 	dictionary = {"active" : "LoginTab" }
-	return render(request, 'app/events.html', dictionary)
+	return render(request, 'app/Events.html', dictionary)
 
 def signup(request):
 	dictionary = {"active" : "registerTab" }
