@@ -3,7 +3,7 @@
 {% block body %}
 <div class="GreenBOX row">
    <h1> LOGIN</h1>
-<!--
+
    <form method="post" action="/login2/">
    	{% csrf_token %}
    	 <div class="col-md-10 col-md-offset-1">
@@ -33,15 +33,6 @@
 				            <button type="submit" class="btn btn-default">Log in</button>
 				         </div>
 					</div>
-!-->
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
-<table>
-  {{ form.as_table }}
-</table>
-
-<input type="submit" value="login" />
-</form>
 	  </div>
 	
 <!-- <link rel="stylesheet" type="text/css"
