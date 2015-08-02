@@ -13,13 +13,6 @@
 	
 {% endblock %}
 
-{% block head %}
-{% if not user.is_authenticated %}
- {{ return redirect("/home/") }}
-{% endif %}
-
-{% endblock %}
-
 {% block body %}
 
 

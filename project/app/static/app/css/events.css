@@ -1,19 +1,12 @@
-$('#multiselectForm')
-    // Initializing formValidation first
-    .formValidation({
-        excluded: ':disabled',
-        ...
-    })
-    .find('[name="gender"]')
-        .multiselect({
-            ...
-        })
-        .end()
-    .find('[name="browsers"]')
-        // And multiselect later
-        .multiselect({
-            enableFiltering: true,
-            includeSelectAllOption: true,
-            ...
-        })
-        .end();
+       
+h3{
+	color: #469245
+}
+
+#treepic{
+	position: relative;
+	left: 20px;
+	height: 180px;
+	width:250px;
+	
+}

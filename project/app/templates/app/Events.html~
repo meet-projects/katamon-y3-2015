@@ -72,6 +72,18 @@
 					<option>
 						Ill People
 					</option>
+					<option>
+						Children
+					</option>
+					<option>
+						Handicapped 
+					</option>
+					<option>
+						Technical Works
+					</option>
+					<option>
+						Youth at Risk
+					</option>
 				</select>
 			    </div>
 			</div>

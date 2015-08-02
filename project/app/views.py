@@ -20,25 +20,18 @@ def signup(request):
 	return render(request, 'app/signup.html', dictionary)
 
 def aboutus(request):
-	if request.user.is_authenticated():
 		dictionary = {"active" : "aboutUsTab" }
 		return render(request, 'app/aboutus.html', dictionary)
-	else: 
-		return redirect("/home/")
+
 
 def events(request):
-	if request.user.is_authenticated():
 		dictionary = {"active" : "eventsTab" }
 		return render(request, 'app/Events.html', dictionary)
-	else: 
-		return redirect("/home/")
-
+	
 def volunteam(request):
-	if request.user.is_authenticated():
 		dictionary = {"active" : "VolunTeamTab" }
 		return render(request, 'app/volunteam.html', dictionary)
-	else: 
-		return redirect("/home/")
+
 def signupRequest(request):
 	
 	try:
