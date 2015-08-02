@@ -1,11 +1,9 @@
 h3{
 	color: #469245
 }
-.kiki{
-	height: 600px;
-	margin: 0;
-	padding: 0;
-	background-image: url("../img/tree1.jpg");
+
+#volunteer{
+	background-image: url("../img/tree.jpg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	height: 180px;
 }
