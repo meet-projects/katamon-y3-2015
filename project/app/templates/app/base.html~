@@ -65,11 +65,11 @@ $( document ).ready(function() {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="logo navbar-brand" style="font-family:Roboto;" href="/">VolunTeam</a>
+				<a class="navbar-brand logo" style="font-family:Roboto;" href="/">VolunTeam</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-		
+			{% if user.is_authenticated %}
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li id="homeTab"><a href="/">Home</a></li>
@@ -79,6 +79,7 @@ $( document ).ready(function() {
 					<li id="registerTab"><a href="/signup">Sign Up</a></li>
 
 				</ul>
+			{% endif %}
 				<!-- 
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">

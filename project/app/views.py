@@ -13,7 +13,7 @@ def home(request):
 	dictionary = {"active" : "homeTab" }
 	return render(request, 'app/home.html', dictionary)
 
-def login(request):
+def login_page(request):
 	dictionary = {"active" : "LoginTab" }
 	return render(request, 'app/login.html', dictionary)
 
@@ -80,7 +80,10 @@ def login2(request):
 	if user is not None:
 	    # the password verified for the user
 	    if user.is_active:
+		login(request, user)
 		return redirect("/events")
+
+
 	    else:
 		return HttpResponse("The password is valid, but the account has been disabled!")
 	else:

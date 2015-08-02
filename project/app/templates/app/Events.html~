@@ -50,7 +50,7 @@
 	
 	<div class="col-md-10 col-md-offset-1">
 		<div class="form-group">
-			<label class="sr-only greenLabel" for="sortTextBox">Sort</label>
+			<label class="sr-only" for="sortTextBox">Sort</label>
 			<div class="input-group">
 		 		<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
 		 		<div class="input-group-addon"><span class="glyphicon glyphicon-search"></div>
@@ -63,13 +63,13 @@
 			    <label for="inputFields" class="col-sm-2 greenLabel control-label">Fields:</label>
 			    <div class="col-sm-10">
 				<select id="fieldSelect" multiple="multiple">
-					<option>
+					<option value="elderly-people-field">
 						Elderly People
 					</option>
-					<option>
+					<option value="animals-field">
 						Animals
 					</option>
-					<option>
+					<option value="ill-people-field">
 						Ill People
 					</option>
 				</select>
@@ -80,13 +80,13 @@
 			    <label for="inputTime" class="col-sm-2 control-label">Time:</label>
 			    <div class="col-sm-10">
 				<select id="timeSelect" multiple="multiple">
-					<option>
+					<option value="morning-time">
 						Morning
 					</option>
-					<option>
+					<option value="afternoon-time">
 						Afternoon
 					</option>
-					<option>
+					<option value="evening-time">
 						Evening
 					</option>
 				</select>
@@ -98,25 +98,25 @@
 			    <label for="inputDay" class="col-sm-2 control-label">Day:</label>
 			    <div class="col-sm-10">
 				<select id="weekDaySelect" multiple="multiple">
-					<option>
+					<option value="monday-day">
 						Monday
 					</option>
-					<option>
+					<option value="tuesday-day">
 						Tuesday
 					</option>
-					<option>
+					<option value="wednesday-day">
 						Wednesday
 					</option>
-					<option>
+					<option value="thursday-day">
 						Thursday
 					</option>
-					<option>
+					<option value="friday-day">
 						Friday
 					</option>
-					<option>
+					<option value="saturday-day">
 						Saturday
 					</option>
-					<option>
+					<option value="sunday-day">
 						Sunday
 					</option>
 				</select>
