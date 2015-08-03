@@ -62,7 +62,7 @@ $(function () {
 			$("#sortDiv").slideDown();
 		});
 		$("select").change(function(){
-			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#daySelect"))
+			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#weekDaySelect"))
 		});	
 	});
 
@@ -174,7 +174,7 @@ $(function () {
 <div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 </div>
 
-<div class="animals-field monday-day friday-day events">
+<div class="animals-field monday-day morning-time events">
 			<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3> 
 
 	<div class="col-md-8 col-md-offset-2">
