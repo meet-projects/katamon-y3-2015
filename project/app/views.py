@@ -37,6 +37,11 @@ def volunteam(request):
 	dictionary = {"active" : "VolunTeamTab" }
 	return render(request, 'app/volunteam.html', dictionary)
 
+def OrgSignUp(request):
+	#dictionary = {"active" : "OrgSignUp" }
+	return render(request, 'app/OrgSignUp.html', {} )
+
+
 def signupRequest(request):
 	
 	try:
