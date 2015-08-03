@@ -1,20 +1,23 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-from models import Account, User
-from django.contrib.auth import authenticate, login, logout
-import datetime
 
+from models import Account, User, Event
+from django.contrib.auth import authenticate, login, logout
+
+import datetime
 
 
 # Create your views here.
 
 def home(request):
-	dictionary = {"active" : "homeTab" }
-	return render(request, 'app/home.html', dictionary)
+    dictionary = {"active": "homeTab"}
+    return render(request, 'app/home.html', dictionary)
+
 
 def login_page(request):
-	dictionary = {"active" : "LoginTab" }
-	return render(request, 'app/login.html', dictionary)
+    dictionary = {"active": "LoginTab"}
+    return render(request, 'app/login.html', dictionary)
+
 
 def login2(request):
 	dictionary = {"active" : "LoginTab" }
@@ -29,31 +32,39 @@ def logoutrequest(request):
 	dictionary = {"active" : "LogOutTab" }
 	logout(request)
 	return redirect("/")
-	
+
+
 def signup(request):
-	dictionary = {"active" : "registerTab" }
-	return render(request, 'app/signup.html', dictionary)
+    dictionary = {"active": "registerTab"}
+    return render(request, 'app/signup.html', dictionary)
+
 
 def addevent(request):
 	dictionary = {"active" : "registerTab" }
 	return render(request, 'app/addevent.html', dictionary)
 
 def aboutus(request):
-	dictionary = {"active" : "aboutUsTab" }
-	return render(request, 'app/aboutus.html', dictionary)
+    dictionary = {"active": "aboutUsTab"}
+    return render(request, 'app/aboutus.html', dictionary)
 
 
 def events(request):
-	dictionary = {"active" : "eventsTab" }
-	return render(request, 'app/Events.html', dictionary)
+    dictionary = {"active": "eventsTab"}
+    dictionary["events"] = Event.objects.all()
+    return render(request, 'app/Events.html', dictionary)
 
 
 def volunteam(request):
-	dictionary = {"active" : "VolunTeamTab" }
-	return render(request, 'app/volunteam.html', dictionary)
+    dictionary = {"active": "VolunTeamTab"}
+    return render(request, 'app/volunteam.html', dictionary)
+
+
+def OrgSignUp(request):
+    #dictionary = {"active" : "OrgSignUp" }
+    return render(request, 'app/OrgSignUp.html', {})
+
 
 def signupRequest(request):
-	
 	try:
 		firstName = request.POST['firstName']
 		lastName = request.POST['lastName']
@@ -97,9 +108,6 @@ def login_request(request, email, password):
 	else:
     	# the authentication system was unable to verify the username and password
 		return redirect("/login")
-		
-
 
 def showUsers(request):
-	return render(request, 'app/showUsers.html', {"Accounts": Account.objects.all()})
-
+    return render(request, 'app/showUsers.html', {"Accounts": Account.objects.all()})

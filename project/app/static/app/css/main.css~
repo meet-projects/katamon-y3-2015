@@ -22,7 +22,6 @@ body{
 	overflow-x: hidden;
 }
 
-<<<<<<< HEAD
 label{
 	font-family: 'Roboto', sans-serif;
 }
@@ -30,5 +29,9 @@ label{
 .logo{
 	color: #469245 !important;
 }
-=======
->>>>>>> 6a39e96a69306052b00f6be5e9a29a8f0004d642
+
+.greenbackground{
+	background-image: url("../img/greenbackground.jpg");
+	background-repeat:none;
+	
+}

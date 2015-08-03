@@ -1,0 +1,58 @@
+{% extends "app/base.html" %}
+{%block title %} Index page {% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/main.css'>
+<div class="GreenBOX row col-md-offset-1">
+   <h1 id="OrgSignUp">Organization Sign Up</h1>
+   <form action="/orgsignup2/" method="post">
+      {% csrf_token %}
+      <br><br>
+      <div class="row">
+         <div class="col-md-6 col-md-offset-1">
+            <div class="form-group">
+               <label for="OrgName"> Organization Name <font color="red">*</font> </label>
+               <input type="text" class="form-control" id="InputOrganizationName" name="OrganizationName" placeholder="Organization Name">
+            </div>
+         </div>
+      </div>
+	<div class="row">
+           <div class="col-md-6 col-md-offset-1">
+               <div class="form-group">
+                   <label for="InputPhoneNum"> Phone Number <font color="red">*</font> </label>
+                   <input type="text" class="form-control" id="InputPhoneNumber" name="PhoneNumber" placeholder="Phone Number">
+               </div>
+           </div>
+	</div>
+	<div class="row">
+           <div class="col-md-6 col-md-offset-1">
+               <div class="form-group">
+                   <label for="InputAdress"> Adress <font color="red">*</font> </label>
+                   <input type="text" class="form-control" id="InputAdress" name="Adress" placeholder="Adress">
+               </div>
+           </div>
+	</div>
+	<div class="row">
+           <div class="col-md-6 col-md-offset-1">
+               <div class="form-group">
+                   <label for="InputDescription"> Description <font color="red">*</font>  </label>
+                   <input type="text" class="form-control" id="InputDescription" name="Description" placeholder="Description">
+               </div>
+           </div>
+	</div>
+	<div class="row">
+           <div class="col-md-6 col-md-offset-1">
+               <div class="form-group">
+                   <label for="InputWebsite"> Website <font size="2px" color="grey">(Optional)</font> </label>
+                   <input type="text" class="form-control" id="InputWebsite" name="Website" placeholder="Website link">
+               </div>
+           </div>
+	</div>
+	<div class="col-md-3 col-md-offset-1">
+        	 <div class="row">
+           	 	<button type="submit" class="btn btn-default">Sign Up</button>
+        	 </div>
+	</div>
+    </form>
+ </div>
+{% endblock %}

@@ -1,61 +1,51 @@
-{% extends "app/base.html" %} 
-
+{% extends "app/base.html" %}
 {%block title %} Events {% endblock %}
-
 {% block externalLinkRels %}
-
-	<link rel="stylesheet" href="{{STATIC_URL}}app/css/multiple-select.css" />
-	
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" href="{{STATIC_URL}}app/css/multiple-select.css" />
+<link rel="stylesheet" type="text/css"
 	href='{{STATIC_URL}}app/css/events.css'>
-	
 	<script src="{{STATIC_URL}}app/js/jquery.multiple.select.js"></script>
 	<script src="{{STATIC_URL}}app/js/eventsFilter.js"></script>
-<script type="text/javascript">
-    $(function() {
-
-	MULTIPLE_SELECT_IDS = ["timeSelect", "fieldSelect", "weekDaySelect"];
-	for (var i = 0; i < MULTIPLE_SELECT_IDS.length; i++){
-		$("#" + MULTIPLE_SELECT_IDS[i]).change(function() {
-		    console.log($(this).val());
-		}).multipleSelect({
-		    width: '100%'
-		});
-	}
-
+	<script type="text/javascript">
+	$(function() {
+		MULTIPLE_SELECT_IDS = ["timeSelect", "fieldSelect", "weekDaySelect"];
+		for (var i = 0; i < MULTIPLE_SELECT_IDS.length; i++){
+			$("#" + MULTIPLE_SELECT_IDS[i]).change(function() {
+				console.log($(this).val());
+			}).multipleSelect({
+				width: '100%'
+			});
+		}
 		
-    });
-/*
-$(function () {
-	$("fieldSelect").change(function() {
-	var val = $(this).val();
-	if (val === "Animals") {
-		$("ANIMALS").show();
-		}
-	if (val === "Children") {
-		$("CHILDREN").show();
-		}
-	if (val === "Elderly") {
-		$("ELDERLY").show();
-		}
 	});
-});  */ 
-</script>
+	/*
+	$(function () {
+		$("fieldSelect").change(function() {
+		var val = $(this).val();
+		if (val === "Animals") {
+			$("ANIMALS").show();
+			}
+		if (val === "Children") {
+			$("CHILDREN").show();
+			}
+		if (val === "Elderly") {
+			$("ELDERLY").show();
+			}
+		});
+	});  */
+	</script>
 {% endblock %}
-	
 {% block body %}
-<script>
-
+	<script>
 	$(document).mouseup(function (e)
 	{
-	    var container = $("#sortDiv");
-
-	    if (!container.is(e.target) // if the target of the click isn't the container...
-		&& container.has(e.target).length === 0) // ... nor a descendant of the container
-	    {
-		container.slideUp();
-	    }
-	});
+		var container = $("#sortDiv");
+		if (!container.is(e.target) // if the target of the click isn't the container...
+			&& container.has(e.target).length === 0) // ... nor a descendant of the container
+		{
+			container.slideUp();
+		}
+		});
 	$(document).ready(function(){
 		$("#sortDiv").hide();
 		$("#sortTextBox").click(function(){
@@ -63,382 +53,328 @@ $(function () {
 		});
 		$("select").change(function(){
 			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#weekDaySelect"))
-		});	
+			});
 	});
-
-	
-
-</script>
-
-<div class="container cover col-md-12" style="width:100%;" >
-	
-	<div class="col-md-10 col-md-offset-1">
-		<div class="form-group">
-			<label class="sr-only" for="sortTextBox">Sort</label>
-			<div class="input-group">
-		 		<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
-		 	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></div>
-		 </div>
-	 </div>
-</div>
-
-	<div class="col-md-8 col-md-offset-2" id="sortDiv">
-		<form class="form-horizontal">
-			  <div class="form-group">
-			    <label for="inputFields" class="col-sm-2 control-label">Fields:</label>
-			    <div class="col-sm-10">
-				<select id="fieldSelect" multiple="multiple">
-
-					<option value="elderly-people-field">
-						Elderly People
-					</option>
-					<option value="animals-field">
-						Animals
-					</option>
-					<option value="ill-people-field">
-
-						Ill People
-					</option>
-					<option value="children-field">
-						Children
-					</option>
-					<option value="handicapped-field">
-						Handicapped 
-					</option>
-					<option value="technical-works-field">
-						Technical Works
-					</option>
-					<option value="youth-field">
-						Youth at Risk
-					</option>
-				</select>
-			    </div>
-			</div>
-
-		<div class="form-group">
-			    <label for="inputTime" class="col-sm-2 control-label">Time:</label>
-			    <div class="col-sm-10">
-				<select id="timeSelect" multiple="multiple">
-					<option value="morning-time">
-						Morning
-					</option>
-					<option value="afternoon-time">
-						Afternoon
-					</option>
-					<option value="evening-time">
-						Evening
-					</option>
-				</select>
-
-			    </div>
-			</div>
-			
-			<div class="form-group">
-			    <label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
-			    <div class="col-sm-10">
-				<select id="weekDaySelect" multiple="multiple">
-					<option value="monday-day">
-						Monday
-					</option>
-					<option value="tuesday-day">
-						Tuesday
-					</option>
-					<option value="wednesday-day">
-						Wednesday
-					</option>
-					<option value="thursday-day">
-						Thursday
-					</option>
-					<option value="friday-day">
-						Friday
-					</option>
-					<option value="saturday-day">
-						Saturday
-					</option>
-					<option value="sunday-day">
-						Sunday
-					</option>
-				</select>
-
-			    </div>
-			</div>
-			
-
-		</form>
-  
-	</div>
+	</script>
+	<div class="container cover col-md-12" style="width:100%;" >
 		
-</div>
-
-
-<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
-</div>
-
-<div class="animals-field monday-day friday-day events">
-			<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3> 
-
-	<div class="col-md-8 col-md-offset-2">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>
-	<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
-	<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
-	<p> Group Size: 15 volunteers </p>                                       
-	<p> Time: 10:00am - 12:00am</p>   
-	<p> Date: August 7rd, 2015</p>   
-	<P> Location: Simtat HaMa'ayan 91190, Jerusalem </p>  
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-	
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>
-</div>
-<br>
-
-
-<br>
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="CHILDREN"> Children </h3>    
-
-	
-	<br>
-	<div   class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>
-	<h4><b><i> Ma'ayan School </i></b></h4>
-	<p> Ma’ayan School is a school for children with special needs between the ages of 3 to 21, who suffer from severe down syndrome, mental disabilities, developmental delays and more. The school is situated in Ain Karem, Jerusalem and welcomes both Palestinian and Israeli children. Although the school does an amazing job helping both the children and their families, it is quite unknown and doesn’t receive enough volunteers. Ma’ayan is in constant need of volunteers to come visit the children, entertain them and make them happy. 
-	<p> Group Size: 10 volunteers </p>                                       
-	<p> Time: 10:00am - 12:00am</p>   
-	<p> Date: August 3rd, 2015</p>   
-	<P> Location: 9 HaMusacim street, Talpiyot Idustrial area in Jerusalem </p>   
-
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-	
-	<div   class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-	
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>	
-</div>
-
-
-<br>
-
-
-
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="ELDERLY"> Elderly </h3>    
-
-	
-	<div  class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>
-	<h5><b><i> Event 1 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>		
-	</div>
-
-
-<br>
-
-
-
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="ILL"> Ill People </h3>    
-
-	
-	<div  class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>
-	<h5><b><i> Event 1 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+		<div class="col-md-10 col-md-offset-1">
+			<div class="form-group">
+				<label class="sr-only" for="sortTextBox">Sort</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
+					<div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2" id="sortDiv">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="inputFields" class="col-sm-2 control-label">Fields:</label>
+					<div class="col-sm-10">
+						<select id="fieldSelect" multiple="multiple">
+							<option value="elderly-people-field">
+								Elderly People
+							</option>
+							<option value="animals-field">
+								Animals
+							</option>
+							<option value="ill-people-field">
+								Ill People
+							</option>
+							<option value="children-field">
+								Children
+							</option>
+							<option value="handicapped-field">
+								Handicapped
+							</option>
+							<option value="technical-works-field">
+								Technical Works
+							</option>
+							<option value="youth-field">
+								Youth at Risk
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputTime" class="col-sm-2 control-label">Time:</label>
+					<div class="col-sm-10">
+						<select id="timeSelect" multiple="multiple">
+							<option value="morning-time">
+								Morning
+							</option>
+							<option value="afternoon-time">
+								Afternoon
+							</option>
+							<option value="evening-time">
+								Evening
+							</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
+					<div class="col-sm-10">
+						<select id="weekDaySelect" multiple="multiple">
+							<option value="monday-day">
+								Monday
+							</option>
+							<option value="tuesday-day">
+								Tuesday
+							</option>
+							<option value="wednesday-day">
+								Wednesday
+							</option>
+							<option value="thursday-day">
+								Thursday
+							</option>
+							<option value="friday-day">
+								Friday
+							</option>
+							<option value="saturday-day">
+								Saturday
+							</option>
+							<option value="sunday-day">
+								Sunday
+							</option>
+						</select>
+					</div>
+				</div>
+				
+			</form>
 			
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>
+		</div>
+		<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
+		</div>
+		<div class="col-md-12">
+			<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
+			<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
+				<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
+				<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
+					<p> Group Size: 15 volunteers </p>
+					<p> Time: 10:00am - 12:00am</p>
+					<p> Date: August 7rd, 2015</p>
+					<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
+					<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+				</p>
+				
+			</div>
+			{% for event in events %}
+				<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
+					<h5><b><i> {{ event.name }} </i></b></h5>
+					<p> 
+						{{ event.description }}	
+						<p> Group Size: event.group_size volunteers </p>
+						<p> Time: {{ event.date.hour }}</p>
+						<p> Date: {{ event.date }}</p>
+						<p> Location: {{ event.address }} </p>
+
+
+					</p>
+					<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
-
-
-<br>
-
-
-
-
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>    
-
-	
-	<div  class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>
-	<h5><b><i> Event 1 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>		
-</div>
-
-
-<br>
-
-
-
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>    
-
-	
-	<div  class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>	
-	<h5><b><i> Event 1 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-	
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>	
-</div>
-
-
-<br>
-
-
-
-<br>
-			<h3 class="col-md-8 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>    
-
-	
-	<div  class="col-md-8 col-md-offset-2 events">
-	<h4><strong> Upcoming Events </strong></h4>
-	<br>	
-	<h5><b><i> Event 1 <i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph 
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</p>
-	 
-	</div>
-<br>
-
-	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
-	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-	</div>
-
-<br>
-
-
-	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
-	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
-	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
-
-	
-<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>	
-<br><br>		
-</div>
-<br />
-<br />
-<br>
-
-
-{% endblock %}      
+	<!--
+	<div class="animals-field monday-day morning-time events">
+					<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3>
+					<div class="col-md-8 col-md-offset-2">
+										<h4><strong> Upcoming Events </strong></h4
+										<br>
+										<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
+										<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
+															<p> Group Size: 15 volunteers </p>
+															<p> Time: 10:00am - 12:00am</p>
+															<p> Date: August 7rd, 2015</p>
+															<P> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
+																<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+											</p>
+											
+						</div>
+						<br>
+						<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+															<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+											<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+						</div>
+						<br>
+						
+						<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+															<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+												<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+												
+													<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+												<br><br>
+							</div>
+							<br>
+							<br>
+							<br>
+							<h3 class="col-md-8 col-md-offset-2" id="CHILDREN"> Children </h3>
+							
+							<br>
+							<div   class="col-md-8 col-md-offset-2 events">
+												<h4><strong> Upcoming Events </strong></h4>
+												<br>
+												<h4><b><i> Ma'ayan School </i></b></h4>
+												<p> Ma’ayan School is a school for children with special needs between the ages of 3 to 21, who suffer from severe down syndrome, mental disabilities, developmental delays and more. The school is situated in Ain Karem, Jerusalem and welcomes both Palestinian and Israeli children. Although the school does an amazing job helping both the children and their families, it is quite unknown and doesn’t receive enough volunteers. Ma’ayan is in constant need of volunteers to come visit the children, entertain them and make them happy.
+																	<p> Group Size: 10 volunteers </p>
+																	<p> Time: 10:00am - 12:00am</p>
+																	<p> Date: August 3rd, 2015</p>
+																	<P> Location: 9 HaMusacim street, Talpiyot Idustrial area in Jerusalem </p>
+																		<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+													</p>
+													
+								</div>
+								<br>
+								<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+													<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+								</div>
+								<br>
+								
+								<div   class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+														<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+														
+														
+															<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+															<br><br>
+									</div>
+									<br>
+									<br>
+									<h3 class="col-md-8 col-md-offset-2" id="ELDERLY"> Elderly </h3>
+									
+									<div  class="col-md-8 col-md-offset-2 events">
+														<h4><strong> Upcoming Events </strong></h4>
+														<br>
+														<h5><b><i> Event 1 </i></b></h5>
+																		<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																			<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+														</p>
+														
+									</div>
+									<br>
+									<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																		<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+														<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+									</div>
+									<br>
+									<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																		<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+															<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+															
+																<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+																	<br><br>
+										</div>
+										<br>
+										<br>
+										<h3 class="col-md-8 col-md-offset-2" id="ILL"> Ill People </h3>
+										
+										<div  class="col-md-8 col-md-offset-2 events">
+															<h4><strong> Upcoming Events </strong></h4>
+															<br>
+															<h5><b><i> Event 1 </i></b></h5>
+																			<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																				<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+															</p>
+															
+										</div>
+										<br>
+										<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																			<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+															<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+										</div>
+										<br>
+										<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																			<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+																
+																	<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+																<br><br>
+											</div>
+											<br>
+											<br>
+											<h3 class="col-md-8 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>
+											
+											<div  class="col-md-8 col-md-offset-2 events">
+																<h4><strong> Upcoming Events </strong></h4>
+																<br>
+																<h5><b><i> Event 1 </i></b></h5>
+																				<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																					<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+																</p>
+																
+											</div>
+											<br>
+											<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																				<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+																<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+											</div>
+											<br>
+											<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																				<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+																	
+																		<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+																			<br><br>
+												</div>
+												<br>
+												<br>
+												<h3 class="col-md-8 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>
+												
+												<div  class="col-md-8 col-md-offset-2 events">
+																	<h4><strong> Upcoming Events </strong></h4>
+																		<br>
+																	<h5><b><i> Event 1 </i></b></h5>
+																					<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																						<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+																	</p>
+																	
+												</div>
+												<br>
+												<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																					<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+																	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+												</div>
+												<br>
+												<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																					<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																		<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+																		
+																		
+																			<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+																			<br><br>
+													</div>
+													<br>
+													<br>
+													<h3 class="col-md-8 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>
+													
+													<div  class="col-md-8 col-md-offset-2 events">
+																		<h4><strong> Upcoming Events </strong></h4>
+																			<br>
+																		<h5><b><i> Event 1 <i></b></h5>
+																						<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																							<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+																		</p>
+																		
+													</div>
+													<br>
+													<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
+																						<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
+																		<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+													</div>
+													<br>
+													<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
+																						<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
+																			<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
+																			
+																				<div style="margin-left:90%"><a href="#top"><button>Go Back</button></a></div>
+																					<br><br>
+														</div>
+														<br />
+														<br />
+														<br>
+		!-->
+	{% endblock %}
