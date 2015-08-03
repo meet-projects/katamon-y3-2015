@@ -19,7 +19,7 @@ class Account(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=30)
     date = models.DateTimeField()
-    time = models.CharField(max_length=30)
+    duration = models.CharField(max_length=30)
     address = models.CharField(max_length=60)
     description = models.CharField(max_length=300)
     accounts = models.ManyToManyField(Account)
@@ -27,19 +27,21 @@ class Event(models.Model):
     def getHtmlClasses(self):
         dayClasses = ["monday-day", "tuesday-day", "wednesday-day",
                       "thursday-day", "friday-day", "saturday-day"]
-        returnList = []
-        returnList.append(dayClasses[self.date.weekday()])
-        if self.time < 12:
-            returnList.append("morning-time")
-        elif self.time < 14:
-            returnList.append("noon-time")
-        elif self.time < 16:
-            returnList.append("afternoon-time")
-        elif self.time < 18:
-            returnList.append("evening-time")
+        htmlClasses = []
+        htmlClasses.append(dayClasses[self.date.weekday()])
+        if self.date.hour < 12:
+            htmlClasses.append("morning-time")
+        elif self.date.hour < 14:
+            htmlClasses.append("noon-time")
+        elif self.date.hour < 16:
+            htmlClasses.append("afternoon-time")
+        elif self.date.hour < 18:
+            htmlClasses.append("evening-time")
     # attendees
 
-        returnList.append("handicapped-field")
+        htmlClasses.append("handicapped-field")
+
+        return htmlClasses
 # AddEvent model
 
 

@@ -62,8 +62,29 @@ def volunteam(request):
 
 
 def OrgSignUp(request):
-    #dictionary = {"active" : "OrgSignUp" }
+    # dictionary = {"active" : "OrgSignUp" }
     return render(request, 'app/OrgSignUp.html', {})
+
+
+def OrgSignRequest(request):
+    name = request.POST.get('name')
+    address = request.POST.get('address')
+    number = request.POST.get('PhoneNumber')
+    description = request.POST.get('Description')
+    website = request.POST.get('website')
+
+    if name is None \
+            or \
+            address is None or \
+            number is None or \
+            description is None:
+        dictionary["errors"] = ["Some of the fields are empty."]
+        return render(request, 'app/orgsignup.html', dictionary)
+
+    if (Organization.objects.filter(name=name).count() != 0):
+        dictionary["errors"] = [
+            "This Organization already exists, redirected to login page"]
+        return render(request, 'app/orgsignup.html', dictionary)
 
 
 def signupRequest(request):
@@ -115,7 +136,7 @@ def signupRequest(request):
 def login_request(request, email, password):
     user = authenticate(username=email, password=password)
     if user is not None:
-        #user and password is correct
+        # user and password is correct
         login(request, user)
         return redirect("/events")
     else:
