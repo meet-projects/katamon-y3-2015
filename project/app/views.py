@@ -11,30 +11,31 @@ def home(request):
 	dictionary = {"active" : "homeTab" }
 	return render(request, 'app/home.html', dictionary)
 
-def login(request):
+def login_page(request):
 	dictionary = {"active" : "LoginTab" }
 	return render(request, 'app/login.html', dictionary)
 
 def login2(request):
 	dictionary = {"active" : "LoginTab" }
-	return render(request, 'app/events.html', dictionary)
+	return render(request, 'app/Events.html', dictionary)
 
 def signup(request):
 	dictionary = {"active" : "registerTab" }
 	return render(request, 'app/signup.html', dictionary)
 
 def aboutus(request):
-		dictionary = {"active" : "aboutUsTab" }
-		return render(request, 'app/aboutus.html', dictionary)
+	dictionary = {"active" : "aboutUsTab" }
+	return render(request, 'app/aboutus.html', dictionary)
 
 
 def events(request):
-		dictionary = {"active" : "eventsTab" }
-		return render(request, 'app/Events.html', dictionary)
-	
+	dictionary = {"active" : "eventsTab" }
+	return render(request, 'app/Events.html', dictionary)
+
+
 def volunteam(request):
-		dictionary = {"active" : "VolunTeamTab" }
-		return render(request, 'app/volunteam.html', dictionary)
+	dictionary = {"active" : "VolunTeamTab" }
+	return render(request, 'app/volunteam.html', dictionary)
 
 def signupRequest(request):
 	
@@ -79,11 +80,16 @@ def loginRequest(request):
 		password = request.POST['password']
 	except MultiValueDictKeyError:
 		return HttpResponse("Not all of the fields were filled")
-	filters = {"emailAddress": emailAddress, "password": password}
-	loggedUser = Account.objects.filter(**filters)
-	if (len(loggedUser) == 0):
-		returnDict = { "Error": "wrong username or password" }
-		return render(request, 'app/login.html', returnDict)
+	user = authenticate(username=emailAddress, password=password)
+	if user is not None:
+	    # the password verified for the user
+	    if user.is_active:
+		login(request, user)
+		return redirect("/events")
+
+
+	    else:
+		return HttpResponse("The password is valid, but the account has been disabled!")
 	else:
 		
 		return redirect("/volunteam/")
