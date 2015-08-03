@@ -54,6 +54,9 @@ def signupRequest(request):
 	if (firstName == "" or lastName == "" or password == "" or email == "" or birthdayDay == "" or birthdayMonth == "" or birthdayYear == "" or nationality == ""):
 		return HttpResponse("Some of the fields are empty.")
 
+	if (User.objects.filter(email=email).count()!=0):
+		return render(request, 'app/events.html')
+		
 	if (nationality == "isra"):
 		nationality = False
 	else:
@@ -66,8 +69,10 @@ def signupRequest(request):
 
 	account_obj = Account(user = user_obj, isPalestinian = nationality)
 	account_obj.save()
+	
 
-	return HttpResponse("Banana")
+	return render(request, 'app/events.html')
+	
 def loginRequest(request):
 	try:
 		emailAddress = request.POST['emailAddress']
