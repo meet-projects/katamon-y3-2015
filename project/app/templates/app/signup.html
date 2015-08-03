@@ -1,6 +1,11 @@
 {% extends "app/base.html" %}
 {%block title %} Index page {% endblock %}
 {% block body %}
+<script>
+	{% for error in errors %}
+		alert('{{ error }}');
+	{% endfor %}
+</script>
 <link rel="stylesheet" type="text/css"
 	href='{{STATIC_URL}}app/css/main.css'>
 <div class="GreenBOX row col-md-offset-1">
@@ -131,7 +136,7 @@
       </div>
       <div class="col-md-3 col-md-offset-1">
          <div class="row">
-            <button type="submit" class="btn btn-default">Sign Up!</button>
+            <a href="/events"><button type="submit" class="btn btn-default" >Sign Up!</button></a>
          </div>
          <div class="col-md-10 col-md-offset-1">
             <br>
@@ -139,5 +144,11 @@
    </form>
    </div> 
 </div>
+	<!--<script>
+	$("button").submit(function (){
+	var data={
+	})
+
+	</script>-->
 
 {% endblock %}

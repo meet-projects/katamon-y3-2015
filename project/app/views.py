@@ -43,7 +43,7 @@ def OrgSignUp(request):
 
 
 def signupRequest(request):
-	
+
 	try:
 		firstName = request.POST['firstName']
 		lastName = request.POST['lastName']
@@ -53,8 +53,11 @@ def signupRequest(request):
 		birthdayMonth = request.POST['birthdayMonth']
 		birthdayYear = request.POST['birthdayYear']
 		nationality = request.POST['nationality']
+
+		
 	except MultiValueDictKeyError:
-		return HttpResponse("Not all of the fields were filled")
+		dictionary = {"errors" : ["Not all of the fields were filled"], "active" : "registerTab"}
+		return render(request, 'app/signup.html', dictionary)
 	
 
 	if (firstName == "" or lastName == "" or password == "" or email == "" or birthdayDay == "" or birthdayMonth == "" or birthdayYear == "" or nationality == ""):
@@ -73,7 +76,7 @@ def signupRequest(request):
 	account_obj = Account(user = user_obj, isPalestinian = nationality)
 	account_obj.save()
 
-	return HttpResponse("Banana")
+	return redirect("/")
 def loginRequest(request):
 	try:
 		emailAddress = request.POST['emailAddress']
