@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
-
-
 class Account(models.Model):
     isPalestinian = models.BooleanField()
     #birthday = models.DateTimeField()
@@ -14,8 +12,6 @@ class Account(models.Model):
         return self.user.username + " " + self.user.email + " " + str(self.birthday)
 
 # Event model
-
-
 class Event(models.Model):
     name = models.CharField(max_length=30)
     date = models.DateTimeField()
@@ -53,10 +49,9 @@ class AddEvent(models.Model):
     date = models.DateTimeField()
 
 # Org model
-
-
 class Organization(models.Model):
     name = models.CharField(max_length=30)
+    password = models.CharField(max_length=10)
     number = models.CharField(max_length=15)
     address = models.CharField(max_length=60)
     description = models.CharField(max_length=300)

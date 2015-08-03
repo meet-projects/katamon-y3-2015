@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 
-from models import Account, User, Event
+from models import Account, User, Event, Organization
 from django.contrib.auth import authenticate, login, logout
 
 import datetime
@@ -62,29 +62,34 @@ def volunteam(request):
 
 
 def OrgSignUp(request):
-    # dictionary = {"active" : "OrgSignUp" }
-    return render(request, 'app/OrgSignUp.html', {})
+    dictionary = {"active" : "OrgSignUp" }
+    return render(request, 'app/OrgSignUp.html', dictionary)
 
 
-def OrgSignRequest(request):
-    name = request.POST.get('name')
-    address = request.POST.get('address')
-    number = request.POST.get('PhoneNumber')
-    description = request.POST.get('Description')
+def OrgSignUpRequest(request):
+    dictionary = {"active": "registerTab"}
+    name = request.POST.get('OrganizationName')
+    password = request.POST.get('OrganizationPassword')
+    adress = request.POST.get('OrganizationAdress')
+    number = request.POST.get('OrganizationPhoneNumber')
+    description = request.POST.get('OrganizationDescription')
     website = request.POST.get('website')
-
     if name is None \
-            or \
-            address is None or \
-            number is None or \
-            description is None:
+           or \
+           password is None or \
+           adress is None or \
+           number is None or description is None:
         dictionary["errors"] = ["Some of the fields are empty."]
-        return render(request, 'app/orgsignup.html', dictionary)
+        return render(request, 'app/OrgSignUp.html', dictionary)
 
     if (Organization.objects.filter(name=name).count() != 0):
         dictionary["errors"] = [
             "This Organization already exists, redirected to login page"]
-        return render(request, 'app/orgsignup.html', dictionary)
+        return render(request, 'app/OrgSignUp.html', dictionary)
+    organization_obj = Organization(name=name,password=password, adress=adress, number=number, description=description,website=website)
+    organization_obj.save()
+    return Orglogin_request(request, name, password)
+
 
 
 def signupRequest(request):
@@ -135,6 +140,17 @@ def signupRequest(request):
 
 def login_request(request, email, password):
     user = authenticate(username=email, password=password)
+    if user is not None:
+        # user and password is correct
+        login(request, user)
+        return redirect("/events")
+    else:
+        # the authentication system was unable to verify the username and
+        # password
+        return redirect("/login")
+
+def Orglogin_request(request, name, password):
+    user = authenticate(username=name, password=password)
     if user is not None:
         # user and password is correct
         login(request, user)

@@ -162,7 +162,13 @@
 						<p> Time: 10:00am - 12:00am</p>
 						<p> Date: August 7rd, 2015</p>
 						<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
-						<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+					{% if user.is_authenticated %}
+					    <button class="btn btn-default center-block joinbuttons" id="join">  Join </button> 
+					{% endif %}
+					{% if not user.is_authenticated %}
+					    <a href="/login"><button class="btn btn-default center-block joinbuttons"> Login To Join</button></a>
+					
+				        {% endif %}
 					</p>
 					
 				</div>
@@ -184,7 +190,13 @@
 
 
 					</p>
-					<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+				{% if user.is_authenticated %}
+					 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button> 
+				{% endif %}
+				{% if not user.is_authenticated %}
+					<a href="login.html"><button class="btn btn-default center-block joinbuttons"> Login To Join </button>
+					</a>
+				{% endif %}
 				</div>
 			{% endfor %}
 		</div>
