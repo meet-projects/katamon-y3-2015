@@ -57,110 +57,116 @@
 	});
 	</script>
 	<div class="container cover col-md-12" style="width:100%;" >
-		
-		<div class="col-md-10 col-md-offset-1">
-			<div class="form-group">
-				<label class="sr-only" for="sortTextBox">Sort</label>
-				<div class="input-group">
-					<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
-					<div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+		<div class="fixedPos col-md-12" style="background-color: rgba(255,255,255, 0.8)">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="form-group">
+					<label class="sr-only" for="sortTextBox">Sort</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
+						<div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-8 col-md-offset-2" id="sortDiv">
-			<form class="form-horizontal">
-				<div class="form-group">
-					<label for="inputFields" class="col-sm-2 control-label">Fields:</label>
-					<div class="col-sm-10">
-						<select id="fieldSelect" multiple="multiple">
-							<option value="elderly-people-field">
-								Elderly People
-							</option>
-							<option value="animals-field">
-								Animals
-							</option>
-							<option value="ill-people-field">
-								Ill People
-							</option>
-							<option value="children-field">
-								Children
-							</option>
-							<option value="handicapped-field">
-								Handicapped
-							</option>
-							<option value="technical-works-field">
-								Technical Works
-							</option>
-							<option value="youth-field">
-								Youth at Risk
-							</option>
-						</select>
+			<div class="col-md-8 col-md-offset-2" id="sortDiv">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="inputFields" class="col-sm-2 control-label">Fields:</label>
+						<div class="col-sm-10">
+							<select id="fieldSelect" multiple="multiple">
+								<option value="elderly-people-field">
+									Elderly People
+								</option>
+								<option value="animals-field">
+									Animals
+								</option>
+								<option value="ill-people-field">
+									Ill People
+								</option>
+								<option value="children-field">
+									Children
+								</option>
+								<option value="handicapped-field">
+									Handicapped
+								</option>
+								<option value="technical-works-field">
+									Technical Works
+								</option>
+								<option value="youth-field">
+									Youth at Risk
+								</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputTime" class="col-sm-2 control-label">Time:</label>
-					<div class="col-sm-10">
-						<select id="timeSelect" multiple="multiple">
-							<option value="morning-time">
-								Morning
-							</option>
-							<option value="afternoon-time">
-								Afternoon
-							</option>
-							<option value="evening-time">
-								Evening
-							</option>
-						</select>
+					<div class="form-group">
+						<label for="inputTime" class="col-sm-2 control-label">Time:</label>
+						<div class="col-sm-10">
+							<select id="timeSelect" multiple="multiple">
+								<option value="morning-time">
+									Morning
+								</option>
+								<option value="afternoon-time">
+									Afternoon
+								</option>
+								<option value="evening-time">
+									Evening
+								</option>
+							</select>
+						</div>
 					</div>
-				</div>
+					
+					<div class="form-group">
+						<label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
+						<div class="col-sm-10">
+							<select id="weekDaySelect" multiple="multiple">
+								<option value="monday-day">
+									Monday
+								</option>
+								<option value="tuesday-day">
+									Tuesday
+								</option>
+								<option value="wednesday-day">
+									Wednesday
+								</option>
+								<option value="thursday-day">
+									Thursday
+								</option>
+								<option value="friday-day">
+									Friday
+								</option>
+								<option value="saturday-day">
+									Saturday
+								</option>
+								<option value="sunday-day">
+									Sunday
+								</option>
+							</select>
+						</div>
+					</div>
+					
+				</form>
 				
-				<div class="form-group">
-					<label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
-					<div class="col-sm-10">
-						<select id="weekDaySelect" multiple="multiple">
-							<option value="monday-day">
-								Monday
-							</option>
-							<option value="tuesday-day">
-								Tuesday
-							</option>
-							<option value="wednesday-day">
-								Wednesday
-							</option>
-							<option value="thursday-day">
-								Thursday
-							</option>
-							<option value="friday-day">
-								Friday
-							</option>
-							<option value="saturday-day">
-								Saturday
-							</option>
-							<option value="sunday-day">
-								Sunday
-							</option>
-						</select>
-					</div>
-				</div>
-				
-			</form>
-			
+			</div>
 		</div>
-		<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12" style="margin-top:30px;">
 			<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
-			<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
-				<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
-				<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
-					<p> Group Size: 15 volunteers </p>
-					<p> Time: 10:00am - 12:00am</p>
-					<p> Date: August 7rd, 2015</p>
-					<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
-					<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
-				</p>
-				
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
+					<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
+					<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
+						<p> Group Size: 15 volunteers </p>
+						<p> Time: 10:00am - 12:00am</p>
+						<p> Date: August 7rd, 2015</p>
+						<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
+						<button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
+					</p>
+					
+				</div>
+				<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px>
+				</div>
+
 			</div>
+
 			{% for event in events %}
 				<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
 					<h5><b><i> {{ event.name }} </i></b></h5>

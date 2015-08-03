@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, url
 from django.views.generic import TemplateView
-
 from app import views
 
 urlpatterns = patterns('',
@@ -19,5 +18,4 @@ urlpatterns = patterns('',
                        url(r'^addevent/$', views.addevent, name='Add Event'),
                        url(r'^logout/$', views.logoutrequest, name='Log Out'),
                        url(r'^OrgSignUp/$', views.OrgSignUp, name='OrgSignUp'),
-                       url(r'^facebook/', include('django_facebook.urls')),
                        )
