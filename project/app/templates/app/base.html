@@ -69,16 +69,18 @@ $( document ).ready(function() {
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			{% if user.is_authenticated %}
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li id="homeTab"><a href="/">Home</a></li>
-					<li id="VolunTeamTab"><a href="/volunteam">VolunTeam</a></li>
+				<li id="homeTab"><a href="/">Home</a></li>
 					<li id="eventsTab"><a href="/events">Events</a></li>
 					<li id="aboutUsTab"><a href="/aboutus">About Us</a></li>
-					<li id="registerTab"><a href="/signup">Sign Up</a></li>
-
 				</ul>
+			<ul class="nav navbar-nav navbar-right">
+			{% if user.is_authenticated %}
+				<li id="logoutTab"><a href="/logout">Log Out</a></li>
+			{% else %}
+				<li id="LoginTab"><a href="/login">Log In</a></li>
+				<li id="registerTab"><a href="/signup">Sign Up</a></li>
 			{% endif %}
 				<!-- 
 				<form class="navbar-form navbar-left" role="search">
@@ -87,10 +89,7 @@ $( document ).ready(function() {
 					</div>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>  -->
-				<ul class="nav navbar-nav navbar-right">
-					<li id="LoginTab"><a href="/login">Log In</a></li>
-
-				</ul>
+			</ul>	
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>

@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^signup2/$', views.signupRequest, name='signup'),
     url(r'^showUsers/$', views.showUsers, name='Show users'),
     url(r'^events/$', views.events, name='Events'),
+    url(r'^addevent/$', views.addevent, name='Add Event'),
+     url(r'^logout/$', views.logoutrequest, name='Log Out'),
 )
 
