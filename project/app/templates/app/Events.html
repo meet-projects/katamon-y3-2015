@@ -104,6 +104,9 @@
 								<option value="morning-time">
 									Morning
 								</option>
+								<option value="noon-time">
+									Noon
+								</option>
 								<option value="afternoon-time">
 									Afternoon
 								</option>
@@ -151,7 +154,7 @@
 		<div class="col-md-12" style="margin-top:30px;">
 			<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
+				<div class="col-md-7 col-md-offset-2 animals-field monday-day morning-time events">
 					<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
 					<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
 						<p> Group Size: 15 volunteers </p>
@@ -162,13 +165,18 @@
 					</p>
 					
 				</div>
-				<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px>
+				<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px class="col-md-1">
 				</div>
 
 			</div>
 
 			{% for event in events %}
-				<div class="col-md-8 col-md-offset-2 animals-field monday-day morning-time events">
+
+				<div class="col-md-8 col-md-offset-2 events 
+					{% for className in event|getHtmlClasses %}
+						{{ className }}
+					{% endfor %}
+				">
 					<h5><b><i> {{ event.name }} </i></b></h5>
 					<p> 
 						{{ event.description }}	
