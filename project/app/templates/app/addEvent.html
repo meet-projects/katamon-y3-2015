@@ -1,0 +1,42 @@
+{% extends "app/base.html" %}
+{% load filters %}
+{%block title %} Events {% endblock %}
+{% block externalLinkRels %}
+<link rel="stylesheet" href="{{STATIC_URL}}app/css/multiple-select.css" />
+<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/events.css'>
+	<script src="{{STATIC_URL}}app/js/jquery.multiple.select.js"></script>
+	<script src="{{STATIC_URL}}app/js/eventsFilter.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		MULTIPLE_SELECT_IDS = ["timeSelect", "fieldSelect", "weekDaySelect"];
+		for (var i = 0; i < MULTIPLE_SELECT_IDS.length; i++){
+			$("#" + MULTIPLE_SELECT_IDS[i]).change(function() {
+				console.log($(this).val());
+			}).multipleSelect({
+				width: '100%'
+			});
+		}
+		
+	});
+	/*
+	$(function () {
+		$("fieldSelect").change(function() {
+		var val = $(this).val();
+		if (val === "Animals") {
+			$("ANIMALS").show();
+			}
+		if (val === "Children") {
+			$("CHILDREN").show();
+			}
+		if (val === "Elderly") {
+			$("ELDERLY").show();
+			}
+		});
+	});  */
+	</script>
+{% endblock %}
+{% block body %}
+	
+
+{% endblock %}

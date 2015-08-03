@@ -7,22 +7,33 @@ import datetime
 
 class Account(models.Model):
     isPalestinian = models.BooleanField()
-    #birthday = models.DateTimeField()
+    # birthday = models.DateTimeField()
     user = models.OneToOneField(User)
 
     def __unicode__(self):
-        return self.user.username + " " + self.user.email + " " + str(self.birthday)
 
+        return self.user.username + " " + self.user.email + " "
+        # + str(self.birthday)
 # Event model
 
 
 class Event(models.Model):
     name = models.CharField(max_length=30)
     date = models.DateTimeField()
-    duration = models.CharField(max_length=30)
+    duration = models.IntegerField()
     address = models.CharField(max_length=60)
     description = models.CharField(max_length=300)
     accounts = models.ManyToManyField(Account)
+    group_size = models.IntegerField()
+
+    def __init__(self, name, date, duration, address, description, accounts, group_size):
+        self.name = name
+        self.date = date
+        self.duration = duration
+        self.address = address
+        self.description = description
+        self.accounts.add(accounts)
+        self.group_size = group_size
 
     def getHtmlClasses(self):
         dayClasses = ["monday-day", "tuesday-day", "wednesday-day",
