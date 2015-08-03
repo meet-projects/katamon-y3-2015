@@ -53,7 +53,7 @@ def signupRequest(request):
 
 	if (firstName == "" or lastName == "" or password == "" or email == "" or birthdayDay == "" or birthdayMonth == "" or birthdayYear == "" or nationality == ""):
 		return HttpResponse("Some of the fields are empty.")
-
+	
 	if (User.objects.filter(email=email).count()!=0):
 		return render(request, 'app/events.html')
 		

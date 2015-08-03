@@ -10,6 +10,7 @@
 	href='{{STATIC_URL}}app/css/events.css'>
 	
 	<script src="{{STATIC_URL}}app/js/jquery.multiple.select.js"></script>
+	<script src="{{STATIC_URL}}app/js/eventsFilter.js"></script>
 <script type="text/javascript">
     $(function() {
 
@@ -44,6 +45,7 @@ $(function () {
 	
 {% block body %}
 <script>
+
 	$(document).mouseup(function (e)
 	{
 	    var container = $("#sortDiv");
@@ -59,7 +61,12 @@ $(function () {
 		$("#sortTextBox").click(function(){
 			$("#sortDiv").slideDown();
 		});
+		$("select").change(function(){
+			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#weekDaySelect"))
+		});	
 	});
+
+	
 
 </script>
 
@@ -81,25 +88,27 @@ $(function () {
 			    <label for="inputFields" class="col-sm-2 control-label">Fields:</label>
 			    <div class="col-sm-10">
 				<select id="fieldSelect" multiple="multiple">
-					<option value="Elderly">
+
+					<option value="elderly-people-field">
 						Elderly People
 					</option>
-					<option value="Animals">
+					<option value="animals-field">
 						Animals
 					</option>
-					<option value="Ill">
+					<option value="ill-people-field">
+
 						Ill People
 					</option>
-					<option value="Children">
+					<option value="children-field">
 						Children
 					</option>
-					<option value="Handicapped">
+					<option value="handicapped-field">
 						Handicapped 
 					</option>
-					<option value="Technical">
+					<option value="technical-works-field">
 						Technical Works
 					</option>
-					<option value="Youth">
+					<option value="youth-field">
 						Youth at Risk
 					</option>
 				</select>
@@ -110,13 +119,13 @@ $(function () {
 			    <label for="inputTime" class="col-sm-2 control-label">Time:</label>
 			    <div class="col-sm-10">
 				<select id="timeSelect" multiple="multiple">
-					<option>
+					<option value="morning-time">
 						Morning
 					</option>
-					<option>
+					<option value="afternoon-time">
 						Afternoon
 					</option>
-					<option>
+					<option value="evening-time">
 						Evening
 					</option>
 				</select>
@@ -125,28 +134,28 @@ $(function () {
 			</div>
 			
 			<div class="form-group">
-			    <label for="inputDay" class="col-sm-2 control-label">Day:</label>
+			    <label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
 			    <div class="col-sm-10">
 				<select id="weekDaySelect" multiple="multiple">
-					<option>
+					<option value="monday-day">
 						Monday
 					</option>
-					<option>
+					<option value="tuesday-day">
 						Tuesday
 					</option>
-					<option>
+					<option value="wednesday-day">
 						Wednesday
 					</option>
-					<option>
+					<option value="thursday-day">
 						Thursday
 					</option>
-					<option>
+					<option value="friday-day">
 						Friday
 					</option>
-					<option>
+					<option value="saturday-day">
 						Saturday
 					</option>
-					<option>
+					<option value="sunday-day">
 						Sunday
 					</option>
 				</select>
@@ -165,7 +174,7 @@ $(function () {
 <div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg');" width=200px height=300px>
 </div>
 
-<div style="display:none;">
+<div class="animals-field monday-day friday-day events">
 			<h3 class="col-md-8 col-md-offset-2" id="ANIMALS"> Animals </h3> 
 
 	<div class="col-md-8 col-md-offset-2">
@@ -183,7 +192,7 @@ $(function () {
 	</div>
 <br>
 
-	<div  class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -191,7 +200,7 @@ $(function () {
 <br>
 
 	
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 	
@@ -208,7 +217,7 @@ $(function () {
 
 	
 	<br>
-	<div   class="col-md-8 col-md-offset-2">
+	<div   class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
 	<h4><b><i> Ma'ayan School </i></b></h4>
@@ -224,7 +233,7 @@ $(function () {
 	</div>
 <br>
 
-	<div   class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -232,7 +241,7 @@ $(function () {
 <br>
 
 	
-	<div   class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div   class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 	
@@ -251,7 +260,7 @@ $(function () {
 			<h3 class="col-md-8 col-md-offset-2" id="ELDERLY"> Elderly </h3>    
 
 	
-	<div  class="col-md-8 col-md-offset-2">
+	<div  class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
 	<h5><b><i> Event 1 </i></b></h5>
@@ -262,7 +271,7 @@ $(function () {
 	</div>
 <br>
 
-	<div  class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -270,7 +279,7 @@ $(function () {
 <br>
 
 
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 	
@@ -288,7 +297,7 @@ $(function () {
 			<h3 class="col-md-8 col-md-offset-2" id="ILL"> Ill People </h3>    
 
 	
-	<div  class="col-md-8 col-md-offset-2">
+	<div  class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
 	<h5><b><i> Event 1 </i></b></h5>
@@ -299,7 +308,7 @@ $(function () {
 	</div>
 <br>
 
-	<div  class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -307,7 +316,7 @@ $(function () {
 <br>
 
 
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 			
@@ -326,7 +335,7 @@ $(function () {
 			<h3 class="col-md-8 col-md-offset-2" id="HANDICAPPED"> Handicapped People </h3>    
 
 	
-	<div  class="col-md-8 col-md-offset-2">
+	<div  class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>
 	<h5><b><i> Event 1 </i></b></h5>
@@ -337,7 +346,7 @@ $(function () {
 	</div>
 <br>
 
-	<div   class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div   class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -345,7 +354,7 @@ $(function () {
 <br>
 
 
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 	
@@ -363,7 +372,7 @@ $(function () {
 			<h3 class="col-md-8 col-md-offset-2" id="TECHNICAL"> Technical Works </h3>    
 
 	
-	<div  class="col-md-8 col-md-offset-2">
+	<div  class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>	
 	<h5><b><i> Event 1 </i></b></h5>
@@ -374,7 +383,7 @@ $(function () {
 	</div>
 <br>
 
-	<div  class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -382,7 +391,7 @@ $(function () {
 <br>
 
 
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 	
@@ -400,7 +409,7 @@ $(function () {
 			<h3 class="col-md-8 col-md-offset-2" id="YOUTH"> Youth At Risk </h3>    
 
 	
-	<div  class="col-md-8 col-md-offset-2">
+	<div  class="col-md-8 col-md-offset-2 events">
 	<h4><strong> Upcoming Events </strong></h4>
 	<br>	
 	<h5><b><i> Event 1 <i></b></h5>
@@ -411,7 +420,7 @@ $(function () {
 	</div>
 <br>
 
-	<div  class="col-md-8 col-md-offset-2"> <h5> <b><i> Event 2 </i></b> </h5>
+	<div  class="col-md-8 col-md-offset-2 events"> <h5> <b><i> Event 2 </i></b> </h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph </p>
 	 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button>
 	</div>
@@ -419,7 +428,7 @@ $(function () {
 <br>
 
 
-	<div  class="col-md-8 col-md-offset-2"><h5><b><i> Event 3 </i></b></h5>
+	<div  class="col-md-8 col-md-offset-2 events"><h5><b><i> Event 3 </i></b></h5>
 	<p> description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description 	paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph description paragraph
 	<button class="btn btn-default center-block joinbuttons" id="join">  Join </button> </p>
 
