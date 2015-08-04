@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
+
+
 class Account(models.Model):
     isPalestinian = models.BooleanField()
     # birthday = models.DateTimeField()
@@ -13,6 +15,17 @@ class Account(models.Model):
         return self.user.username + " " + self.user.email + " "
         # + str(self.birthday)
 # Event model
+
+
+class Organization(models.Model):
+    name = models.CharField(max_length=30)
+    phone_number = models.CharField(max_length=15)
+    address = models.CharField(max_length=60)
+    description = models.CharField(max_length=300)
+    #logo = models.FileField(upload_to='app/static/app/img')
+    website = models.CharField(max_length=100)
+
+
 class Event(models.Model):
     name = models.CharField(max_length=30)
     date = models.DateTimeField()
@@ -21,8 +34,9 @@ class Event(models.Model):
     description = models.CharField(max_length=300)
     accounts = models.ManyToManyField(Account)
     group_size = models.IntegerField()
+    organization = models.ForeignKey(Organization, default=None)
 
-    def __init__(self, name, date, duration, address, description, accounts, group_size):
+    def addEvent(self, name, date, duration, address, description, accounts, group_size, organization):
         self.name = name
         self.date = date
         self.duration = duration
@@ -30,6 +44,7 @@ class Event(models.Model):
         self.description = description
         self.accounts.add(accounts)
         self.group_size = group_size
+        self.organization = organization
 
     def getHtmlClasses(self):
         dayClasses = ["monday-day", "tuesday-day", "wednesday-day",
@@ -49,23 +64,32 @@ class Event(models.Model):
         htmlClasses.append("handicapped-field")
 
         return htmlClasses
-# AddEvent model
-
-
-class AddEvent(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=300)
-    location = models.CharField(max_length=60)
-    time = models.CharField(max_length=30)
-    date = models.DateTimeField()
 
 # Org model
-class Organization(models.Model):
+
+
+class Chat(models.Model):
+    event = models.OneToOneField(Event)
+    title = models.CharField(max_length=30)
+
+
+class Message(models.Model):
+    chat = models.ForeignKey(Chat)
+    account = models.ForeignKey(Account)
+    message = models.CharField(max_length=1000)
+
+
+class Badge(models.Model):
     name = models.CharField(max_length=30)
-    password = models.CharField(max_length=10)
-    number = models.CharField(max_length=15)
-    address = models.CharField(max_length=60)
-    description = models.CharField(max_length=300)
-    event = models.ManyToManyField(Event)
-    #logo = models.FileField(upload_to='app/static/app/img')
-    website = models.CharField(max_length=100)
+    account = models.ManyToManyField(Account)
+
+    class Meta:
+        abstract = True
+
+
+class VolunteerHoursBadge(Badge):
+    hours_requirement = models.IntegerField()
+
+
+class VolunteerTimesBadge(Badge):
+    times_requirement = models.IntegerField()

@@ -5,14 +5,14 @@
    <h1 style="margin-left:9.5%;"> Login</h1>
    <form method="post" action="/login2/">
 {% csrf_token %}
-   	 <div class="col-md-10 col-md-offset-1">
+   	 <div class="col-md-6 col-md-offset-2">
 	<p style='color: red;'>{{ Error }}</p>
          <div class="form-group">
             <label for="emailAddress">Email address</label>
             <input type="email" class="form-control" id="emailAddress" style="width:500px;" name="emailAddress" placeholder="Enter email">
          </div>
       </div>
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-6 col-md-offset-2">
          <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" style="width:500px;" name="password" pattern=".{6,}"   required title="6 characters minimum" placeholder="Password">
