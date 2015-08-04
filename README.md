@@ -1,4 +1,4 @@
-# katamon-y3-2015
+# Volunteam
 ## How to Set-Up in 5 Minutes:
 ```bash
 git clone https://github.com/meet-projects/volunteam-y3-2015.git
