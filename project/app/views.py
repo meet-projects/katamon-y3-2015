@@ -89,7 +89,7 @@ def managment2(request):
 		return render(request, 'app/managment.html', dictionary)
 	if (NewPassword!=ConfirmPassword):
 		dictionary["errors"] = []
-		dictionary["errors"].append("Passwords don't match.")
+		dictionary["errors"].append("Passwords do not match.")
 		return render(request, 'app/managment.html', dictionary)
 	if (len(NewPassword)<6):
 		dictionary["errors"] = []
