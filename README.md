@@ -10,6 +10,7 @@ pip install -r requirements.txt
 
 ## Setup additional packages
 ```bash
+wget -O- https://toolbelt.heroku.com/install.sh | sh
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install git python-pip python-virtualenv libpq-dev python-dev
