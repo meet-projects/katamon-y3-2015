@@ -45,6 +45,8 @@ template {
 }
 a {
   background-color: transparent;
+  border-color: #050505;
+  color:#050505;
 }
 a:active,
 a:hover {
@@ -3244,8 +3246,8 @@ fieldset[disabled] .btn-warning.active {
   background-color: #fff;
 }
 .btn-danger {
-  color: #fff;
-  background-color: #d9534f;
+  color: #60FC72;
+  background-color: #60FC72;
   border-color: #d43f3a;
 }
 .btn-danger:hover,
@@ -3254,8 +3256,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:active,
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
-  color: #fff;
-  background-color: #c9302c;
+  color: #60FC72;
+  background-color: #60FC72;
   border-color: #ac2925;
 }
 .btn-danger:active,
@@ -3281,12 +3283,13 @@ fieldset[disabled] .btn-danger:active,
 .btn-danger.disabled.active,
 .btn-danger[disabled].active,
 fieldset[disabled] .btn-danger.active {
-  background-color: #d9534f;
+  background-color: #60FC72;
   border-color: #d43f3a;
 }
+d9534f
 .btn-danger .badge {
-  color: #d9534f;
-  background-color: #fff;
+  color: #60FC72;
+  background-color: #60FC72;
 }
 .btn-link {
   font-weight: normal;
@@ -3299,8 +3302,8 @@ fieldset[disabled] .btn-danger.active {
 .btn-link[disabled],
 fieldset[disabled] .btn-link {
   background-color: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow:#60FC72;
+          box-shadow:#60FC72;
 }
 .btn-link,
 .btn-link:hover,

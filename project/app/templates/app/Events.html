@@ -17,8 +17,11 @@
 				width: '100%'
 			});
 		}
-		
+		$(function () {
+		  $('[data-toggle="popover"]').popover();
+		})
 	});
+
 	/*
 	$(function () {
 		$("fieldSelect").change(function() {
@@ -163,30 +166,32 @@
 			});
 			
 		</script> -->
-		<div class="col-md-12" style="margin-top:30px;">
+		<div class="col-md-12 event animals-field monday-day morning-time events" style="margin-top:5%;" id="AnimalsInfo">
 			<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
-			<div class="row">
-				<div class="col-md-7 col-md-offset-2 animals-field monday-day morning-time events" id="AnimalsInfo">
-					<h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
-					<p> Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning. Volunteering at the shelter is for adults 16 year and older. Besides the shelter, volunteers can help at the clinic with cleaning cages, feeding animals and walking dogs.
+				<div class="row">
+			    		<div class="col-md-7 col-md-offset-2">
+						<a tabindex="0" class="btn btn-lg events" role="button" data-toggle="popover" 							data-trigger="focus" title="Tza'ar Ba'alei Chaim" data-content="Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning."><font color="#469245"><h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
 						<p> Group Size: 15 volunteers </p>
 						<p> Time: 10:00am - 12:00am</p>
 						<p> Date: August 7rd, 2015</p>
 						<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
+						</a></font>
 					{% if user.is_authenticated %}
-					    <button class="btn btn-default center-block joinbuttons" id="join">  Join </button> 
+						<div style="margin-left:19%;">
+					    		<a href="#"><button class="btn btn-lg events" style="width:140px;"><font color="#469245">  Join </font></button></a>
+						</div>
 					{% endif %}
 					{% if not user.is_authenticated %}
-					    <a href="/login"><button class="btn btn-default center-block joinbuttons"> Login To Join</button></a>
-					
+						<div style="margin-left:19%;">
+					    	<a href="/login"><button class="btn btn-lg" style="background-color:#3B7834;width:140px;"> Login To Join</button></a>
+						</div>
 				        {% endif %}
-					</p>
-					
+		
 				</div>
-				<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px class="col-md-1">
-				</div>
+					<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px class="col-md-1">
+					</div>
 
-			</div>
+		</div>
 
 			{% for event in events %}
 
@@ -202,11 +207,15 @@
 
 					</p>
 				{% if user.is_authenticated %}
-					 <button class="btn btn-default center-block joinbuttons" id="join">  Join </button> 
+					<div style="margin-left:19%;">
+					 <button class="btn btn-lg" style="background-color: #60FC72;width:140px;">  Join </button>
+					 </div>
 				{% endif %}
 				{% if not user.is_authenticated %}
-					<a href="login.html"><button class="btn btn-default center-block joinbuttons"> Login To Join </button>
+				   <div style="margin-left:19%;">
+					<a href="login.html"><button class="btn btn-lg" style="background-color: #60FC72;width:140px;"> Login To Join </button>
 					</a>
+				   </div>
 				{% endif %}
 				</div>
 			{% endfor %}

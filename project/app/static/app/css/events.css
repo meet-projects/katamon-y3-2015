@@ -15,3 +15,7 @@ h3{
 	position: fixed;
 	z-index: 999;
 }
+.events{
+	border-color: #050505;
+	box-shadow:none;
+}
