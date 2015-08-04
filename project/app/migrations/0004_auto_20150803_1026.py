@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='time',
-            field=models.CharField(default=datetime.datetime(2015, 8, 3, 10, 26, 4, 740931, tzinfo=utc), max_length=255),
+            field=models.IntegerField(),
             preserve_default=False,
         ),
         migrations.AddField(
