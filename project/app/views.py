@@ -70,25 +70,26 @@ def OrgSignUpRequest(request):
     dictionary = {"active": "registerTab"}
     name = request.POST.get('OrganizationName')
     password = request.POST.get('OrganizationPassword')
-    adress = request.POST.get('OrganizationAdress')
+    address = request.POST.get('OrganizationAddress')
     number = request.POST.get('OrganizationPhoneNumber')
     description = request.POST.get('OrganizationDescription')
     website = request.POST.get('website')
     if name is None \
            or \
            password is None or \
-           adress is None or \
+           address is None or \
            number is None or description is None:
         dictionary["errors"] = ["Some of the fields are empty."]
         return render(request, 'app/OrgSignUp.html', dictionary)
-
+    if website is None :
+	website=""
     if (Organization.objects.filter(name=name).count() != 0):
         dictionary["errors"] = [
             "This Organization already exists, redirected to login page"]
         return render(request, 'app/OrgSignUp.html', dictionary)
-    organization_obj = Organization(name=name,password=password, adress=adress, number=number, description=description,website=website)
+    organization_obj = Organization(name=name, password=password, address=address, number=number, description=description,website=website)
     organization_obj.save()
-    return Orglogin_request(request, name, password)
+    return redirect("/events")
 
 
 
@@ -118,7 +119,7 @@ def signupRequest(request):
     if (User.objects.filter(email=email).count() != 0):
         dictionary["errors"] = [
             "Email Address already exists, redirected to login page"]
-        return render(request, 'app/signup.html', dictionary)
+        return render(request, 'app/login.html', dictionary)
 
     if (nationality == "isra"):
         nationality = False
@@ -150,7 +151,7 @@ def login_request(request, email, password):
         return redirect("/login")
 
 def Orglogin_request(request, name, password):
-    user = authenticate(username=name, password=password)
+    Org = authenticate(username=name, password=password)
     if user is not None:
         # user and password is correct
         login(request, user)
