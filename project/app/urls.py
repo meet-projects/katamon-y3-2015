@@ -19,4 +19,5 @@ urlpatterns = patterns('',
                        url(r'^addevent/$', views.addevent, name='AddEvent'),
                        url(r'^logout/$', views.logoutrequest, name='LogOut'),
                        url(r'^OrgSignUp/$', views.OrgSignUp, name='OrgSignUp'),
+			url(r'^managment/$', views.managment, name='managment'),
                        )

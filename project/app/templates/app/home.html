@@ -16,12 +16,14 @@
 			Palestinians and Israelis to contribute to the community by volunteering together
 			</p> !-->
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			{% if not user.is_authenticated %}		
 			<a href="/signup/"><button class="btn btn-default center-block" id="joinUs">Join Us</button></a>
 			<br>
-			<p id="orLogin" class="text-center">or <a href="/login">Login</a></p>
+			<p id="orLogin" class="text-center">or <a href="/login"><b>Login</b></a></p>
+			{% endif %}
 		</div>
 	</div>
 	<div class="row">
-	<a href="/OrgSignUp"><button style="width:200px;margin-left:20px;">Sign up as an organization</button></a>
+	<a href="/OrgSignUp"><button style="width:200px;margin-left:20px;"><b>Sign up as an organization</b></button></a>
 	</div>
 {% endblock %}

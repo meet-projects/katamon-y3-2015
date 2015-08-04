@@ -65,6 +65,10 @@ def OrgSignUp(request):
     dictionary = {"active" : "OrgSignUp" }
     return render(request, 'app/OrgSignUp.html', dictionary)
 
+def managment(request):
+    dictionary = {"active": "managementTab"}
+    return render(request, 'app/managment.html', dictionary)
+
 
 def OrgSignUpRequest(request):
     dictionary = {"active": "registerTab"}
