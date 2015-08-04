@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             name='Message',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('message', models.CharField(max_length=1000)),
+                ('message', models.TextField()),
                 ('account', models.ForeignKey(to='app.Account')),
                 ('chat', models.ForeignKey(to='app.Chat')),
             ],
