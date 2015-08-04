@@ -1,20 +1,108 @@
 
 #ourTeam{
  	  font-family: 'Roboto', sans-serif;
-      font-size: 70px;
+      font-size: 10px;
+      color:#469245;
 }
 .Pics{
-	width:300px;
-	height:300px;
 	transition: width 1s, height 1s;
 }
 .Pics:hover{
-	width:600px;
-	height:600px;
+	width:140px;
+	height:140px;
 	
 }
 table
 { width:300px;
 height:300px;
 font-size:40px;
+}
+.img-round {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%
+	}
+
+p {
+    background-color: transparent;
+}
+
+p.padding {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+}
+.box1 {
+	color:#469245;
+	font-size: 30px;
+}
+.box2 {
+	margin-top: 3%;
+	width: 70%;
+	font-size:25px; 
+	color:#469245;
+	box-shadow: 10px 20px 20px 0px
+}
+.box3 {
+	margin-top: 5%;
+	margin-left: 18%;
+	font-size:25px; 
+	color:#469245;
+	box-shadow: 10px 20px 20px 0px
+}
+.relative1 {
+  position: relative;
+}
+.relative2aseel {
+  position: relative;
+  top: 10px;
+  left: 150px;
+  background-color: white;
+  width: 500px;
+}
+#Itay{
+	position: absolute;
+	top: 120px;
+	right:100px;
+}
+#Aseel{
+	position: absolute;
+	top: 235px;
+	right:100px;
+}
+
+#Shadi{
+	position: absolute;
+	top: 120px;
+	right:240px;
+}
+
+#Shir{
+	position: absolute;
+	top: 235px;
+	right:240px;
+}
+
+#Wassim{
+	position: absolute;
+	top: 430px;
+	left: 20px;
+}
+#Yael{
+	position: absolute;
+	top: 575px;
+	left:200px;
+}
+
+#Leen{
+	position: absolute;
+	top: 430px;
+	left:200px;
+}
+
+#Mouhammad{
+	position: absolute;
+	top: 575px;
+	left:20px;
 }
