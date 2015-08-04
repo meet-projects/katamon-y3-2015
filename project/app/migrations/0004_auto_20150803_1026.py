@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=30)),
-                ('description', models.CharField(max_length=300)),
+                ('description', models.CharField(max_length=255)),
                 ('location', models.CharField(max_length=60)),
                 ('time', models.CharField(max_length=30)),
                 ('date', models.DateTimeField()),
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('number', models.CharField(max_length=15)),
                 ('address', models.CharField(max_length=60)),
-                ('description', models.CharField(max_length=300)),
+                ('description', models.CharField(max_length=255)),
                 ('website', models.CharField(max_length=100)),
             ],
         ),
