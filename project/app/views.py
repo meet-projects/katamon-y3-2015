@@ -77,35 +77,43 @@ def managment(request):
 def managment2(request):
 	dictionary = {"active": "registerTab"}
 	user = request.user
-	if not user.check_password(OldPassword):
-		return HttpResponse("<script>alert:Wrong Old Pasword!!</script>")
-	if (NewPassword!=ConfirmPassword):
-		return HttpResponse("<script>alert:Passwords don't match!!</script>")
 	newFN=request.POST.get('FN')
 	newLN=request.POST.get('LN')
-	newEmail=request.POST.get('NewEmail')
+	#newEmail=request.POST.get('NewEmail')
 	OldPassword=request.POST.get('OldPassword')
 	NewPassword=request.POST.get('NewPassword')
 	ConfirmPassword=request.POST.get('ConfirmPassword')
+	if not user.check_password(OldPassword):
+		dictionary["errors"] = []
+		dictionary["errors"].append("Old password is incorrect.")
+		return render(request, 'app/managment.html', dictionary)
+	if (NewPassword!=ConfirmPassword):
+		dictionary["errors"] = []
+		dictionary["errors"].append("Passwords don't match.")
+		return render(request, 'app/managment.html', dictionary)
+	if (len(NewPassword)<6):
+		dictionary["errors"] = []
+		dictionary["errors"].append("password min 6 charecters.")
+		return render(request, 'app/managment.html', dictionary)
+			
 	if newFN is None:
 		newFN=user.first_name
 	if newLN is None:
 		newLN=user.last_name
-	if newEmail is None:
-		newEmail=user.email
-	user_obj = User(
-        first_name=newFN, last_name=newLN, email=email, username=newEmail)
-    	user_obj.set_password(NewPasswordassword)
-    	user_obj.save()
-	authenticate(username=NewEmail, password=NewPassword)
+	if OldPassword is None:
+		NewPassword=user.password
+	#if newEmail is None:
+		#newEmail=user.email
+	#user_obj = User(first_name=newFN, last_name=newLN) #email=newEmail, username=newEmail
+	request.user.first_name = newFN
+	request.user.last_name = newLN
 	
-	
-	
-	
-	
-	
-	
-	
+    	request.user.set_password(NewPassword)
+    	request.user.save()
+	#authenticate(username=newEmail, password=NewPassword)
+	dictionary["errors"] = []
+	dictionary["errors"].append("Changed successfully.")
+	return render(request, 'app/managment.html', dictionary)
 	
 
 

@@ -1,24 +1,30 @@
 {% extends "app/base.html" %} 
 {%block title %} Settings {% endblock %}
 {% block body %}
-<form method="post" action="/management2/">
+<script>
+	{% for error in errors %}
+		alert('{{ error }}');
+	{% endfor %}
+</script>
+<form action="/managment2/" method="post">
+{% csrf_token %}
 <h1>Settings<h1/>
 <table>
 	<tr>
 		<td><button type="button" id="ChFirstName" onclick="ChangeFirstName(this)"><b>Change First Name</b></button></td>
-		<td id="FN" style="display:none"><input type="text" style="width:300px;" name="FN" pattern=".{2,}"  placeholder="Type your new name:"></td>
+		<td id="FN" style="display:none"><input type="text" style="width:300px;" name="FN"   placeholder="Type your new name:"></td>
 	</tr>
 	<tr>
 		<td><button type="button" id="ChLastName" onclick="ChangeLastName(this)"><b>Change Last Name</b></button></td>
 		<td id="LN" style="display:none"><input type="text" style="width:300px;" name="LN"  placeholder="Type your new name:"></td>
 	</tr>
-	<tr>
+	<!--<tr>
 		<td><button type="button" id="ChEmail" onclick="ChangeEmail(this)"><b>Change Email</b></button></td>
 		<td id="Email2" style="display:none"><input type="email" style="width:300px;" name="NewEmail" placeholder="Type your new Email:"></td>
-	</tr>
+	</tr>-->
 	<tr>
 		<td><button type="button" id="ChPassword" onclick="ChangePassword(this)"><b>Change Password</b></button></td>
-		<td id="Password2" style="display:none">Old Password: <input type="password" name="OldPassowrd" style="width:300px;" pattern=".{6,}"   required title="6 characters minimum" placeholder="Type your old password:"><br>New Password: <input type="password" name="NewPassword" style="width:300px;" pattern=".{6,}"   required title="6 characters minimum" placeholder="Type your new password:"><br>Confirm Password: <input type="password" name="ConfirmPassword" style="width:300px;" pattern=".{6,}"   required title="6 characters minimum" placeholder="Type your old password:"></td>
+		<td id="Password2" style="display:none">Old Password: <input type="password" name="OldPassword" style="width:300px;"  placeholder="Type your old password:"><br>New Password: <input type="password" name="NewPassword" style="width:300px;"  placeholder="Type your new password:"><br>Confirm Password: <input type="password" name="ConfirmPassword" style="width:300px;"  placeholder="Type your old password:"></td>
 	</tr>
 	<tr>
 		<td></td>
