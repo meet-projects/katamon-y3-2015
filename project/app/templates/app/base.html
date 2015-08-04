@@ -73,6 +73,9 @@ $( document ).ready(function() {
 				<ul class="nav navbar-nav">
 				<li id="homeTab"><a href="/">Home</a></li>
 					<li id="eventsTab"><a href="/events">Events</a></li>
+					{% if user.is_authenticated %}
+						<li id="managmentTab"><a href="/managment">Settings</a></li>
+					{% endif %}
 					<li id="aboutUsTab"><a href="/aboutus">About Us</a></li>
 				</ul>
 			<ul class="nav navbar-nav navbar-right">

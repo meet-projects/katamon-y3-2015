@@ -1,0 +1,91 @@
+{% extends "app/base.html" %} 
+{%block title %} Settings {% endblock %}
+{% block body %}
+<script>
+	{% for error in errors %}
+		alert('{{ error }}');
+	{% endfor %}
+</script>
+<style>
+.quotes{
+	width:350px;
+	height:150px;
+	transition: width 1s, height 1s;
+	position:absolute;
+	top:100px;
+	right:4px;
+	border-radius: 40px;
+}
+.quotes:hover{
+	width:500px;
+	height:300px;
+	
+}
+body{
+background-image: url("/static/app/img/trees.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}
+</style>
+<img src="{{STATIC_URL}}app/img/quote1.jpeg"  class="quotes">
+<form action="/managment2/" method="post">
+{% csrf_token %}
+<h1>Settings<h1/>
+<table>
+	<tr>
+		<td><button type="button" id="ChFirstName" class="btn btn-success" onclick="ChangeFirstName(this)"><b>Change First Name</b></button></td>
+		<td id="FN" style="display:none"><input type="text" style="width:300px;" name="FN"   placeholder="Type your new name:"></td>
+	</tr>
+		<tr><td><br></td></tr>	
+	<tr>
+		<td><button type="button" id="ChLastName" class="btn btn-success" onclick="ChangeLastName(this)"><b>Change Last Name</b></button></td>
+		<td id="LN" style="display:none"><input type="text" style="width:300px;" name="LN"  placeholder="Type your new name:"></td>
+		
+	</tr>
+		<tr><td><br></td></tr>
+	<!--<tr>
+		<td><button type="button" id="ChEmail" onclick="ChangeEmail(this)"><b>Change Email</b></button></td>
+		<td id="Email2" style="display:none"><input type="email" style="width:300px;" name="NewEmail" placeholder="Type your new Email:"></td>
+	</tr>-->
+	<tr><b>
+		<td><button type="button" id="ChPassword" class="btn btn-success" onclick="ChangePassword(this)"><b>Change Password</b></button></td>
+		<td id="Password2" style="display:none">Old Password: <input type="password" name="OldPassword" style="width:300px;" placeholder="Type your old password:"><br>New Password: <input type="password" name="NewPassword" style="width:300px;" placeholder="Type your new password:"><br>Confirm Password: <input type="password" name="ConfirmPassword" style="width:300px;"  placeholder="Type your new password:"></td>
+	</b></tr>
+		<tr><td><br></td></tr>
+	<tr>
+		<td><input type="submit" value="Submit" class="btn btn-success" name="FinishedEditing"></td>
+	</tr>
+</table>
+<script>
+function ChangeFirstName(btn){
+	if(document.getElementById("FN").style.display=="none"){
+		document.getElementById("FN").style.display="block";
+		btn.innerHTML="<b>Done Editing</b>";}
+	else { document.getElementById("FN").style.display="none";
+		btn.innerHTML="<b>Change First Name</b>";}
+}
+function ChangeLastName(btn){
+	if(document.getElementById("LN").style.display=="none"){
+		document.getElementById("LN").style.display="block";
+		btn.innerHTML="<b>Done Editing</b>";}
+	else { document.getElementById("LN").style.display="none";
+		btn.innerHTML="<b>Change Last Name</b>";}
+}
+function ChangeEmail(btn){
+	if(document.getElementById("Email2").style.display=="none"){
+		document.getElementById("Email2").style.display="block";
+		btn.innerHTML="<b>Done Editing</b>";}
+	else { document.getElementById("Email2").style.display="none";
+		btn.innerHTML="<b>Change Email</b>";}
+}
+function ChangePassword(btn){
+	if(document.getElementById("Password2").style.display=="none"){
+		document.getElementById("Password2").style.display="block";
+		btn.innerHTML="<b>Done Editing</b>";}
+	else { document.getElementById("Password2").style.display="none";
+		btn.innerHTML="<b>Change Password</b>";}
+}
+
+
+</script>
+{%endblock%}

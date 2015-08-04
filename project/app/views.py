@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-
+from app.models import User
 from models import Account, User, Event, Organization
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 import datetime
 
@@ -65,9 +66,55 @@ def OrgSignUp(request):
     dictionary = {"active" : "OrgSignUp" }
     return render(request, 'app/OrgSignUp.html', dictionary)
 
+
 def managment(request):
+ if request.user.is_authenticated():
     dictionary = {"active": "managementTab"}
     return render(request, 'app/managment.html', dictionary)
+ else :
+	return redirect("/login")
+@login_required
+def managment2(request):
+	dictionary = {"active": "registerTab"}
+	user = request.user
+	newFN=request.POST.get('FN')
+	newLN=request.POST.get('LN')
+	#newEmail=request.POST.get('NewEmail')
+	OldPassword=request.POST.get('OldPassword')
+	NewPassword=request.POST.get('NewPassword')
+	ConfirmPassword=request.POST.get('ConfirmPassword')
+	if not user.check_password(OldPassword):
+		dictionary["errors"] = []
+		dictionary["errors"].append("Old password is incorrect.")
+		return render(request, 'app/managment.html', dictionary)
+	if (NewPassword!=ConfirmPassword):
+		dictionary["errors"] = []
+		dictionary["errors"].append("Passwords do not match.")
+		return render(request, 'app/managment.html', dictionary)
+	if (len(NewPassword)<6):
+		dictionary["errors"] = []
+		dictionary["errors"].append("password min 6 charecters.")
+		return render(request, 'app/managment.html', dictionary)
+			
+	if newFN is None:
+		newFN=user.first_name
+	if newLN is None:
+		newLN=user.last_name
+	if OldPassword is None:
+		NewPassword=user.password
+	#if newEmail is None:
+		#newEmail=user.email
+	#user_obj = User(first_name=newFN, last_name=newLN) #email=newEmail, username=newEmail
+	request.user.first_name = newFN
+	request.user.last_name = newLN
+	
+    	request.user.set_password(NewPassword)
+    	request.user.save()
+	#authenticate(username=newEmail, password=NewPassword)
+	dictionary["errors"] = []
+	dictionary["errors"].append("Changed successfully.")
+	return render(request, 'app/managment.html', dictionary)
+	
 
 
 def OrgSignUpRequest(request):
