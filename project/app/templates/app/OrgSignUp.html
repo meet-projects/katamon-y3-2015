@@ -12,23 +12,31 @@
          <div class="col-md-6 col-md-offset-1">
             <div class="form-group">
                <label for="OrgName"> Organization Name <font color="red">*</font> </label>
-               <input type="text" class="form-control" id="InputOrganizationName" name="OrganizationName" placeholder="Organization Name">
+               <input type="text" class="form-control" id="InputOrganizationName" name="OrganizationName" pattern=".{2,}"   required title="2 characters minimum" placeholder="Organization Name">
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6 col-md-offset-1">
+            <div class="form-group">
+               <label for="OrgName"> Password <font color="red">*</font> </label>
+               <input type="password" class="form-control" id="InputOrganizationPassword" pattern=".{4,}"   required title="4 characters minimum" name="OrganizationPassword" placeholder="Organization Password">
             </div>
          </div>
       </div>
 	<div class="row">
            <div class="col-md-6 col-md-offset-1">
                <div class="form-group">
-                   <label for="InputPhoneNum"> Phone Number <font color="red">*</font> </label>
-                   <input type="text" class="form-control" id="InputPhoneNumber" name="PhoneNumber" placeholder="Phone Number">
+                   <label for="InputPhoneNum"> Phone Number <font color="red">*</font></label>
+                   <input type="text" class="form-control" id="InputPhoneNumber" name="OrganizationPhoneNumber" pattern=".{9,}"   required title="9 numbers minimum" placeholder="Phone Number">
                </div>
            </div>
 	</div>
 	<div class="row">
            <div class="col-md-6 col-md-offset-1">
                <div class="form-group">
-                   <label for="InputAdress"> Adress <font color="red">*</font> </label>
-                   <input type="text" class="form-control" id="InputAdress" name="Adress" placeholder="Adress">
+                   <label for="InputAdress"> Address <font color="red">*</font> </label>
+                   <input type="text" class="form-control" id="InputAddress" name="OrganizationAddress" placeholder="Address">
                </div>
            </div>
 	</div>
@@ -36,7 +44,7 @@
            <div class="col-md-6 col-md-offset-1">
                <div class="form-group">
                    <label for="InputDescription"> Description <font color="red">*</font>  </label>
-                   <input type="text" class="form-control" id="InputDescription" name="Description" placeholder="Description">
+                   <input type="text" class="form-control" id="InputDescription" name="OrganizationDescription" placeholder="Description">
                </div>
            </div>
 	</div>
