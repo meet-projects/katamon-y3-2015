@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-
+from app.models import User
 from models import Account, User, Event, Organization
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 import datetime
 
@@ -65,9 +66,47 @@ def OrgSignUp(request):
     dictionary = {"active" : "OrgSignUp" }
     return render(request, 'app/OrgSignUp.html', dictionary)
 
+
 def managment(request):
+ if request.user.is_authenticated():
     dictionary = {"active": "managementTab"}
     return render(request, 'app/managment.html', dictionary)
+ else :
+	return redirect("/login")
+@login_required
+def managment2(request):
+	dictionary = {"active": "registerTab"}
+	user = request.user
+	if not user.check_password(OldPassword):
+		return HttpResponse("<script>alert:Wrong Old Pasword!!</script>")
+	if (NewPassword!=ConfirmPassword):
+		return HttpResponse("<script>alert:Passwords don't match!!</script>")
+	newFN=request.POST.get('FN')
+	newLN=request.POST.get('LN')
+	newEmail=request.POST.get('NewEmail')
+	OldPassword=request.POST.get('OldPassword')
+	NewPassword=request.POST.get('NewPassword')
+	ConfirmPassword=request.POST.get('ConfirmPassword')
+	if newFN is None:
+		newFN=user.first_name
+	if newLN is None:
+		newLN=user.last_name
+	if newEmail is None:
+		newEmail=user.email
+	user_obj = User(
+        first_name=newFN, last_name=newLN, email=email, username=newEmail)
+    	user_obj.set_password(NewPasswordassword)
+    	user_obj.save()
+	authenticate(username=NewEmail, password=NewPassword)
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 def OrgSignUpRequest(request):
