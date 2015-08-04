@@ -21,7 +21,7 @@ class Organization(models.Model):
     name = models.CharField(max_length=30)
     phone_number = models.CharField(max_length=15)
     address = models.CharField(max_length=60)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=255)
     #logo = models.FileField(upload_to='app/static/app/img')
     website = models.CharField(max_length=100)
 
@@ -31,7 +31,7 @@ class Event(models.Model):
     date = models.DateTimeField()
     duration = models.IntegerField()
     address = models.CharField(max_length=60)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=255)
     accounts = models.ManyToManyField(Account)
     group_size = models.IntegerField()
     organization = models.ForeignKey(Organization, default=None)
@@ -76,7 +76,7 @@ class Chat(models.Model):
 class Message(models.Model):
     chat = models.ForeignKey(Chat)
     account = models.ForeignKey(Account)
-    message = models.CharField(max_length=1000)
+    message = models.TextField()
 
 
 class Badge(models.Model):
