@@ -63,6 +63,9 @@ def volunteam(request):
     dictionary = {"active": "VolunTeamTab"}
     return render(request, 'app/volunteam.html', dictionary)
 
+def photos(request):
+    dictionary = {"active": "PhotosTab"}
+    return render(request, 'app/photos.html', dictionary)
 
 def OrgSignUp(request):
     if request.user.is_authenticated():
@@ -102,6 +105,8 @@ def managment(request):
         return render(request, 'app/managment.html', dictionary)
     else:
         return redirect("/login")
+
+
 
 
 @login_required
