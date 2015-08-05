@@ -33,8 +33,9 @@ def logoutrequest(request):
     logout(request)
     return redirect("/")
 
+
 def UserProfile(request):
-    dictionary = {"active": "UserProfileTab"}
+    dictionary = {"active": "UserProfileTab", "user": request.user}
     return render(request, 'app/UserProfile.html', dictionary)
 
 
