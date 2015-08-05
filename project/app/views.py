@@ -34,6 +34,11 @@ def logoutrequest(request):
     return redirect("/")
 
 
+def UserProfile(request):
+    dictionary = {"active": "UserProfileTab", "user": request.user}
+    return render(request, 'app/UserProfile.html', dictionary)
+
+
 def signup(request):
     if request.user.is_authenticated():
         return redirect("/home/")

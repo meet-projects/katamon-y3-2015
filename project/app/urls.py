@@ -28,4 +28,6 @@ urlpatterns = patterns('',
                        url(r'^managment2/$', views.managment2,
                            name='managment2'),
                        url(r'^photos/$', views.photos, name='photos'),
+                       url(r'^UserProfile/$', views.UserProfile,
+                           name='UserProfile'),
                        )
