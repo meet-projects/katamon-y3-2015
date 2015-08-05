@@ -83,6 +83,20 @@ def managment2(request):
 	OldPassword=request.POST.get('OldPassword')
 	NewPassword=request.POST.get('NewPassword')
 	ConfirmPassword=request.POST.get('ConfirmPassword')
+	c=""		
+	if newFN is None:
+		newFN=user.first_name
+		c+="s"
+	if newLN is None:
+		newLN=user.last_name
+		c+="e"
+	if OldPassword is None:
+		NewPassword=user.password
+		c+="v"
+	if len(c) is 3:
+		dictionary["errors"] = []
+		dictionary["errors"].append("You did not change anything.")
+		return render(request, 'app/managment.html', dictionary)
 	if not user.check_password(OldPassword):
 		dictionary["errors"] = []
 		dictionary["errors"].append("Old password is incorrect.")
@@ -95,13 +109,7 @@ def managment2(request):
 		dictionary["errors"] = []
 		dictionary["errors"].append("password min 6 charecters.")
 		return render(request, 'app/managment.html', dictionary)
-			
-	if newFN is None:
-		newFN=user.first_name
-	if newLN is None:
-		newLN=user.last_name
-	if OldPassword is None:
-		NewPassword=user.password
+		
 	#if newEmail is None:
 		#newEmail=user.email
 	#user_obj = User(first_name=newFN, last_name=newLN) #email=newEmail, username=newEmail
