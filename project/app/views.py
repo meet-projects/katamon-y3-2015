@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-from app.models import User
-from models import Account, User, Event, Organization
+
+from app.models import Account, User, Event
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -16,18 +17,15 @@ def home(request):
 
 
 def login_page(request):
-    dictionary = {"active": "LoginTab"}
+    dictionary = {"active": "LoginTab",
+                  "organization_login": False, "action": "/login2/"}
     return render(request, 'app/login.html', dictionary)
 
 
-def login2(request):
-    dictionary = {"active": "LoginTab"}
-    try:
-        email = request.POST['emailAddress']
-        password = request.POST['password']
-    except MultiValueDictKeyError:
-        return redirect("/login")
-    return login_request(request, email, password)
+def organization_login_page(request):
+    dictionary = {"active": "OrganizationLoginTab",
+                  "organization_login": True, "action": "/organizationLoginRequest/"}
+    return render(request, 'app/login.html', dictionary)
 
 
 def logoutrequest(request):
@@ -37,13 +35,17 @@ def logoutrequest(request):
 
 
 def signup(request):
+    if request.user.is_authenticated():
+        return redirect("/home/")
     dictionary = {"active": "registerTab"}
     return render(request, 'app/signup.html', dictionary)
 
 
-def addevent(request):
+def addEvent(request):
     dictionary = {"active": "registerTab"}
-    return render(request, 'app/addevent.html', dictionary)
+    if request.user.is_authenticated() and request.user.account.isOrganization == True:
+        return render(request, 'app/addevent.html', dictionary)
+    return redirect("/home/")
 
 
 def aboutus(request):
@@ -63,93 +65,130 @@ def volunteam(request):
 
 
 def OrgSignUp(request):
-    dictionary = {"active" : "OrgSignUp" }
+    if request.user.is_authenticated():
+        return redirect("/home/")
+    dictionary = {"active": "OrgSignUp"}
     return render(request, 'app/OrgSignUp.html', dictionary)
 
 
+def addEvent_request(request):
+    eventName = request.POST.get('eventName')
+    description = request.POST.get('description')
+    address = request.POST.get('location')
+    time = request.POST.get('time')
+    dateDay = request.POST.get('dateDay')
+    dateMonth = request.POST.get('dateMonth')
+    dateYear = request.POST.get('dateYear')
+    group_size = request.POST.get('groupSize')
+
+    if not request.user.isOrganization:
+        return HttpResponse("This account doesn't have the permission to do that.")
+    organization = request.user
+
+    if eventName is None or description is None or location is None or time is None or dateDay is None or dateMonth is None or dateYear is None:
+        dictionary["errors"] = ["Some of the fields are empty."]
+        return render(request, 'app/OrgSignUp.html', dictionary)
+
+    date = datetime.datetime(
+        int(dateYear), int(dateMonth), int(dateDay))
+
+    event = Event.addEvent(
+        eventName, date, duration, address, description, None, group_size, organization)
+
+
 def managment(request):
- if request.user.is_authenticated():
-    dictionary = {"active": "managementTab"}
-    return render(request, 'app/managment.html', dictionary)
- else :
-	return redirect("/login")
+    if request.user.is_authenticated():
+        dictionary = {"active": "managementTab"}
+        return render(request, 'app/managment.html', dictionary)
+    else:
+        return redirect("/login")
+
+
 @login_required
 def managment2(request):
-	dictionary = {"active": "registerTab"}
-	user = request.user
-	newFN=request.POST.get('FN')
-	newLN=request.POST.get('LN')
-	#newEmail=request.POST.get('NewEmail')
-	OldPassword=request.POST.get('OldPassword')
-	NewPassword=request.POST.get('NewPassword')
-	ConfirmPassword=request.POST.get('ConfirmPassword')
-	c=""		
-	if newFN is None:
-		newFN=user.first_name
-		c+="s"
-	if newLN is None:
-		newLN=user.last_name
-		c+="e"
-	if OldPassword is None:
-		NewPassword=user.password
-		c+="v"
-	if len(c) is 3:
-		dictionary["errors"] = []
-		dictionary["errors"].append("You did not change anything.")
-		return render(request, 'app/managment.html', dictionary)
-	if not user.check_password(OldPassword):
-		dictionary["errors"] = []
-		dictionary["errors"].append("Old password is incorrect.")
-		return render(request, 'app/managment.html', dictionary)
-	if (NewPassword!=ConfirmPassword):
-		dictionary["errors"] = []
-		dictionary["errors"].append("Passwords do not match.")
-		return render(request, 'app/managment.html', dictionary)
-	if (len(NewPassword)<6):
-		dictionary["errors"] = []
-		dictionary["errors"].append("password min 6 charecters.")
-		return render(request, 'app/managment.html', dictionary)
-		
-	#if newEmail is None:
-		#newEmail=user.email
-	#user_obj = User(first_name=newFN, last_name=newLN) #email=newEmail, username=newEmail
-	request.user.first_name = newFN
-	request.user.last_name = newLN
-	
-    	request.user.set_password(NewPassword)
-    	request.user.save()
-	#authenticate(username=newEmail, password=NewPassword)
-	dictionary["errors"] = []
-	dictionary["errors"].append("Changed successfully.")
-	return render(request, 'app/managment.html', dictionary)
-	
+    dictionary = {"active": "registerTab"}
+    user = request.user
+    newFN = request.POST.get('FN')
+    newLN = request.POST.get('LN')
+    # newEmail=request.POST.get('NewEmail')
+    OldPassword = request.POST.get('OldPassword')
+    NewPassword = request.POST.get('NewPassword')
+    ConfirmPassword = request.POST.get('ConfirmPassword')
+    c = ""
+    if newFN is None:
+        newFN = user.first_name
+        c += "s"
+    if newLN is None:
+        newLN = user.last_name
+        c += "e"
+    if OldPassword is None:
+        NewPassword = user.password
+        c += "v"
+    if len(c) is 3:
+        dictionary["errors"] = []
+        dictionary["errors"].append("You did not change anything.")
+        return render(request, 'app/managment.html', dictionary)
+    if not user.check_password(OldPassword):
+        dictionary["errors"] = []
+        dictionary["errors"].append("Old password is incorrect.")
+        return render(request, 'app/managment.html', dictionary)
+    if (NewPassword != ConfirmPassword):
+        dictionary["errors"] = []
+        dictionary["errors"].append("Passwords do not match.")
+        return render(request, 'app/managment.html', dictionary)
+    if (len(NewPassword) < 6):
+        dictionary["errors"] = []
+        dictionary["errors"].append("password min 6 charecters.")
+        return render(request, 'app/managment.html', dictionary)
+
+    # if newEmail is None:
+        # newEmail=user.email
+    # user_obj = User(first_name=newFN, last_name=newLN) #email=newEmail,
+    # username=newEmail
+    request.user.first_name = newFN
+    request.user.last_name = newLN
+
+    request.user.set_password(NewPassword)
+    request.user.save()
+    #authenticate(username=newEmail, password=NewPassword)
+    dictionary["errors"] = []
+    dictionary["errors"].append("Changed successfully.")
+    return render(request, 'app/managment.html', dictionary)
 
 
 def OrgSignUpRequest(request):
     dictionary = {"active": "registerTab"}
     name = request.POST.get('OrganizationName')
+    email = request.POST.get('OrganizationEmail')
     password = request.POST.get('OrganizationPassword')
     address = request.POST.get('OrganizationAddress')
-    number = request.POST.get('OrganizationPhoneNumber')
+    phone_number = request.POST.get('OrganizationPhoneNumber')
     description = request.POST.get('OrganizationDescription')
-    website = request.POST.get('website')
+    website = request.POST.get('OrganizationWebsite')
     if name is None \
-           or \
-           password is None or \
-           address is None or \
-           number is None or description is None:
+            or \
+            password is None or \
+            address is None or \
+            phone_number is None or description is None:
         dictionary["errors"] = ["Some of the fields are empty."]
         return render(request, 'app/OrgSignUp.html', dictionary)
-    if website is None :
-	website=""
-    if (Organization.objects.filter(name=name).count() != 0):
+    if website is None:
+        website = ""
+    if (User.objects.filter(email=email).count() != 0):
         dictionary["errors"] = [
             "This Organization already exists, redirected to login page"]
         return render(request, 'app/OrgSignUp.html', dictionary)
-    organization_obj = Organization(name=name, password=password, address=address, number=number, description=description,website=website)
+    organization_obj = Account(
+        address=address, phone_number=phone_number, description=description, website=website, isOrganization=True)
+
+    user_obj = User(username=email, email=email)
+    user_obj.set_password(password)
+    user_obj.save()
+
+    organization_obj.user = user_obj
+
     organization_obj.save()
     return redirect("/events")
-
 
 
 def signupRequest(request):
@@ -198,6 +237,16 @@ def signupRequest(request):
     return login_request(request, email, password)
 
 
+def login2(request):
+    dictionary = {"active": "LoginTab"}
+    try:
+        email = request.POST['emailAddress']
+        password = request.POST['password']
+    except MultiValueDictKeyError:
+        return redirect("/login")
+    return login_request(request, email, password)
+
+
 def login_request(request, email, password):
     user = authenticate(username=email, password=password)
     if user is not None:
@@ -209,16 +258,24 @@ def login_request(request, email, password):
         # password
         return redirect("/login")
 
-def Orglogin_request(request, name, password):
-    Org = authenticate(username=name, password=password)
-    if user is not None:
+
+def organization_login_request(request):
+    dictionary = {"active": "LoginTab"}
+    try:
+        email = request.POST['emailAddress']
+        password = request.POST['password']
+    except MultiValueDictKeyError:
+        return redirect("/organizationLogin")
+    organization = authenticate(
+        username=email, password=password, isOrganization=False)
+    if organization is not None:
         # user and password is correct
-        login(request, user)
+        login(request, organization)
         return redirect("/events")
     else:
         # the authentication system was unable to verify the username and
         # password
-        return redirect("/login")
+        return redirect("/organizationLogin")
 
 
 def showUsers(request):

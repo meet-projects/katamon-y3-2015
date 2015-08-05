@@ -6,24 +6,29 @@ import datetime
 
 
 class Account(models.Model):
-    isPalestinian = models.BooleanField()
+
+    # REGULAR CUSTOMERS FIELDS
+    isPalestinian = models.BooleanField(default="")
     # birthday = models.DateTimeField()
+
+    # ORGANIZATIONS FIELDS
+    name = models.CharField(max_length=30, default="")
+    phone_number = models.CharField(max_length=15, default="")
+    address = models.CharField(max_length=60, default="")
+    description = models.CharField(max_length=300, default="")
+    # logo = models.FileField(upload_to='app/static/app/img')
+    website = models.CharField(max_length=100, default="")
+
+    # BOTH FIELDS
     user = models.OneToOneField(User)
+    isOrganization = models.BooleanField(default=False)
+
+    # TODO - ensure uniqueness in user field.
 
     def __unicode__(self):
-
         return self.user.username + " " + self.user.email + " "
         # + str(self.birthday)
 # Event model
-
-
-class Organization(models.Model):
-    name = models.CharField(max_length=30)
-    phone_number = models.CharField(max_length=15)
-    address = models.CharField(max_length=60)
-    description = models.CharField(max_length=255)
-    #logo = models.FileField(upload_to='app/static/app/img')
-    website = models.CharField(max_length=100)
 
 
 class Event(models.Model):
@@ -31,20 +36,27 @@ class Event(models.Model):
     date = models.DateTimeField()
     duration = models.IntegerField()
     address = models.CharField(max_length=60)
-    description = models.CharField(max_length=255)
-    accounts = models.ManyToManyField(Account)
-    group_size = models.IntegerField()
-    organization = models.ForeignKey(Organization, default=None)
+    description = models.CharField(max_length=300)
+    accounts = models.ManyToManyField(Account, related_name='customer_events')
 
-    def addEvent(self, name, date, duration, address, description, accounts, group_size, organization):
-        self.name = name
-        self.date = date
-        self.duration = duration
-        self.address = address
-        self.description = description
-        self.accounts.add(accounts)
-        self.group_size = group_size
-        self.organization = organization
+    group_size = models.IntegerField()
+    organization = models.ForeignKey(
+        Account, default=None, related_name='org_events')
+
+    @staticmethod
+    def addEvent(name, date, duration, address, description, accounts, group_size, organization):
+        event = Event()
+        event.name = name
+        event.date = date
+        event.duration = duration
+        event.address = address
+        event.description = description
+        if not accounts is None:
+            event.accounts.add(accounts)
+        event.group_size = group_size
+        event.organization = organization
+
+        return event
 
     def getHtmlClasses(self):
         dayClasses = ["monday-day", "tuesday-day", "wednesday-day",
