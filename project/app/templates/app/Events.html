@@ -157,67 +157,41 @@
 	</div>
 	<div style="margin-top:50px;">
 	</div>
-	<!--
-	<div class="col-md-12 event animals-field monday-day morning-time events" style="margin-top:5%;" id="AnimalsInfo">
-		<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
-		<div class="row">
-			<div class="col-md-7 col-md-offset-2">
-				<a tabindex="0" class="btn btn-lg events" role="button" data-toggle="popover" 							data-trigger="focus" title="Tza'ar Ba'alei Chaim" data-content="Tza'ar Ba'alei Chaim (Jerusalem Society for the Prevention of Cruelty to Animals) is Jerusalem's largest animal shelter organization. The Society runs a shelter in the Atarot industrial area of Jerusalem - a shelter which has been in continuous operation since 1970. There is always plenty of work keeping the animals happy and healthy in J.S.P.C.A. Volunteers are needed in the shelter to perform the following tasks; Take dogs out for walks, clean the kennels, clean the cattery, help with laundry and general cleaning."><font color="#469245"><h5><b><i> Tza'ar Ba'alei Chaim </i></b></h5>
-					<p> Group Size: 15 volunteers </p>
-					<p> Time: 10:00am - 12:00am</p>
-					<p> Date: August 7rd, 2015</p>
-					<p> Location: Simtat HaMa'ayan 91190, Jerusalem </p>
-				</a></font>
-				{% if user.is_authenticated %}
-					<div style="margin-left:19%;">
-						<a href="#"><button class="green-btn">  Join </font></button></a>
-					</div>
-				{% endif %}
-				{% if not user.is_authenticated %}
-					<div style="margin-left:19%;">
-						<a href="/login"><button class="btn green-btn"> Login To Join</button></a>
-					</div>
-				{% endif %}
-				
->>>>>>> e3dd8e23e7747578c84969e48b478289cbf0c1e1
-			</div>
-			<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px class="col-md-1">
-			</div>
-		</div>
-		!-->
-		{% for event in events %}
-			<div class="row clearfix">
-				
-				<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
-					<div class="col-md-2">
-						<img src="{{STATIC_URL}}app/img/zedka.png" alt="..." class="img-thumbnail img-responsive">
-					</div>
-					<div class="col-md-6 col-md-offset-1">
-						<h5><b><i> {{ event.name }} </i></b></h5>
-						<p>
-							{{ event.description }}
-							<p> Group Size: {{ event.group_size }} volunteers </p>
-							<p> Time: {{ event|get_event_times }}</p>
-							<p> Date: {{ event.date }}</p>
-							<p> Location: {{ event.address }} </p>
-						</p>
-					</div>
-					<div class="col-md-3 event-container">
-						{% if user.is_authenticated %}
-							<div class="event-center">
-								<button class="btn green-btn">  Join </button>
-							</div>
-						{% else %}
-							<div class="event-center">
-								<a class="btn green-btn event-center" align="middle" style="vertical-align:middle;"> Login To Join </button>
-								</a>
-							</div>
-						{% endif %}
-					</div>
+	{% for event in events %}
+		<div class="row clearfix">
+			
+			<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
+				<div class="col-md-2">
+					<a tabindex="0" data-placement="left" role="button" data-toggle="popover" data-trigger="focus" title="{{ event.organization.name }}" data-content="{{ event.organization.description }}">
+						<img src="{{STATIC_URL}}app/img/zedka.png" class="img-responsive img-thumbnail"  alt="..." >
+					</a>
+				</div>
+				<div class="col-md-6 col-md-offset-1">
+					<h3><b><i> {{ event.name }} </i></b></h3>
+					<p>
+						<h4>{{ event.description }}</h4>
+						<p> <b>Group Size:</b> {{ event.group_size }} volunteers </p>
+						<p> <b>Time:</b> {{ event|get_event_times }}</p>
+						<p> <b>Date:</b> {{ event.date }}</p>
+						<p> <b>Location:</b> {{ event.address }} </p>
+					</p>
+				</div>
+				<div class="col-md-3">
+					{% if user.is_authenticated %}
+						<div>
+							<button class="btn green-btn" style="margin-top:20px;">  Join </button>
+						</div>
+					{% else %}
+						<div>
+							<a class="btn green-btn" align="middle" style="margin-top:20px;"> Login To Join </button>
+							</a>
+						</div>
+					{% endif %}
 				</div>
 			</div>
-			<hr>
-		{% endfor %}
-	</div>
+		</div>
+		<hr>
+	{% endfor %}
+</div>
 </div>
 {% endblock %}
