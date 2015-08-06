@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 
-from app.models import Account, User, Event
+from app.models import *
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -48,7 +48,8 @@ def signup(request):
 
 
 def addEvent(request):
-    dictionary = {"active": "registerTab"}
+    dictionary = {"active": "registerTab",
+                  "categories": EventCategory.objects.all()}
     if request.user.is_authenticated() and request.user.account.isOrganization == True:
         return render(request, 'app/addevent.html', dictionary)
     return redirect("/home/")
@@ -60,7 +61,8 @@ def aboutus(request):
 
 
 def events(request):
-    dictionary = {"active": "eventsTab"}
+    dictionary = {
+        "active": "eventsTab", "categories": EventCategory.objects.all()}
     dictionary["events"] = Event.objects.all()
     return render(request, 'app/Events.html', dictionary)
 
@@ -106,6 +108,7 @@ def addEvent_request(request):
     dateHour = request.POST.get('dateHour')
     dateMinute = request.POST.get('dateMinute')
     group_size = request.POST.get('groupSize')
+    category = request.POST.get('category')
 
     if not request.user.account.isOrganization:
         return HttpResponse("This account doesn't have the permission to do that.")
@@ -119,7 +122,7 @@ def addEvent_request(request):
         int(dateYear), int(dateMonth), int(dateDay), int(dateHour), int(dateMinute))
 
     event = Event.addEvent(
-        eventName, date, duration, address, description, None, group_size, organization)
+        eventName, date, duration, address, description, None, group_size, organization, category)
     event.save()
     return redirect("/manageEvents/")
 
@@ -203,7 +206,7 @@ def OrgSignUpRequest(request):
             "This Organization already exists, redirected to login page"]
         return render(request, 'app/OrgSignUp.html', dictionary)
     organization_obj = Account(
-        address=address, phone_number=phone_number, description=description, website=website, isOrganization=True)
+        address=address, phone_number=phone_number, description=description, website=website, isOrganization=True, name=name)
 
     user_obj = User(username=email, email=email)
     user_obj.set_password(password)

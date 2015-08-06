@@ -58,140 +58,160 @@
 		$("select").change(function(){
 			refreshEvents($("#fieldSelect"), $("#timeSelect"), $("#weekDaySelect"))
 			});
+		$('#join-event-modal').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget); // Button that triggered the modal
+		var eventName = button.data('event-name'); // Extract info from data-* attributes
+		var eventDescription = button.data('event-description');
+		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		var modal = $(this);
+		modal.find('.modal-title').text('Join to ' + eventName);
+		modal.find('.modal-body').text(eventDescription);
+		});
 	});
 	</script>
-	<div class="container cover col-md-12" style="width:100%;" >
-		<div class="fixedPos col-md-12" style="background-color: rgba(255,255,255, 0.8)">
-			<div class="col-md-10 col-md-offset-1">
+	<!-- Modal -->
+	<div class="modal fade" id="join-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-event-description">
+					</h4>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label morning-time">Day:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success">Join</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixedPos col-md-12" style="background-color: rgba(255,255,255, 0.8)">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="form-group">
+				<label class="sr-only" for="sortTextBox">Sort</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
+					<div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2" id="sortDiv">
+			<form class="form-horizontal">
 				<div class="form-group">
-					<label class="sr-only" for="sortTextBox">Sort</label>
-					<div class="input-group">
-						<input type="text" class="form-control" id="sortTextBox" placeholder="Sort By">
-						<div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+					<label for="inputFields" class="col-sm-2 control-label">Category:</label>
+					<div class="col-sm-10">
+						<select id="fieldSelect" multiple="multiple">
+							
+							{% for category in categories %}
+								<option value="{{ category|category_html_class }}">{{ category.name }}</option>
+							{% endfor %}
+						</select>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2" id="sortDiv">
-				<form class="form-horizontal">
-					<div class="form-group">
-						<label for="inputFields" class="col-sm-2 control-label">Fields:</label>
-						<div class="col-sm-10">
-							<select id="fieldSelect" multiple="multiple">
-								<option value="elderly-people-field">
-									Elderly People
-								</option>
-								<option value="animals-field">
-									Animals
-								</option>
-								<option value="ill-people-field">
-									Ill People
-								</option>
-								<option value="children-field">
-									Children
-								</option>
-								<option value="handicapped-field">
-									Handicapped
-								</option>
-								<option value="technical-works-field">
-									Technical Works
-								</option>
-								<option value="youth-field">
-									Youth at Risk
-								</option>
-							</select>
-						</div>
+				<div class="form-group">
+					<label for="inputTime" class="col-sm-2 control-label">Time:</label>
+					<div class="col-sm-10">
+						<select id="timeSelect" multiple="multiple">
+							
+							<option value="morning-time">
+								Morning
+							</option>
+							<option value="noon-time">
+								Noon
+							</option>
+							<option value="afternoon-time">
+								Afternoon
+							</option>
+							<option value="evening-time">
+								Evening
+							</option>
+						</select>
 					</div>
-					<div class="form-group">
-						<label for="inputTime" class="col-sm-2 control-label">Time:</label>
-						<div class="col-sm-10">
-							<select id="timeSelect" multiple="multiple">
-								<option value="morning-time">
-									Morning
-								</option>
-								<option value="noon-time">
-									Noon
-								</option>
-								<option value="afternoon-time">
-									Afternoon
-								</option>
-								<option value="evening-time">
-									Evening
-								</option>
-							</select>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
-						<div class="col-sm-10">
-							<select id="weekDaySelect" multiple="multiple">
-								<option value="monday-day">
-									Monday
-								</option>
-								<option value="tuesday-day">
-									Tuesday
-								</option>
-								<option value="wednesday-day">
-									Wednesday
-								</option>
-								<option value="thursday-day">
-									Thursday
-								</option>
-								<option value="friday-day">
-									Friday
-								</option>
-								<option value="saturday-day">
-									Saturday
-								</option>
-								<option value="sunday-day">
-									Sunday
-								</option>
-							</select>
-						</div>
-					</div>
-					
-				</form>
+				</div>
 				
-			</div>
-		</div>
-	</div>
-	<div style="margin-top:50px;">
-	</div>
-	{% for event in events %}
-		<div class="row clearfix">
+				<div class="form-group">
+					<label for="inputDay" class="col-sm-2 control-label morning-time">Day:</label>
+					<div class="col-sm-10">
+						<select id="weekDaySelect" multiple="multiple">
+							
+							<option value="monday-day">
+								Monday
+							</option>
+							<option value="tuesday-day">
+								Tuesday
+							</option>
+							<option value="wednesday-day">
+								Wednesday
+							</option>
+							<option value="thursday-day">
+								Thursday
+							</option>
+							<option value="friday-day">
+								Friday
+							</option>
+							<option value="saturday-day">
+								Saturday
+							</option>
+							<option value="sunday-day">
+								Sunday
+							</option>
+						</select>
+					</div>
+				</div>
+				
+			</form>
 			
-			<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
-				<div class="col-md-2">
-					<a tabindex="0" data-placement="left" role="button" data-toggle="popover" data-trigger="focus" title="{{ event.organization.name }}" data-content="{{ event.organization.description }}">
-						<img src="{{STATIC_URL}}app/img/zedka.png" class="img-responsive img-thumbnail"  alt="..." >
-					</a>
-				</div>
-				<div class="col-md-6 col-md-offset-1">
-					<h3><b><i> {{ event.name }} </i></b></h3>
-					<p>
-						<h4>{{ event.description }}</h4>
-						<p> <b>Group Size:</b> {{ event.group_size }} volunteers </p>
-						<p> <b>Time:</b> {{ event|get_event_times }}</p>
-						<p> <b>Date:</b> {{ event.date }}</p>
-						<p> <b>Location:</b> {{ event.address }} </p>
-					</p>
-				</div>
-				<div class="col-md-3">
-					{% if user.is_authenticated %}
-						<div>
-							<button class="btn green-btn" style="margin-top:20px;">  Join </button>
-						</div>
-					{% else %}
-						<div>
-							<a class="btn green-btn" align="middle" style="margin-top:20px;"> Login To Join </button>
-							</a>
-						</div>
-					{% endif %}
-				</div>
+		</div>
+	</div>
+</div>
+<div style="margin-top:50px;">
+</div>
+{% for event in events %}
+	<div class="row clearfix">
+		
+		<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
+			<div class="col-md-2">
+				<a tabindex="0" data-placement="left" role="button" data-toggle="popover" data-trigger="focus" title="{{ event.organization.name }}" data-content="{{ event.organization.description }}">
+					<img src="{{STATIC_URL}}app/img/zedka.png" class="img-responsive img-thumbnail"  alt="..." >
+				</a>
+			</div>
+			<div class="col-md-6 col-md-offset-1">
+				<h3><b><i> {{ event.name }} </i></b></h3>
+				<p>
+					<h4>{{ event.description }}</h4>
+					<p> <b>Group Size:</b> {{ event.group_size }} volunteers </p>
+					<p> <b>Time:</b> {{ event|get_event_times }}</p>
+					<p> <b>Date:</b> {{ event.date }}</p>
+					<p> <b>Location:</b> {{ event.address }} </p>
+				</p>
+				<hr>
+			</div>
+			<div class="col-md-3">
+				{% if user.is_authenticated %}
+					<div>
+						<button class="btn green-btn" style="margin-top:20px;" data-toggle="modal" data-target="#join-event-modal" data-event-name="{{ event.name }}" data-event-description="{{ event.description }}">Join</button>
+					</div>
+				{% else %}
+					<div>
+						<a class="btn green-btn" align="middle" style="margin-top:20px;"> Login To Join </button>
+						</a>
+					</div>
+				{% endif %}
 			</div>
 		</div>
-		<hr>
-	{% endfor %}
+	</div>
+	
+{% endfor %}
 </div>
 </div>
 {% endblock %}

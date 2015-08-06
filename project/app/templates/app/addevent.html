@@ -2,8 +2,7 @@
 {% load filters %}
 {%block title %} Add Volunteer Events{% endblock %}
 % block externalLinkRels %}
-   <link rel="stylesheet" href="{{STATIC_URL}}app/css/green-button.css" type="text/css" />
-
+<link rel="stylesheet" href="{{STATIC_URL}}app/css/green-button.css" type="text/css" />
 {% block body %}
 <script>
 {% for error in errors %}
@@ -43,6 +42,19 @@
             <div class="form-group">
                <label for="InputTime">Duration</label>
                <input type="text" class="form-control" id="input-time" name="duration" placeholder="Event Duration" >
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6 col-md-offset-2">
+            <div class="form-group">
+               <label for="input-category">Category</label>
+               <select class="form-control" id="input-category" name="category">
+                  <option value="" selected disabled >Select Category..</option>
+                  {% for category in categories %}
+                     <option value="{{ category.id }}">{{ category.name }}</option>
+                  {% endfor %}
+               </select>
             </div>
          </div>
       </div>
@@ -97,7 +109,7 @@
             </div>
          </div>
       </div>
-          <div class="row">
+      <div class="row">
          <div class="col-md-1 col-md-offset-2">
             <label for ="dateOption">Time</label>
          </div>
@@ -119,14 +131,6 @@
                      <option value="{{ i }}">{{ i }}</option>
                   {% endfor %}
                </select>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-6 col-md-offset-2">
-            <div class="form-group">
-               <label for="input-groupSize">Group Size</label>
-               <input type="text" class="form-control" id="input-groupSize" name="groupSize" placeholder="Group Size" >
             </div>
          </div>
       </div>

@@ -31,6 +31,13 @@ class Account(models.Model):
 # Event model
 
 
+class EventCategory(models.Model):
+    name = models.CharField(max_length=30)
+
+    def getCategoryClassName(self):
+        return self.name.replace(" ", "_") + "-category"
+
+
 class Event(models.Model):
     name = models.CharField(max_length=30)
     date = models.DateTimeField()
@@ -38,13 +45,14 @@ class Event(models.Model):
     address = models.CharField(max_length=60)
     description = models.CharField(max_length=300)
     accounts = models.ManyToManyField(Account, related_name='customer_events')
+    category = models.ForeignKey(EventCategory, null=True)
 
     group_size = models.IntegerField()
     organization = models.ForeignKey(
         Account, default=None, related_name='org_events')
 
     @staticmethod
-    def addEvent(name, date, duration, address, description, accounts, group_size, organization):
+    def addEvent(name, date, duration, address, description, accounts, group_size, organization, category):
         event = Event()
         event.name = name
         event.date = date
@@ -55,6 +63,7 @@ class Event(models.Model):
             event.accounts.add(accounts)
         event.group_size = group_size
         event.organization = organization
+        event.category = EventCategory.objects.get(id=category)
 
         return event
 
@@ -73,7 +82,7 @@ class Event(models.Model):
             htmlClasses.append("evening-time")
     # attendees
 
-        htmlClasses.append("handicapped-field")
+        htmlClasses.append(self.category.getCategoryClassName())
 
         return htmlClasses
 

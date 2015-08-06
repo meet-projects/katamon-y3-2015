@@ -37,3 +37,8 @@ def get_event_times(event):
                                 event.date.day, event.date.hour + event.duration, event.date.minute)
 
     return event.date.strftime("%H:%M") + " ~ " + endDate.strftime("%H:%M")
+
+
+@register.filter
+def category_html_class(category):
+    return category.getCategoryClassName()
