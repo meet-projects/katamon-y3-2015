@@ -1,4 +1,4 @@
-.btn {
+.green-btn {
   background: #18a11f;
   background-image: -webkit-linear-gradient(top, #18a11f, #219623);
   background-image: -moz-linear-gradient(top, #18a11f, #219623);
@@ -15,7 +15,7 @@
   text-decoration: none;
 }
 
-.btn:hover {
+.green-btn:hover {
   background: #26c92b;
   background-image: -webkit-linear-gradient(top, #26c92b, #31bf1b);
   background-image: -moz-linear-gradient(top, #26c92b, #31bf1b);
