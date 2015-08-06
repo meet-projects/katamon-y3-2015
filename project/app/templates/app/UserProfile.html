@@ -5,33 +5,29 @@
 href='{{STATIC_URL}}app/css/UserProfile.css'>
 {% endblock %}
 {% block body %}
-
-
+<style type="text/css">
+	body{
+background-image: url("/static/app/img/trees.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}
+</style>
 <div class="GreenBOX row col-md-offset-1">
-    <h1 id="OrgSignUp" style="font-size:80px;">Profile</h1>
+	<h1 id="OrgSignUp" style="font-size:80px;">Profile</h1>
 </div>
 <br />
-<div class="row">
+<div class="row" style="font-size:20px;">
 	<div class="col-md-2 col-md-offset-1">
 		<img src="{{STATIC_URL}}app/img/ProfilePic.jpeg"  class="pic2">
-			<div class="row col-md-2 col-md-offset-2"><p><b> {{user.first_name}} {{user.last_name}} </b></p></div>
-			<div class="row col-md-2 col-md-offset-2"><p><b> {{user.email}} </b></p></div>
-			<div class="row col-md-2 col-md-offset-2"><p><b> {% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %} </b></p></div>
-	</div>		
-<!-- <div class="row">
-	<div class="col-md-3 col-md-offset-1">
+	</div>
+	<div class="col-md-3 col-md-offset-2">
 		<p><b> {{user.first_name}} {{user.last_name}} </b></p>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-3 col-md-offset-4">
+	<div class="col-md-3 col-md-offset-2">
 		<p for=""><b>{{user.email}}</b></p>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-3 col-md-offset-4">
+	<div class="col-md-3 col-md-offset-2">
 		<p for=""><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b></p>
 	</div>
 </div>
-
 {% endblock %}
