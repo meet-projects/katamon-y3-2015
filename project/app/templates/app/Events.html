@@ -155,6 +155,9 @@
 			</div>
 		</div>
 	</div>
+	<div style="margin-top:50px;">
+	</div>
+	<!--
 	<div class="col-md-12 event animals-field monday-day morning-time events" style="margin-top:5%;" id="AnimalsInfo">
 		<h3 class="col-md-offset-1" id="ANIMALS"> Animals </h3>
 		<div class="row">
@@ -180,8 +183,9 @@
 			<div id="treepic" style="background-image:  url('{{STATIC_URL}}app/img/tree.jpg'); margin-top:50px;" width=200px height=300px class="col-md-1">
 			</div>
 		</div>
+		!-->
 		{% for event in events %}
-			<div class="row">
+			<div class="row clearfix">
 				
 				<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
 					<div class="col-md-2">
@@ -197,14 +201,14 @@
 							<p> Location: {{ event.address }} </p>
 						</p>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 event-container">
 						{% if user.is_authenticated %}
-							<div>
+							<div class="event-center">
 								<button class="btn green-btn">  Join </button>
 							</div>
 						{% else %}
-							<div>
-								<a class="btn green-btn"> Login To Join </button>
+							<div class="event-center">
+								<a class="btn green-btn event-center" align="middle" style="vertical-align:middle;"> Login To Join </button>
 								</a>
 							</div>
 						{% endif %}
