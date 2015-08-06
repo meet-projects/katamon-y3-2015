@@ -1,5 +1,9 @@
 {% extends "app/base.html" %}
 {%block title %} Log In {% endblock %}
+{%block externalLinkRels %}
+<link rel="stylesheet" type="text/css"
+href='{{STATIC_URL}}app/css/login.css'>
+{% endblock %}
 {% block body %}
 <div class="GreenBOX row">
 	<h1 style="margin-left:9.5%;">
