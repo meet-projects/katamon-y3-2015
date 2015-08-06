@@ -11,7 +11,7 @@ href='{{STATIC_URL}}app/css/UserProfile.css'>
 <br><br>
 <div class="row">
 	<div class="col-md-6 col-md-offset-1">
-		<form class="form-inline">
+		<div class="form-inline">
 		  <div class="form-group">
 		    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 		    <div class="input-group">
@@ -20,8 +20,12 @@ href='{{STATIC_URL}}app/css/UserProfile.css'>
 		      <div class="input-group-addon">.00</div>
 		    </div>
 		  </div>
-		  <button onclick="Thanks()" class="btn btn-primary">Transfer cash</button>
-		</form>
+		  {% if user.is_authenticated %}
+		  		<button onclick="Thanks()" class="btn btn-primary">Transfer cash</button>
+		  {% else %}
+		  		<button onclick="window.location.href='/'" class="btn btn-primary">Log In First</button>
+		  {% endif %}
+		</div>
 	</div>	
 	<div class="row" style="font-size:20px;" style="width:100% ">
 		<div class="col-md-6 col-md-offset-1">
