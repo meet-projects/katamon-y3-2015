@@ -11,7 +11,7 @@ href='{{STATIC_URL}}app/css/UserProfile.css'>
 <br><br>
 <div class="row">
 	<div class="col-md-6 col-md-offset-1">
-		<form class="form-inline">
+		<div class="form-inline">
 		  <div class="form-group">
 		    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 		    <div class="input-group">
@@ -20,8 +20,34 @@ href='{{STATIC_URL}}app/css/UserProfile.css'>
 		      <div class="input-group-addon">.00</div>
 		    </div>
 		  </div>
-		  <button type="submit" class="btn btn-primary">Transfer cash</button>
-		</form>
-	</div>			
+		  {% if user.is_authenticated %}
+		  		<button onclick="Thanks()" class="btn btn-primary">Transfer cash</button>
+		  {% else %}
+		  		<button onclick="window.location.href='/'" class="btn btn-primary">Log In First</button>
+		  {% endif %}
+		</div>
+	</div>	
+	<div class="row" style="font-size:20px;" style="width:100% ">
+		<div class="col-md-6 col-md-offset-1">
+			<b>
+			<p>Real generosity is doing something nice for someone who will never find out.</p>
+			</b>
+			<img src="{{STATIC_URL}}app/img/generosity.jpeg" id="g" style="position:absolute;display:none;border-radius:90px;">
+		</div>
+	</div>		
 </div>
+<script type="text/javascript">
+	function Thanks(){
+		var s= document.getElementById("exampleInputAmount").value;
+		s=parseInt(s);
+		if (s>0){
+			alert("Thank you for your generosity, you donated "+ s + "$");
+			document.getElementById("g").style.display="block";
+
+		}
+		else {
+			alert("you didn't put amount of money!");
+		}
+	}
+</script>
 {% endblock %}
