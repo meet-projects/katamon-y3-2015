@@ -1,19 +1,37 @@
 {% extends "app/base.html" %}
-{%block title %} About us {% endblock %}
+{%block title %} Profile {% endblock %}
 {%block externalLinkRels %}
 <link rel="stylesheet" type="text/css"
 href='{{STATIC_URL}}app/css/UserProfile.css'>
 {% endblock %}
 {% block body %}
-<table>
-	<tr>
-		<td><b>Name:</b></td><td>{{user.first_name}} {{user.last_name}}</td>
-	</tr>
-	<tr>
-		<td><b>Email:</b></td><td>{{user.email}}</td>
-	</tr>
-	<tr>
-		<td><b>Nationality:</b></td><td> {% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</td>
-	</tr>
-</table>
+<div class="GreenBOX row col-md-offset-1">
+    <h1 id="OrgSignUp" style="font-size:80px;">Profile</h1>
+</div>
+<div class="row">
+	<div class="col-md-6 col-md-offset-1">
+		<img src="{{STATIC_URL}}app/img/ProfilePic.jpeg"  class="pic2">
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<div class="form-group">
+				<label for="OrgName"><b> {{user.first_name}} {{user.last_name}} </b></label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<div class="form-group">
+				<label for="OrgEmail"><b>{{user.email}}</b></label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<div class="form-group">
+				<label for="OrgEmail"><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b> </label>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
