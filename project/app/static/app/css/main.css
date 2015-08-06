@@ -35,3 +35,9 @@ label{
 	background-repeat:none;
 	
 }
+#org{
+	position: absolute;
+	font-size: 20px;
+	top:140px;
+	right:100px;
+}
