@@ -41,3 +41,21 @@ label{
 	top:140px;
 	right:100px;
 }
+
+.btn1 {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 15px;
+  background: #469245;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-right: 100px;
+}
+
+.btn1:hover {
+  background: #1bb31d;
+  text-decoration: none;
+}
