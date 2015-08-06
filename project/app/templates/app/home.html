@@ -1,29 +1,26 @@
-{% extends "app/base.html" %} 
-
+{% extends "app/base.html" %}
 {%block title %} Welcome to VolunTeam {% endblock %}
-
 {% block externalLinkRels %}
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href='{{STATIC_URL}}app/css/home.css'>
 {% endblock %}
-
 {% block body %}
-
 	<div class="row">
 		<div class="col-md-12 center-block">
-	<!--		<p id="briefExplanation" class="text-center">
-			VolunTeam is a free and simple platform that enables<br>
-			Palestinians and Israelis to contribute to the community by volunteering together
+			<!--		<p id="briefExplanation" class="text-center">
+				VolunTeam is a free and simple platform that enables<br>
+				Palestinians and Israelis to contribute to the community by volunteering together
 			</p> !-->
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			{% if not user.is_authenticated %}		
-			<a href="/signup/"><button class="btn btn-default center-block" id="joinUs">Join Us</button></a>
-			<br>
-			<p id="orLogin" class="text-center">or <a href="/login"><b>Login</b></a></p>
-			{% endif %}
+			{% if not user.is_authenticated %}
+				<a href="/signup/"><button class="btn btn-default center-block" id="joinUs">Join Us</button></a>
+				<br>
+				<p id="orLogin" class="text-center">or <a href="/login"><b>Login</b></a></p>
+				
+			</div>
 		</div>
-	</div>
-	<div class="row">
-	<a href="/OrgSignUp"><button style="width:200px;margin-left:20px;"><b>Sign up as an organization</b></button></a>
-	</div>
+		<div class="row">
+			<a href="/OrgSignUp"><button style="width:200px;margin-left:20px;"><b>Sign up as an organization</b></button></a>
+		</div>
+	{% endif %}
 {% endblock %}
