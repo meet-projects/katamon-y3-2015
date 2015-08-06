@@ -7,15 +7,18 @@
 .Pics{
 	transition: width 1s, height 1s;
 }
+
 .Pics:hover{
-	width:140px;
-	height:140px;	
+	width:130px;
+	height:130px;	
 }
+
 table
 { width:300px;
 height:300px;
 font-size:40px;
 }
+
 .img-round {
 	width: 100px;
 	height: 100px;
@@ -62,46 +65,46 @@ p.padding {
 }
 #Itay{
 	position: absolute;
-	top: 120px;
-	right:100px;
+	top: 140px;
+	right:130px;
 }
 #Aseel{
 	position: absolute;
-	top: 235px;
-	right:100px;
+	top: 255px;
+	right:130px;
 }
 
 #Shadi{
 	position: absolute;
-	top: 120px;
-	right:240px;
+	top: 140px;
+	right:270px;
 }
 
 #Shir{
 	position: absolute;
-	top: 235px;
-	right:240px;
+	top: 255px;
+	right:270px;
 }
 
 #Wassim{
 	position: absolute;
-	top: 430px;
-	left: 20px;
+	top: 380px;
+	left: 60px;
 }
 #Yael{
 	position: absolute;
-	top: 575px;
+	top: 495px;
 	left:200px;
 }
 
 #Leen{
 	position: absolute;
-	top: 430px;
+	top: 380px;
 	left:200px;
 }
 
 #Mouhammad{
 	position: absolute;
-	top: 575px;
-	left:20px;
+	top: 495px;
+	left:60px;
 }

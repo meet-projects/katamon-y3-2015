@@ -1,0 +1,18 @@
+#img1{
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10%;
+    transition: width 1s, height 1s;
+}   
+
+#img2 {
+    display:none;
+    margin: 100px 100px 100px 100px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}

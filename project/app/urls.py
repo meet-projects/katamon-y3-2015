@@ -32,4 +32,7 @@ urlpatterns = patterns('',
 
                        url(r'^manageEvents/$',
                            views.manage_events, name='managment'),
+                       url(r'^photos/$', views.photos, name='photos'),
+                       url(r'^UserProfile/$', views.UserProfile,
+                           name='UserProfile'),
                        )

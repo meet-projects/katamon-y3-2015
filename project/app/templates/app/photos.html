@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{%block title %} Previous Events Photos{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css"
+	href='{{STATIC_URL}}app/css/photos.css'>
+	<script type="text/javascript"> </script>
+	<script src="{{STATIC_URL}}app/js/jquery.multiple.select.js"></script>
+	<script>
+
+document.getElementById( "img1" ).onclick = function() {
+    document.getElementById( "img2" ).style.display= "inline";
+};
+
+</script>
+<div id="slideshow">
+    <img id="img1" src="{{STATIC_URL}}app/img/Itay.jpg">
+    <img id="img2" src="{{STATIC_URL}}app/img/Shadi.jpg">
+    <img id="img1" src="{{STATIC_URL}}app/img/Leen.jpg">
+</div>
+{% endblock %}

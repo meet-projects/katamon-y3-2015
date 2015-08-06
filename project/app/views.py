@@ -35,6 +35,11 @@ def logoutrequest(request):
     return redirect("/")
 
 
+def UserProfile(request):
+    dictionary = {"active": "UserProfileTab", "user": request.user}
+    return render(request, 'app/UserProfile.html', dictionary)
+
+
 def signup(request):
     if request.user.is_authenticated():
         return redirect("/home/")
@@ -70,6 +75,9 @@ def volunteam(request):
     dictionary = {"active": "VolunTeamTab"}
     return render(request, 'app/volunteam.html', dictionary)
 
+def photos(request):
+    dictionary = {"active": "PhotosTab"}
+    return render(request, 'app/photos.html', dictionary)
 
 def OrgSignUp(request):
     if request.user.is_authenticated():
@@ -115,6 +123,8 @@ def managment(request):
         return render(request, 'app/managment.html', dictionary)
     else:
         return redirect("/login")
+
+
 
 
 @login_required
