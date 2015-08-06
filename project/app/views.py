@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 import datetime
+import pdb
 
 
 # Create your views here.
@@ -59,6 +60,12 @@ def events(request):
     return render(request, 'app/Events.html', dictionary)
 
 
+def manage_events(request):
+    dictionary = {"active": "manageEventsTab"}
+    dictionary["events"] = Event.objects.all()
+    return render(request, 'app/manageEvents.html', dictionary)
+
+
 def volunteam(request):
     dictionary = {"active": "VolunTeamTab"}
     return render(request, 'app/volunteam.html', dictionary)
@@ -72,28 +79,34 @@ def OrgSignUp(request):
 
 
 def addEvent_request(request):
+    dictionary = {"active": "manageEventsTab"}
+
     eventName = request.POST.get('eventName')
     description = request.POST.get('description')
     address = request.POST.get('location')
-    time = request.POST.get('time')
+    duration = request.POST.get('duration')
     dateDay = request.POST.get('dateDay')
     dateMonth = request.POST.get('dateMonth')
     dateYear = request.POST.get('dateYear')
+    dateHour = request.POST.get('dateHour')
+    dateMinute = request.POST.get('dateMinute')
     group_size = request.POST.get('groupSize')
 
-    if not request.user.isOrganization:
+    if not request.user.account.isOrganization:
         return HttpResponse("This account doesn't have the permission to do that.")
-    organization = request.user
+    organization = request.user.account
 
-    if eventName is None or description is None or location is None or time is None or dateDay is None or dateMonth is None or dateYear is None:
+    if eventName is None or description is None or address is None or duration is None or dateDay is None or dateMonth is None or dateYear is None:
         dictionary["errors"] = ["Some of the fields are empty."]
-        return render(request, 'app/OrgSignUp.html', dictionary)
+        return render(request, 'app/addevent.html', dictionary)
 
     date = datetime.datetime(
-        int(dateYear), int(dateMonth), int(dateDay))
+        int(dateYear), int(dateMonth), int(dateDay), int(dateHour), int(dateMinute))
 
     event = Event.addEvent(
         eventName, date, duration, address, description, None, group_size, organization)
+    event.save()
+    return redirect("/manageEvents/")
 
 
 def managment(request):
@@ -150,7 +163,7 @@ def managment2(request):
 
     request.user.set_password(NewPassword)
     request.user.save()
-    #authenticate(username=newEmail, password=NewPassword)
+    # authenticate(username=newEmail, password=NewPassword)
     dictionary["errors"] = []
     dictionary["errors"].append("Changed successfully.")
     return render(request, 'app/managment.html', dictionary)
@@ -165,11 +178,7 @@ def OrgSignUpRequest(request):
     phone_number = request.POST.get('OrganizationPhoneNumber')
     description = request.POST.get('OrganizationDescription')
     website = request.POST.get('OrganizationWebsite')
-    if name is None \
-            or \
-            password is None or \
-            address is None or \
-            phone_number is None or description is None:
+    if name is None or password is None or address is None or phone_number is None or description is None:
         dictionary["errors"] = ["Some of the fields are empty."]
         return render(request, 'app/OrgSignUp.html', dictionary)
     if website is None:
@@ -203,14 +212,7 @@ def signupRequest(request):
     birthdayYear = request.POST.get('birthdayYear')
     nationality = request.POST.get('nationality')
 
-    if firstName is None \
-            or \
-            lastName is None or \
-            password is None or \
-            email is None or \
-            birthdayDay is None or \
-            birthdayMonth is None or \
-            birthdayYear is None or nationality is None:
+    if firstName is None or lastName is None or password is None or email is None or birthdayDay is None or birthdayMonth is None or birthdayYear is None or nationality is None:
         dictionary["errors"] = ["Some of the fields are empty."]
         return render(request, 'app/signup.html', dictionary)
 

@@ -1,0 +1,40 @@
+{% extends "app/base.html" %}
+{% load filters %}
+{%block title %} Events {% endblock %}
+{% block externalLinkRels %}
+{% endblock %}
+{% block body %}
+<div class="container cover col-md-12" style="width:100%;" >
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<a href="/addEvent"><button>Add a new event</button></a>
+		</div>
+	</div>
+	{% for event in events %}
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
+				<h5><b><i> {{ event.name }} </i></b></h5>
+				<p>
+					{{ event.description }}
+					<p> Group Size: {{ event.group_size }} volunteers </p>
+					<p> Time: {{ event|get_event_times }}</p>
+					<p> Date: {{ event.date }}</p>
+					<p> Location: {{ event.address }} </p>
+				</p>
+				{% if user.is_authenticated %}
+					<div style="margin-left:19%;">
+						<button class="btn btn-lg" style="background-color: #60FC72;width:140px;">  Join </button>
+					</div>
+				{% else %}
+					<div style="margin-left:19%;">
+						<a href="login.html"><button class="btn btn-lg" style="background-color: #60FC72;width:140px;"> Login To Join </button>
+						</a>
+					</div>
+
+				</div>
+			{% endif %}
+			<hr>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
