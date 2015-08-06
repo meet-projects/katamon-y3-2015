@@ -5,33 +5,33 @@
 href='{{STATIC_URL}}app/css/UserProfile.css'>
 {% endblock %}
 {% block body %}
+
+
 <div class="GreenBOX row col-md-offset-1">
     <h1 id="OrgSignUp" style="font-size:80px;">Profile</h1>
 </div>
+<br />
 <div class="row">
-	<div class="col-md-6 col-md-offset-1">
+	<div class="col-md-2 col-md-offset-1">
 		<img src="{{STATIC_URL}}app/img/ProfilePic.jpeg"  class="pic2">
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-1">
-			<div class="form-group">
-				<label for="OrgName"><b> {{user.first_name}} {{user.last_name}} </b></label>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-1">
-			<div class="form-group">
-				<label for="OrgEmail"><b>{{user.email}}</b></label>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-1">
-			<div class="form-group">
-				<label for="OrgEmail"><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b> </label>
-			</div>
-		</div>
+			<div class="row col-md-2 col-md-offset-2"><p><b> {{user.first_name}} {{user.last_name}} </b></p></div>
+			<div class="row col-md-2 col-md-offset-2"><p><b> {{user.email}} </b></p></div>
+			<div class="row col-md-2 col-md-offset-2"><p><b> {% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %} </b></p></div>
+	</div>		
+<!-- <div class="row">
+	<div class="col-md-3 col-md-offset-1">
+		<p><b> {{user.first_name}} {{user.last_name}} </b></p>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-4">
+		<p for=""><b>{{user.email}}</b></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-4">
+		<p for=""><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b></p>
+	</div>
+</div>
+
 {% endblock %}
