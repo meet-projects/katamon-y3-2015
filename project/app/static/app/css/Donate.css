@@ -1,0 +1,9 @@
+p {
+text-shadow: 5px 5px 5px #ccc;
+filter: dropshadow(color=#ccc, offx=5, offy=5);
+} 
+body{
+background-image: url("/static/app/img/trees.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}

@@ -9,34 +9,13 @@
 	height:300px;
 	border-radius:50px;
 }
-p {
-    background-color: transparent;
-}
 
-p.padding {
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-}
-.box1 {
-	color:#469245;
-	font-size: 30px;
-}
-.box2 {
-	margin-top: 3%;
-	width: 70%;
-	font-size:25px; 
-	color:#469245;
-	box-shadow: 10px 20px 20px 0px
-}
-.box3 {
-	margin-top: 5%;
-	margin-left: 18%;
-	font-size:25px; 
-	color:#469245;
-	box-shadow: 10px 20px 20px 0px
-}
-.relative1 {
-  position: relative;
+p {
+text-shadow: 5px 5px 5px #ccc;
+filter: dropshadow(color=#ccc, offx=5, offy=5);
+} 
+body{
+background-image: url("/static/app/img/trees.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
 }

@@ -84,7 +84,7 @@ def Donate(request):
 
 
 def photos(request):
-    dictionary = {"active": "PhotosTab"}
+    dictionary = {"active": "GalleryTab"}
     return render(request, 'app/photos.html', dictionary)
 
 

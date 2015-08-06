@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load filters %}
+{%block title %} Organizations Profile {% endblock %}
+{% block externalLinkRels %}
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{{STATIC_URL}}app/css/main.css" />
+<div>
+	{% for user in account %}
+		{% if user.account.isOrganization %}
+			<s> {{ user.name }} </s>
+			<s> {{ user.adress }} </s>
+			<s> {{ user.phone_number }} </s>
+		{% endif %}
+	{% endfor %}
+</div>
+{% endblock %}

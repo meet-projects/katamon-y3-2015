@@ -7,11 +7,7 @@ href='{{STATIC_URL}}app/css/login.css'>
 {% block body %}
 <div class="GreenBOX row">
 	<h1 style="margin-left:9.5%;">
-	{% if organization_login %}
-	 Organization Login
-	{% else %}
-		User Login
-	{% endif %}
+	   Login
 	</h1>
 	<form method="post" action="{{ action }}">
 		{% csrf_token %}

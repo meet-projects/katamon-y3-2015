@@ -8,11 +8,11 @@
     border-radius: 10%;
     transition: width 1s, height 1s;
 }   
+#img1:hover{
+    width:200px;
+    height: 200px;
+}
 
-#img2 {
-    display:none;
-    margin: 100px 100px 100px 100px;
-    width: 400px;
-    height: 400px;
-    text-align: center;
+#gallery{
+    margin-left: 50px;
 }
