@@ -62,11 +62,13 @@
 		var button = $(event.relatedTarget); // Button that triggered the modal
 		var eventName = button.data('event-name'); // Extract info from data-* attributes
 		var eventDescription = button.data('event-description');
+		var eventId = button.data('event-id');
 		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		var modal = $(this);
 		modal.find('.modal-title').text('Join to ' + eventName);
 		modal.find('.modal-body').text(eventDescription);
+		modal.find('#join-btn').attr("href", "/joinEvent/" + eventId);
 		});
 	});
 	</script>
@@ -90,7 +92,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success">Join</button>
+					<a href="#" id="join-btn"><button type="button" class="btn btn-success">Join</button></a>
 				</div>
 			</div>
 		</div>
@@ -198,12 +200,18 @@
 			</div>
 			<div class="col-md-3">
 				{% if user.is_authenticated %}
-					<div>
-						<button class="btn green-btn" style="margin-top:20px;" data-toggle="modal" data-target="#join-event-modal" data-event-name="{{ event.name }}" data-event-description="{{ event.description }}">Join</button>
-					</div>
+					{% if not event in user.account.customer_events.all %}
+						<div>
+							<button class="btn green-btn" style="margin-top:20px;" data-toggle="modal" data-target="#join-event-modal" data-event-name="{{ event.name }}" data-event-description="{{ event.description }}" data-event-id="{{ event.id }}">Join</button>
+						</div>
+					{% else %}
+						<div>
+							<button class="btn green-btn-selected" style="margin-top:20px;">Joined</button>
+						</div>
+					{% endif %}
 				{% else %}
 					<div>
-						<a class="btn green-btn" align="middle" style="margin-top:20px;"> Login To Join </button>
+						<a href="/login/"><button style="margin-top:20px;" class="btn green-btn"> Login To Join </button>
 						</a>
 					</div>
 				{% endif %}

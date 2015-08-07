@@ -25,6 +25,9 @@ class Account(models.Model):
 
     # TODO - ensure uniqueness in user field.
 
+    def get_attending_events(self):
+        return self.customer_events.all()
+
     def __unicode__(self):
         return self.user.username + " " + self.user.email + " "
         # + str(self.birthday)

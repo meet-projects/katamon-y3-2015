@@ -1,4 +1,5 @@
 {% extends "app/base.html" %}
+{% load filters %}
 {%block title %} Profile {% endblock %}
 {%block externalLinkRels %}
 <link rel="stylesheet" type="text/css"
@@ -7,7 +8,7 @@ href='{{STATIC_URL}}app/css/UserProfile.css'>
 {% block body %}
 <style type="text/css">
 	body{
-background-image: url("/static/app/img/trees.jpg");
+/*background-image: url("/static/app/img/trees.jpg");*/
 background-repeat: no-repeat;
 background-size: 100%;
 }
@@ -17,17 +18,45 @@ background-size: 100%;
 </div>
 <br />
 <div class="row" style="font-size:20px;">
-	<div class="col-md-2 col-md-offset-1">
+	<div class="col-md-2 col-md-offset-2">
 		<img src="{{STATIC_URL}}app/img/ProfilePic.jpeg"  class="pic2">
 	</div>
-	<div class="col-md-3 col-md-offset-2">
+	<div class="col-md-3 col-md-offset-1">
 		<p><b> {{user.first_name}} {{user.last_name}} </b></p>
-	</div>
-	<div class="col-md-3 col-md-offset-2">
 		<p for=""><b>{{user.email}}</b></p>
-	</div>
-	<div class="col-md-3 col-md-offset-2">
 		<p for=""><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b></p>
 	</div>
 </div>
+	{% if not user.account.isOrgnization %}
+		<div class="row" style="font-size:20px;">
+			<div class="col-md-8 col-md-offset-2">
+				<h1>Attending events</h1>
+			</div>
+
+				{% for event in user.account|get_account_attending_events %}
+					<div class="row">
+						
+						<div class="col-md-8 col-md-offset-2 events {{ event|html_classes }}">
+							<div class="col-md-2 col-md-offset-1">
+								<a tabindex="0" data-placement="left" role="button" data-toggle="popover" data-trigger="focus" title="{{ event.organization.name }}" data-content="{{ event.organization.description }}">
+									<img src="{{STATIC_URL}}app/img/zedka.png" class="img-responsive img-thumbnail"  alt="..." >
+								</a>
+							</div>
+							<div class="col-md-8 col-md-offset-1">
+								<h3><b><i> {{ event.name }} </i></b></h3>
+								<p>
+									<h4>{{ event.description }}</h4>
+									<p> <b>Group Size:</b> {{ event.group_size }} volunteers </p>
+									<p> <b>Time:</b> {{ event|get_event_times }}</p>
+									<p> <b>Date:</b> {{ event.date }}</p>
+									<p> <b>Location:</b> {{ event.address }} </p>
+								</p>
+								<hr>
+							</div>
+						</div>
+					</div>
+					
+				{% endfor %}
+		</div>
+	{% endif %}
 {% endblock %}
