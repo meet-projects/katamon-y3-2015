@@ -95,6 +95,13 @@ def OrgSignUp(request):
     return render(request, 'app/OrgSignUp.html', dictionary)
 
 
+def join_event(request, event_id):
+    if not request.user.is_authenticated():
+        return redirect("/home/")
+    request.user.account.customer_events.add(Event.objects.get(id=event_id))
+    return redirect("/UserProfile/")
+
+
 def addEvent_request(request):
     dictionary = {"active": "manageEventsTab"}
 

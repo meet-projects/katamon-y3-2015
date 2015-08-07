@@ -24,3 +24,21 @@
   background-image: linear-gradient(to bottom, #26c92b, #31bf1b);
   text-decoration: none;
 }
+
+.green-btn-selected {
+  -webkit-border-radius: 16;
+  -moz-border-radius: 16;
+  border-radius: 16px;
+  font-family: Arial;
+  color: #00782e;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  border: solid #09963f 2px;
+  text-decoration: none;
+}
+
+.green-btn-selected:hover {
+  color: #00782e;
+  border: solid #09963f 2px;
+  text-decoration: none;
+}

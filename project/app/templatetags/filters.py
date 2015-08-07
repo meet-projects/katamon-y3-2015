@@ -42,3 +42,13 @@ def get_event_times(event):
 @register.filter
 def category_html_class(category):
     return category.getCategoryClassName()
+
+
+@register.filter
+def get_account_attending_events(account):
+    return account.get_attending_events()
+
+
+@register.filter
+def is_account_joined_event(account, event_id):
+    return account.customer_event.filter(id=event_id)
