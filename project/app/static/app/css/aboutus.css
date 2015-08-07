@@ -35,7 +35,7 @@ p {
 p.padding {
     padding-top: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-left: 30px;
 }
 .box1 {
@@ -48,7 +48,7 @@ p.padding {
 	font-size: 30px;
 }
 .box2 {
-	margin-top: 2%;
+	margin-top: 1%;
 	width: 70%;
 	font-size:30px; 
 	color:#469245;
