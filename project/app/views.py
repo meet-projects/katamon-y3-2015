@@ -222,7 +222,8 @@ def OrgSignUpRequest(request):
     organization_obj.user = user_obj
 
     organization_obj.save()
-    return redirect("/events")
+
+    return login_request(request, email, password)
 
 
 def signupRequest(request):
