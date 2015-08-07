@@ -23,7 +23,7 @@ href='{{STATIC_URL}}app/css/Donate.css'>
 		  {% if user.is_authenticated %}
 		  		<button id="Transfer" onclick="Thanks()" class="btn btn-success">Transfer cash</button>
 		  {% else %}
-		  		<button onclick="window.location.href='/'" class="btn btn-success">Log In First</button>
+		  		<button onclick="window.location.href='http://127.0.0.1:8000/login/'" class="btn btn-success">Log In First</button>
 		  {% endif %}
 		</div>
 	</div>	

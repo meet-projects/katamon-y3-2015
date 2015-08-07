@@ -199,7 +199,7 @@
 				<hr>
 			</div>
 			<div class="col-md-3">
-				{% if user.is_authenticated %}
+				{% if user.is_authenticated and not user.account.isOrganization %}
 					{% if not event in user.account.customer_events.all %}
 						<div>
 							<button class="btn green-btn" style="margin-top:20px;" data-toggle="modal" data-target="#join-event-modal" data-event-name="{{ event.name }}" data-event-description="{{ event.description }}" data-event-id="{{ event.id }}">Join</button>
@@ -209,7 +209,7 @@
 							<button class="btn green-btn-selected" style="margin-top:20px;">Joined</button>
 						</div>
 					{% endif %}
-				{% else %}
+				{% elif not user.is_authenticated %}
 					<div>
 						<a href="/login/"><button style="margin-top:20px;" class="btn green-btn"> Login To Join </button>
 						</a>
