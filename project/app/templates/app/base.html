@@ -64,7 +64,7 @@
 							{% if user.is_authenticated %}
 								<li id="GalleryTab"><a href="/photos">Gallery</a></li>
 							{% endif %}
-							{% if user.is_authenticated and not user.account.isOrganization9 %}
+							{% if user.is_authenticated %}
 								<li id="UserProfileTab"><a href="/UserProfile">Profile</a></li>
 								<li id="managmentTab"><a href="/managment">Settings</a></li>
 							{% endif %}
