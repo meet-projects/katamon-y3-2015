@@ -18,16 +18,33 @@ background-size: 100%;
 <br />
 <div class="row" style="font-size:20px;">
 	<div class="col-md-2 col-md-offset-1">
+	{% if not user.account.isOrganization %} 
 		<img src="{{STATIC_URL}}app/img/ProfilePic.jpeg"  class="pic2">
+	{% else %}
+		<img src="{{STATIC_URL}}app/img/OrgPic.jpeg"  class="pic2">
+	{% endif %}
 	</div>
 	<div class="col-md-3 col-md-offset-2">
-		<p><b> {{user.first_name}} {{user.last_name}} </b></p>
+		<p><b>{% if not user.account.isOrganization %} {{user.first_name}} {{user.last_name}} {% else %} {{user.account.name}} {% endif %} </b></p>
 	</div>
 	<div class="col-md-3 col-md-offset-2">
 		<p for=""><b>{{user.email}}</b></p>
 	</div>
 	<div class="col-md-3 col-md-offset-2">
-		<p for=""><b>{% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %}</b></p>
+		<p for=""><b>{% if not user.account.isOrganization %} {% if not user.account.isPalestinian %} Israeli {% else %} Palestinian {% endif %} {% else %} Phone Number: {{user.account.phone_number}} {% endif %}</b></p>
 	</div>
+	{% if user.account.isOrganization %}
+	<div class="col-md-3 col-md-offset-2">
+		<p for=""><b> {{user.account.address}} </b></p>
+	</div>
+	<div class="col-md-3 col-md-offset-2">
+		<p style="width:100%;"><b> {{user.account.website}} </b> </p>
+	</div>
+	<div class="col-md-3 col-md-offset-5">
+		<p style="color:grey;width:100%;"><b>Description: {{user.account.description}} </b></p>
+	</div>
+	{% endif %}
+
+
 </div>
 {% endblock %}
