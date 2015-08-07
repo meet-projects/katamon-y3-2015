@@ -1,5 +1,7 @@
 #formdiv { margin-top: 75px;}
+
 body{
+margin-top: 200px;
 background-image: url("/static/app/img/trees.jpg");
 background-repeat: no-repeat;
 background-size: 100%;
